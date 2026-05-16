@@ -1,0 +1,663 @@
+openapi: 3.1.0
+info:
+  title: Coherence-CE vLLM Adapter API
+  version: 2026-Q2.v2
+  summary: Coherence-CE Memory Mesh API contract for vLLM and peer inference adapters.
+  description: >-
+    This API is the only KV/prefix-cache contract exposed to inference adapters.
+    Request and response schemas expose logical Coherence identities, payload
+    references, durability class, and admission state. Lower-layer implementation
+    identifiers are intentionally absent from every schema.
+servers:
+  - url: https://coherence-ce.example.internal
+    description: Example internal Coherence-CE endpoint
+security:
+  - bearerAuth: []
+tags:
+  - name: kv
+    description: KV and prefix-cache operations.
+  - name: health
+    description: Coherence-CE health and readiness.
+  - name: admission
+    description: Scheduler-facing admission summaries.
+paths:
+  /v1/coherence/kv/lookup:
+    post:
+      tags: [kv]
+      operationId: lookupKvBlocks
+      summary: Lookup compatible KV or prefix-cache blocks.
+      description: >-
+        Resolves logical KV identities to hit, miss, stale, incompatible,
+        recompute, or degraded outcomes. Payload references are opaque
+        Coherence-CE references.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LookupRequest'
+      responses:
+        '200':
+          description: Lookup completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LookupResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /v1/coherence/kv/publish:
+    post:
+      tags: [kv]
+      operationId: publishKvBlocks
+      summary: Publish computed KV or prefix-cache blocks.
+      description: >-
+        Publishes one or more KV objects with a durability class. Durable state
+        is reported explicitly; write-back may return pending state.
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishRequest'
+      responses:
+        '202':
+          description: Publish accepted; durability may be pending.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishResponse'
+        '200':
+          description: Publish completed and durability state is known.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /v1/coherence/kv/reserve:
+    post:
+      tags: [kv]
+      operationId: reserveKvCapacity
+      summary: Reserve expected KV growth or a writer epoch.
+      description: Reserves class-aware capacity before scheduler admission.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReserveRequest'
+      responses:
+        '200':
+          description: Reservation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReserveResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /v1/coherence/kv/flush:
+    post:
+      tags: [kv]
+      operationId: flushKvWriteBack
+      summary: Flush pending write-back objects.
+      description: Requests durable flush for pending objects when policy permits it.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlushRequest'
+      responses:
+        '200':
+          description: Flush result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlushResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /v1/coherence/kv/promote:
+    post:
+      tags: [kv]
+      operationId: promoteKvDurability
+      summary: Promote KV objects to a stronger durability class.
+      description: Promotion requires policy approval and class-specific durability evidence.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromoteRequest'
+      responses:
+        '200':
+          description: Promotion result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoteResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /v1/coherence/kv/evict:
+    post:
+      tags: [kv]
+      operationId: evictKvObjects
+      summary: Evict, demote, or invalidate KV objects.
+      description: Eviction follows class, tenant, model, and retention policy.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvictRequest'
+      responses:
+        '200':
+          description: Eviction result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvictResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /v1/coherence/kv/health:
+    get:
+      tags: [health]
+      operationId: getKvHealth
+      summary: Get Coherence-CE KV service health.
+      description: Returns mesh, durability, write-back, and freshness summary states.
+      parameters:
+        - name: tenant_id
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: model_id
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Health response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /v1/coherence/admission/summary:
+    get:
+      tags: [admission]
+      operationId: getAdmissionSummary
+      summary: Get scheduler-facing admission summary.
+      description: Returns class-aware GREEN, AMBER, RED, or DRAIN state by scope.
+      parameters:
+        - name: tenant_id
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: model_id
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: durability_class
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/DurabilityClass'
+      responses:
+        '200':
+          description: Admission summary.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdmissionSummary'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: false
+      schema:
+        type: string
+        minLength: 8
+        maxLength: 256
+      description: Opaque idempotency key used for retry-safe publishes.
+  responses:
+    ErrorResponse:
+      description: API-layer error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+  schemas:
+    DurabilityClass:
+      type: string
+      enum: [KV-D0, KV-D1, KV-D2, KV-D3, KV-D4, KV-D5]
+    DurabilityState:
+      type: string
+      enum: [volatile, mesh_committed, writeback_pending, durable, degraded, rejected]
+    AdmissionState:
+      type: string
+      enum: [GREEN, AMBER, RED, DRAIN]
+    AdmissionAction:
+      type: string
+      enum: [admit, prefer_local, queue, throttle, recompute, drain, reject]
+    LookupStatus:
+      type: string
+      enum: [hit, miss, stale, incompatible_profile, recompute_required, degraded]
+    RuntimeProfile:
+      type: object
+      additionalProperties: false
+      required: [engine, attention_backend, block_size, dtype, layout_version]
+      properties:
+        engine:
+          type: string
+          examples: [vllm]
+        engine_version:
+          type: string
+        attention_backend:
+          type: string
+        block_size:
+          type: integer
+          minimum: 1
+        dtype:
+          type: string
+          examples: [fp16, bf16, int8-kv]
+        quantization_profile:
+          type: string
+          default: none
+        layout_version:
+          type: string
+    KvIdentity:
+      type: object
+      additionalProperties: false
+      required: [model_id, tokenizer_id, adapter_id, runtime_profile, prefix_hash, layout_hash]
+      properties:
+        model_id:
+          type: string
+          description: Content-addressed model manifest ID.
+        tokenizer_id:
+          type: string
+          description: Tokenizer version and vocabulary hash.
+        adapter_id:
+          type: string
+          description: Adapter or LoRA hash; use none when absent.
+        runtime_profile:
+          $ref: '#/components/schemas/RuntimeProfile'
+        prefix_hash:
+          type: string
+          minLength: 16
+        block_range:
+          $ref: '#/components/schemas/BlockRange'
+        placement_epoch:
+          type: integer
+          minimum: 0
+        layout_hash:
+          type: string
+    BlockRange:
+      type: object
+      additionalProperties: false
+      properties:
+        start:
+          type: integer
+          minimum: 0
+        count:
+          type: integer
+          minimum: 1
+    RequestContext:
+      type: object
+      additionalProperties: false
+      properties:
+        tenant_id:
+          type: string
+        trace_id:
+          type: string
+        deadline_ms:
+          type: integer
+          minimum: 1
+        slo_class:
+          type: string
+          enum: [interactive, batch, background, system, maintenance]
+        session_id:
+          type: string
+    PayloadRef:
+      type: object
+      additionalProperties: false
+      required: [kind]
+      properties:
+        kind:
+          type: string
+          enum: [inline_base64, coherence_object]
+        inline_base64:
+          type: string
+          contentEncoding: base64
+        object_ref:
+          type: string
+          description: Opaque Coherence-CE object reference.
+        bytes:
+          type: integer
+          minimum: 0
+        sha256:
+          type: string
+          pattern: '^[A-Fa-f0-9]{64}$'
+    LookupRequest:
+      type: object
+      additionalProperties: false
+      required: [identity, context]
+      properties:
+        identity:
+          $ref: '#/components/schemas/KvIdentity'
+        acceptable_durability:
+          type: array
+          items:
+            $ref: '#/components/schemas/DurabilityClass'
+        require_exact_profile:
+          type: boolean
+          default: true
+        context:
+          $ref: '#/components/schemas/RequestContext'
+    LookupResponse:
+      type: object
+      additionalProperties: false
+      required: [status, identity, durability_state, admission_hint]
+      properties:
+        status:
+          $ref: '#/components/schemas/LookupStatus'
+        identity:
+          $ref: '#/components/schemas/KvIdentity'
+        durability_class:
+          $ref: '#/components/schemas/DurabilityClass'
+        durability_state:
+          $ref: '#/components/schemas/DurabilityState'
+        payload:
+          $ref: '#/components/schemas/PayloadRef'
+        expires_at:
+          type: string
+          format: date-time
+        epoch:
+          type: integer
+          minimum: 0
+        admission_hint:
+          $ref: '#/components/schemas/AdmissionAction'
+        diagnostics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reason'
+    PublishRequest:
+      type: object
+      additionalProperties: false
+      required: [identity, durability_class, payload, context]
+      properties:
+        identity:
+          $ref: '#/components/schemas/KvIdentity'
+        durability_class:
+          $ref: '#/components/schemas/DurabilityClass'
+        payload:
+          $ref: '#/components/schemas/PayloadRef'
+        ttl_seconds:
+          type: integer
+          minimum: 1
+        context:
+          $ref: '#/components/schemas/RequestContext'
+    PublishResponse:
+      type: object
+      additionalProperties: false
+      required: [status, durability_state, identity, epoch]
+      properties:
+        status:
+          type: string
+          enum: [accepted, pending, durable, rejected]
+        durability_state:
+          $ref: '#/components/schemas/DurabilityState'
+        identity:
+          $ref: '#/components/schemas/KvIdentity'
+        epoch:
+          type: integer
+          minimum: 0
+        flush_after_ms:
+          type: integer
+          minimum: 0
+        diagnostics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reason'
+    ReserveRequest:
+      type: object
+      additionalProperties: false
+      required: [identity, requested_class, expected_blocks, context]
+      properties:
+        identity:
+          $ref: '#/components/schemas/KvIdentity'
+        requested_class:
+          $ref: '#/components/schemas/DurabilityClass'
+        expected_blocks:
+          type: integer
+          minimum: 1
+        writer_epoch_required:
+          type: boolean
+          default: false
+        context:
+          $ref: '#/components/schemas/RequestContext'
+    ReserveResponse:
+      type: object
+      additionalProperties: false
+      required: [reserved, admission_state, action]
+      properties:
+        reserved:
+          type: boolean
+        writer_epoch:
+          type: integer
+          minimum: 0
+        admission_state:
+          $ref: '#/components/schemas/AdmissionState'
+        action:
+          $ref: '#/components/schemas/AdmissionAction'
+        diagnostics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reason'
+    FlushRequest:
+      type: object
+      additionalProperties: false
+      required: [identity, context]
+      properties:
+        identity:
+          $ref: '#/components/schemas/KvIdentity'
+        minimum_class:
+          $ref: '#/components/schemas/DurabilityClass'
+        context:
+          $ref: '#/components/schemas/RequestContext'
+    FlushResponse:
+      type: object
+      additionalProperties: false
+      required: [flushed, durability_state]
+      properties:
+        flushed:
+          type: boolean
+        durability_state:
+          $ref: '#/components/schemas/DurabilityState'
+        durable_lag_ms:
+          type: integer
+          minimum: 0
+        diagnostics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reason'
+    PromoteRequest:
+      type: object
+      additionalProperties: false
+      required: [identity, target_class, context]
+      properties:
+        identity:
+          $ref: '#/components/schemas/KvIdentity'
+        target_class:
+          $ref: '#/components/schemas/DurabilityClass'
+        context:
+          $ref: '#/components/schemas/RequestContext'
+    PromoteResponse:
+      type: object
+      additionalProperties: false
+      required: [promoted, durability_state]
+      properties:
+        promoted:
+          type: boolean
+        durability_class:
+          $ref: '#/components/schemas/DurabilityClass'
+        durability_state:
+          $ref: '#/components/schemas/DurabilityState'
+        diagnostics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reason'
+    EvictRequest:
+      type: object
+      additionalProperties: false
+      required: [identity, mode, context]
+      properties:
+        identity:
+          $ref: '#/components/schemas/KvIdentity'
+        mode:
+          type: string
+          enum: [evict, demote, invalidate]
+        context:
+          $ref: '#/components/schemas/RequestContext'
+    EvictResponse:
+      type: object
+      additionalProperties: false
+      required: [accepted]
+      properties:
+        accepted:
+          type: boolean
+        affected_objects:
+          type: integer
+          minimum: 0
+        diagnostics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reason'
+    HealthResponse:
+      type: object
+      additionalProperties: false
+      required: [state, generated_at, summary_epoch, checks]
+      properties:
+        state:
+          $ref: '#/components/schemas/AdmissionState'
+        generated_at:
+          type: string
+          format: date-time
+        summary_epoch:
+          type: integer
+          minimum: 0
+        checks:
+          type: array
+          items:
+            $ref: '#/components/schemas/HealthCheck'
+    HealthCheck:
+      type: object
+      additionalProperties: false
+      required: [name, state, freshness_ms]
+      properties:
+        name:
+          type: string
+        state:
+          $ref: '#/components/schemas/AdmissionState'
+        freshness_ms:
+          type: integer
+          minimum: 0
+        reason:
+          type: string
+    AdmissionSummary:
+      type: object
+      additionalProperties: false
+      required: [summary_epoch, generated_at, entries]
+      properties:
+        summary_epoch:
+          type: integer
+          minimum: 0
+        generated_at:
+          type: string
+          format: date-time
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdmissionEntry'
+    AdmissionEntry:
+      type: object
+      additionalProperties: false
+      required: [tenant_id, model_id, durability_class, scope, state, action, freshness_ms]
+      properties:
+        tenant_id:
+          type: string
+        model_id:
+          type: string
+        durability_class:
+          $ref: '#/components/schemas/DurabilityClass'
+        prefix_shard:
+          type: string
+        scope:
+          type: string
+          enum: [node, rack, fabric_plane, cluster]
+        state:
+          $ref: '#/components/schemas/AdmissionState'
+        action:
+          $ref: '#/components/schemas/AdmissionAction'
+        freshness_ms:
+          type: integer
+          minimum: 0
+        reason_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reason'
+    Reason:
+      type: object
+      additionalProperties: false
+      required: [code, owner]
+      properties:
+        code:
+          type: string
+          enum:
+            - hit
+            - miss
+            - stale
+            - incompatible_profile
+            - recompute_required
+            - durability_pending
+            - durability_unavailable
+            - mesh_degraded
+            - quota_exceeded
+            - admission_rejected
+            - telemetry_stale
+            - timeout
+        owner:
+          type: string
+          enum: [coherence, scheduler, model_runtime, backing_service, platform]
+        message:
+          type: string
+    ErrorEnvelope:
+      type: object
+      additionalProperties: false
+      required: [error]
+      properties:
+        error:
+          type: object
+          additionalProperties: false
+          required: [code, message]
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            diagnostics:
+              type: array
+              items:
+                $ref: '#/components/schemas/Reason'

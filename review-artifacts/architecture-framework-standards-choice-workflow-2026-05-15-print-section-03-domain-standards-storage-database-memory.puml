@@ -1,0 +1,60 @@
+@startuml
+!pragma useVerticalIf on
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam activity {
+  BackgroundColor #F7FAFF
+  BorderColor #2F5597
+  FontColor #1F1F1F
+  DiamondBackgroundColor #FFF2CC
+  DiamondBorderColor #7F6000
+  StartColor #385723
+  EndColor #385723
+}
+skinparam note {
+  BackgroundColor #E2F0D9
+  BorderColor #548235
+}
+skinparam ArrowColor #2F5597
+title Print Section 03 - Domain Standards: Storage, Database, Memory
+start
+:Input from Section 01 or 02:
+unresolved dominant domain;
+
+if (Storage, block, or object path?) then (yes)
+  :Use SNIA for storage architecture
+and Swordfish management;
+  :Use NVMe specifications for NVMe,
+NVMe-oF, MI, ZNS, and namespace behavior;
+  :Use DMTF Redfish for platform-level
+storage inventory/control;
+  :Use implementation docs only after
+standards boundaries are set;
+elseif (Database or big-data system?) then (yes)
+  :Use workload pattern references:
+HDFS for distributed file data,
+HBase/Bigtable for wide-column storage,
+TPC/TPCx-HS for benchmark framing;
+  :Bind substrate to OCP/SNIA/NVMe
+and network standards;
+elseif (Memory or accelerator tiering?) then (yes)
+  :Use CXL Consortium specifications
+for coherent memory expansion;
+  :Use OCP CMS/CFM material for
+composable-memory fleet governance;
+  :Place topology and latency constraints
+into ADRs and scheduler gates;
+else (other)
+  :Use ISO 42010 + ADR as the spine;
+  :Attach domain-specific standards only
+to affected interfaces;
+endif
+
+:Hand off to Section 04:
+validation evidence and output pack;
+stop
+legend right
+  Print-safe storage, database, and memory branch.
+  Output: standards authority and interface boundary.
+endlegend
+@enduml
