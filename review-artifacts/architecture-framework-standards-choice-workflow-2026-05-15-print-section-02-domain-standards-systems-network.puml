@@ -1,0 +1,64 @@
+@startuml
+!pragma useVerticalIf on
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam activity {
+  BackgroundColor #F7FAFF
+  BorderColor #2F5597
+  FontColor #1F1F1F
+  DiamondBackgroundColor #FFF2CC
+  DiamondBorderColor #7F6000
+  StartColor #385723
+  EndColor #385723
+}
+skinparam note {
+  BackgroundColor #E2F0D9
+  BorderColor #548235
+}
+skinparam ArrowColor #2F5597
+title Print Section 02 - Domain Standards: Systems and Network
+start
+:Input from Section 01:
+architecture question and scale lens;
+
+if (Systems or physical infrastructure?) then (yes)
+  :Use OCP for rack, power, cooling,
+server, NIC, storage, AI-cluster,
+and facility reference designs;
+  :Use DMTF Redfish for platform management;
+  :Use OpenTelemetry/SRE for health and operations;
+else (no)
+  :Continue domain selection;
+endif
+
+if (Network or fabric?) then (yes)
+  :Use IEEE 802.3 for Ethernet PHY/MAC;
+  :Use IEEE 802.1 for bridging,
+DCB, TSN, PFC/ETS;
+  :Use IETF for IP routing,
+transport, and RFC behavior;
+  :Use OpenConfig/gNMI for vendor-neutral
+configuration and telemetry;
+  if (AI/HPC Ethernet fabric?) then (yes)
+    :Add UEC guidance for AI/HPC Ethernet,
+congestion, tail latency, and scale;
+  elseif (InfiniBand/RDMA fabric?) then (yes)
+    :Use IBTA specifications and
+OFA/Linux RDMA software stack;
+  else (no)
+    :Keep IEEE/IETF/OpenConfig as
+the default basis;
+  endif
+else (no)
+  :Continue to Section 03 for storage,
+database, and memory tiering;
+endif
+
+:Hand off to Section 03:
+storage, database, memory, or cross-domain choices;
+stop
+legend right
+  Print-safe systems and network branch.
+  Use with Section 03 for remaining domains.
+endlegend
+@enduml

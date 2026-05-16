@@ -1,0 +1,63 @@
+@startuml
+!pragma useVerticalIf on
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam activity {
+  BackgroundColor #F7FAFF
+  BorderColor #2F5597
+  FontColor #1F1F1F
+  DiamondBackgroundColor #FFF2CC
+  DiamondBorderColor #7F6000
+  StartColor #385723
+  EndColor #385723
+}
+skinparam note {
+  BackgroundColor #E2F0D9
+  BorderColor #548235
+}
+skinparam ArrowColor #2F5597
+title Print Section 01 - Governance Spine
+start
+:Capture architecture question,
+stakeholders, scale,
+quality attributes, and risk class;
+:Separate work into three lanes:
+1. architecture governance,
+2. domain standards,
+3. validation evidence;
+
+if (Need stakeholder views,
+viewpoints, or decision traceability?) then (yes)
+  :Use ISO 42010 as the
+architecture-description spine;
+  :Use ADR/MADR for each
+architecturally significant decision;
+  :Use arc42/C4-style views for
+human-readable structure and runtime flows;
+  if (Enterprise portfolio,
+service lifecycle, or change control?) then (yes)
+    :Add TOGAF for enterprise method
+and ITIL for service/change/value streams;
+  else (no)
+    :Keep governance lightweight;
+  endif
+  :Define SLOs/SLIs and error budgets
+with SRE practice;
+else (no)
+  :Create a lightweight design note;
+  :Promote to ADR when consequences
+cross system boundaries;
+endif
+
+:Classify primary scale lens:
+component, node, rack, pod,
+datacenter, region, global;
+:Hand off to Section 02:
+domain standards selection;
+stop
+legend right
+  Use before every architecture design sequence.
+  Output: governance spine, ADR threshold,
+  viewpoint need, and scale lens.
+endlegend
+@enduml

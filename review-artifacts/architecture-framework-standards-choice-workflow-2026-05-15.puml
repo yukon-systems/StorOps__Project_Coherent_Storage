@@ -1,0 +1,136 @@
+@startuml
+!pragma useVerticalIf on
+title Architecture Framework and Standards-Body Choice Path
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam activity {
+  BackgroundColor #F7FAFF
+  BorderColor #2F5597
+  FontColor #1F1F1F
+  DiamondBackgroundColor #FFF2CC
+  DiamondBorderColor #7F6000
+  StartColor #385723
+  EndColor #385723
+}
+skinparam note {
+  BackgroundColor #E2F0D9
+  BorderColor #548235
+}
+skinparam ArrowColor #2F5597
+
+start
+:Capture architecture question,
+stakeholders, scale,
+quality attributes, and risk class;
+:Separate the work into three lanes:
+1. architecture governance,
+2. domain standards,
+3. validation evidence;
+
+if (Need stakeholder views,
+viewpoints, or decision traceability?) then (yes)
+  :Use ISO 42010 as the
+architecture-description spine;
+  :Use ADR/MADR for each
+architecturally significant decision;
+  :Use arc42/C4-style views for
+human-readable structure and runtime flows;
+  if (Enterprise portfolio,
+service lifecycle, or change control?) then (yes)
+    :Add TOGAF for enterprise method
+and ITIL for service/change/value streams;
+  else (no)
+    :Keep governance lightweight;
+  endif
+  :Define SLOs/SLIs and error budgets
+with SRE practice;
+else (no)
+  :Create a lightweight design note,
+then promote to ADR when consequences
+cross system boundaries;
+endif
+
+:Classify primary scale lens:
+component, node, rack, pod,
+datacenter, region, global;
+
+if (Systems or physical infrastructure?) then (yes)
+  :Use OCP for rack, power, cooling,
+server, NIC, storage, AI-cluster, and
+facility reference designs;
+  :Use DMTF Redfish for platform management;
+  :Use OpenTelemetry/SRE for health and operations;
+elseif (Network or fabric?) then (yes)
+  :Use IEEE 802.3 for Ethernet PHY/MAC;
+  :Use IEEE 802.1 for bridging, DCB, TSN, PFC/ETS;
+  :Use IETF for IP routing, transport, and RFC behavior;
+  :Use OpenConfig/gNMI for vendor-neutral config/telemetry;
+  if (AI/HPC Ethernet fabric?) then (yes)
+    :Add UEC guidance for AI/HPC Ethernet stack,
+congestion, tail latency, and scale;
+  elseif (InfiniBand/RDMA fabric?) then (yes)
+    :Use IBTA specifications and OFA/Linux RDMA software stack;
+  else (no)
+    :Keep IEEE/IETF/OpenConfig as the default basis;
+  endif
+elseif (Storage, block, or object path?) then (yes)
+  :Use SNIA for storage architecture and Swordfish management;
+  :Use NVMe specifications for NVMe, NVMe-oF, MI, ZNS, and namespace behavior;
+  :Use DMTF Redfish for platform-level storage inventory/control;
+  :Use implementation docs only after standards boundaries are set;
+elseif (Database or big-data system?) then (yes)
+  :Use workload pattern references:
+HDFS for high-throughput distributed file data,
+HBase/Bigtable for wide-column storage,
+TPC/TPCx-HS for comparable benchmark framing;
+  :Bind the substrate to OCP/SNIA/NVMe/network standards;
+elseif (Memory or accelerator tiering?) then (yes)
+  :Use CXL Consortium specifications for coherent memory expansion;
+  :Use OCP CMS/CFM material for composable-memory fleet governance;
+  :Place topology and latency constraints into ADRs and scheduler gates;
+else (other)
+  :Use ISO 42010 + ADR as the spine;
+  :Attach the domain-specific standards only to the affected interfaces;
+endif
+
+:Choose workload validation suite;
+if (AI factory or LLM inference/training?) then (yes)
+  :Use MLCommons/MLPerf plus project-local TTFT,
+TPOT, KV-cache, RAG, and fabric-health gates;
+elseif (HPC / supercomputing?) then (yes)
+  :Use TOP500/HPL where relevant,
+SPEC HPG, IO500, and application kernels;
+elseif (Storage subsystem?) then (yes)
+  :Use IO500, SPECstorage, fio-like engineering tests,
+and failure/rebuild drills;
+elseif (Database / big data?) then (yes)
+  :Use TPC-family benchmarks such as TPCx-HS
+and application-specific query/ingest tests;
+elseif (High-frequency trading?) then (yes)
+  :Use STAC benchmarks and deterministic latency,
+timing, timestamping, and audit gates;
+else (other)
+  :Use SLO/SLA evidence, resilience drills,
+and workload-specific acceptance tests;
+endif
+
+:Emit architecture process-sequence pack:
+context + viewpoints,
+ADR set,
+standards conformance matrix,
+interface contracts,
+failure semantics,
+telemetry/SLO model,
+benchmark/test plan;
+:Review for overlaps:
+standards body owns conformance,
+framework owns decision/governance,
+benchmark owns evidence;
+stop
+
+legend right
+  Yellow diamonds = choice gates
+  Blue actions = selected framework/standard
+  Output pack = durable design sequence artifacts
+endlegend
+@enduml

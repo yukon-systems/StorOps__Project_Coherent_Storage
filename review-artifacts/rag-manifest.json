@@ -1,0 +1,5647 @@
+[
+  {
+    "source_id": "R44",
+    "path": "170505_Risk_Failure_Probability_and_Failure_Rate.pdf",
+    "type": "pdf",
+    "bytes": 584559,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 4,
+    "title": "Risk Failure Probability and Failure Rate",
+    "extraction_status": "extracted",
+    "text_bytes": 14678,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R45",
+    "path": "A-Host-SSD-Collaborative-Write-Accelerator-for-LSM-Tree-Based-Key-Value-Stores.arXiv-2410.21760v_2024.pdf",
+    "type": "pdf",
+    "bytes": 1435349,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 11,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 136776,
+    "topics": [
+      "DPU / SmartNIC / offload",
+      "Storage media / OpenZFS / NVMe-oF",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-003": "background",
+      "ADR-005": "supporting",
+      "ADR-006": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R18",
+    "path": "AMD-Instinct-MI325X-Pensando-Pollara-GPU-Cluster.pdf",
+    "type": "pdf",
+    "bytes": 4522429,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 68,
+    "title": "Supermicro AI Cluster Architecture with AMD CPU, GPUs, Networking",
+    "extraction_status": "extracted",
+    "text_bytes": 152676,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "background",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-006": "supporting",
+      "ADR-007": "primary",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R46",
+    "path": "AMD-Pensado-400GbE_Pollara-400-1Q400P_Product-Brief.pdf",
+    "type": "pdf",
+    "bytes": 2384832,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 17920,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-007": "primary",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R47",
+    "path": "AMD_Pensando_Pollara-400GbE-Programmability-Ai-Networking_StorageReview.pdf",
+    "type": "pdf",
+    "bytes": 286800,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 5901,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R48",
+    "path": "AMD_Versal-Ai-Edge-Product-Selection-Matrix.pdf",
+    "type": "pdf",
+    "bytes": 830648,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 12,
+    "title": "Versal AI Edge Product Selection Guide;",
+    "extraction_status": "extracted",
+    "text_bytes": 51047,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Observability / benchmarking / validation",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-002": "background",
+      "ADR-004": "supporting",
+      "ADR-007": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R09",
+    "path": "A_Survey_on_Heterogeneous_Computing_Using_SmartNICs_and_Emerging_Data_Processing_Units.arXiv2504.03653v2_2025.pdf",
+    "type": "pdf",
+    "bytes": 519007,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 21,
+    "title": "A Survey on Heterogeneous Computing Using SmartNICs and Emerging Data Processing Units",
+    "extraction_status": "extracted",
+    "text_bytes": 152851,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-005": "primary",
+      "ADR-007": "supporting",
+      "ADR-008": "supporting",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R14",
+    "path": "Accelerating-Distributed-Deep-Learning-Multi-Path-RDMA-Datacenter-Networks.doi-10.1145-3482898.3483363_2021.pdf",
+    "type": "pdf",
+    "bytes": 925619,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 13,
+    "title": "Accelerating Distributed Deep Learning using Multi-Path RDMA in Data Center Networks",
+    "extraction_status": "extracted",
+    "text_bytes": 132931,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "supporting",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R30",
+    "path": "Agent-xpu-Efficient-Scheduling-of-Agentic-LLM-Workloads-on-Heterogeneous-SoC.arXiv-2506.24045v1.pdf",
+    "type": "pdf",
+    "bytes": 2255619,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 15,
+    "title": "Agent.xpu: Efficient Scheduling of Agentic LLM Workloads on Heterogeneous SoC",
+    "extraction_status": "extracted",
+    "text_bytes": 121492,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "background",
+      "ADR-005": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "primary",
+      "ADR-008": "primary",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R49",
+    "path": "America-Asymmetric-Vulnerability_NAVWAR-FINAL.pdf",
+    "type": "pdf",
+    "bytes": 645393,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 22,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 92447,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "supporting",
+      "ADR-006": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R50",
+    "path": "An-LLM-enabled-Workflow-for-Understanding-and-Evolving-HPC-Scheduling-Practices.DE-AC05-00OR2272.pdf",
+    "type": "pdf",
+    "bytes": 1904405,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 8,
+    "title": "An LLM-enabled Workflow for Understanding and Evolving HPC Scheduling Practices",
+    "extraction_status": "extracted",
+    "text_bytes": 59717,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "background",
+      "ADR-004": "background",
+      "ADR-007": "primary",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R05",
+    "path": "An-RDMA-First-Object-Storage-System-with-SmartNIC-Offload.arXiv_2509.13997v1_2025.pdf",
+    "type": "pdf",
+    "bytes": 2818132,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 8,
+    "title": "An RDMA-First Object Storage System with SmartNIC Offload",
+    "extraction_status": "extracted",
+    "text_bytes": 58511,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "primary",
+      "ADR-004": "primary",
+      "ADR-005": "primary",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R51",
+    "path": "Architecture-multiple-10K-MRR_tech-stack-_-Steve-Hanov-Blog.pdf",
+    "type": "pdf",
+    "bytes": 920028,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 9218,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "supporting",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R52",
+    "path": "Benchmarking-Ethernet-Interconnect-HPC-AI-workloads.SCW-2024-IEEE.979-8-3503-5291-7-24.pdf",
+    "type": "pdf",
+    "bytes": 1309991,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 7,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 42443,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R53",
+    "path": "Benchmarking-Memory-Centric-Computing-Systems--Analysis-of-Real-Processing-in-Memory-Hardware.arXiv-2110.01709v2_2023.pdf",
+    "type": "pdf",
+    "bytes": 415246,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 7,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 104178,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-005": "background",
+      "ADR-007": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R54",
+    "path": "BitCODE-Moving-Compute-Data-Distributed-Heterogeneous-Systems.arXiv-2208.01154v1.pdf",
+    "type": "pdf",
+    "bytes": 604671,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 11,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 87746,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "primary",
+      "ADR-005": "primary",
+      "ADR-006": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R55",
+    "path": "Broadcom_RoCE-EtherNIC-Ctrl-UG2XX.pdf",
+    "type": "pdf",
+    "bytes": 57174075,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 454,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 1200522,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-007": "background"
+    }
+  },
+  {
+    "source_id": "R56",
+    "path": "Curtiss-Wright_DoD-NSA-Storage_ST_vid11438-am-st.pdf",
+    "type": "pdf",
+    "bytes": 562390,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 25,
+    "title": "Curtiss-Wright Defense Solutions Data Transport System 1-Slot Software Encryption Layer (FDEEEcPP20/FDEAAcPP20) Security Target",
+    "extraction_status": "extracted",
+    "text_bytes": 78467,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R42",
+    "path": "DCF-Power-Distribution-LVDC-white-paper-version-1.0_FINAL.pdf",
+    "type": "pdf",
+    "bytes": 8559495,
+    "mtime_utc": "2026-05-12T22:17:13Z",
+    "pages": 155,
+    "title": "DCF Power Distribution LVDC white paper version 1.0.docx - Google Docs",
+    "extraction_status": "extracted",
+    "text_bytes": 442191,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "background",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R06",
+    "path": "DDS_DPU-optimized_Disaggregated_Storage_Extended-Report.arXiv-2407.13618v5_2024.pdf",
+    "type": "pdf",
+    "bytes": 1639289,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 16,
+    "title": "DDS_VLDB2024_arXiv.pdf",
+    "extraction_status": "extracted",
+    "text_bytes": 161980,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "supporting",
+      "ADR-003": "background",
+      "ADR-004": "supporting",
+      "ADR-005": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R08",
+    "path": "DPDPU-_Data_Processing_with_DPUs.arXiv-2407.13658v3_2024.pdf",
+    "type": "pdf",
+    "bytes": 983492,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 9,
+    "title": "DPDPU_arXiv2024.pdf",
+    "extraction_status": "extracted",
+    "text_bytes": 71912,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-005": "primary",
+      "ADR-006": "background",
+      "ADR-007": "primary",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R57",
+    "path": "DPUConfig_Optimizing_ML_Inference_in_FPGAs_Using_Reinforcement_Learning.arXiv2602.12847v1_2026.pdf",
+    "type": "pdf",
+    "bytes": 1855678,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 8,
+    "title": "DPUConfig: Optimizing ML Inference in FPGAs Using Reinforcement Learning",
+    "extraction_status": "extracted",
+    "text_bytes": 78488,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "supporting",
+      "ADR-003": "background",
+      "ADR-004": "background",
+      "ADR-005": "supporting",
+      "ADR-007": "primary",
+      "ADR-008": "supporting",
+      "ADR-009": "primary"
+    }
+  },
+  {
+    "source_id": "R10",
+    "path": "Datacenter-Ethernet-RDMA-Issues-Hyperscale_arXiv-2302.03337v2_2023.pdf",
+    "type": "pdf",
+    "bytes": 542657,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 11,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 58887,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R58",
+    "path": "Dell-405-AAE_SAS3-HBA.pdf",
+    "type": "pdf",
+    "bytes": 92498,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "DELL 405-AAES - DELL 405-AAES interface cards/adapter Internal Fiber",
+    "extraction_status": "extracted",
+    "text_bytes": 4840,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "background"
+    }
+  },
+  {
+    "source_id": "R59",
+    "path": "Disaggregated_Memory_with_SmartNIC_Offloading_Case_Study_on_Graph_Processing.arXiv-2410.02599v1_2024.pdf",
+    "type": "pdf",
+    "bytes": 714603,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 11,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 101248,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "supporting",
+      "ADR-004": "primary",
+      "ADR-005": "primary",
+      "ADR-006": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R24",
+    "path": "Disaggregated_Zoned_Namespace_Multi-Tenancy_Selvanathan_2024.pdf",
+    "type": "pdf",
+    "bytes": 4377626,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 88,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 115020,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "background",
+      "ADR-004": "primary",
+      "ADR-006": "primary",
+      "ADR-007": "supporting",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R60",
+    "path": "EdgeRunner20B_Military-Task-Parity-GPT-5_Running-Edge.axiv-2510.26550v1.pdf",
+    "type": "pdf",
+    "bytes": 2295668,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 19,
+    "title": "EdgeRunner 20B: Military Task Parity with GPT-5 while Running on the Edge",
+    "extraction_status": "extracted",
+    "text_bytes": 83424,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-003": "background",
+      "ADR-004": "background",
+      "ADR-007": "background",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R15",
+    "path": "Efficient-RDMA-Communication-Protocols_arXiv-2212.09134v2_2022.pdf",
+    "type": "pdf",
+    "bytes": 1267246,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 10,
+    "title": "Efficient RDMA Communication Protocols",
+    "extraction_status": "extracted",
+    "text_bytes": 91407,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-003": "background",
+      "ADR-004": "supporting",
+      "ADR-005": "background",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R61",
+    "path": "FPGA-Based-RoCEv2-RDMA-Readout-Electronics-CTAO-LST-Advanced-Camera.arXiv-2509.02285v1_2025.pdf",
+    "type": "pdf",
+    "bytes": 11664457,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 12,
+    "title": "FPGA-Based RoCEv2-RDMA Readout Electronics for the CTAO-LST Advanced Camera",
+    "extraction_status": "extracted",
+    "text_bytes": 90545,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-006": "background"
+    }
+  },
+  {
+    "source_id": "R62",
+    "path": "FPGA-Implementation-RDMA-Data-Acquisition-System-100GbE.Xilinx-Ultrascale.IEEE.2018.pdf",
+    "type": "pdf",
+    "bytes": 1140998,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 6,
+    "title": "Microsoft Word - FPGA implementation of RDMA-Based data acquisition system over 100 GbE.docx",
+    "extraction_status": "extracted",
+    "text_bytes": 29715,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-006": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R63",
+    "path": "Falcon-H8-DM-v1.2023.11.7.pdf",
+    "type": "pdf",
+    "bytes": 996087,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 9008,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "supporting",
+      "ADR-005": "background",
+      "ADR-007": "primary",
+      "ADR-008": "supporting",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R64",
+    "path": "Fast-Distributed-Deep-Learning-RDMA.doi-10.1145-3302424.3303975.2019.pdf",
+    "type": "pdf",
+    "bytes": 1263561,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 14,
+    "title": "Fast Distributed Deep Learning over RDMA",
+    "extraction_status": "extracted",
+    "text_bytes": 104720,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "supporting",
+      "ADR-005": "background",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R65",
+    "path": "FlatProxy-_A_DPU-centric_Service_Mesh_Architecture_for_Hyperscale_Cloud-native_Application_arXiv-2312.01297v1_2023.pdf",
+    "type": "pdf",
+    "bytes": 1081759,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 14,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 127476,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "supporting",
+      "ADR-005": "primary",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R03",
+    "path": "Frameworks-for-Large-Language-Model-Serving-in-HPC-Environments.doi.org-10.1145-3731599.3767403.pdf",
+    "type": "pdf",
+    "bytes": 577285,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 6,
+    "title": "Frameworks for Large Language Model Serving in HPC Environments",
+    "extraction_status": "extracted",
+    "text_bytes": 45374,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "supporting",
+      "ADR-004": "supporting",
+      "ADR-007": "primary",
+      "ADR-008": "primary",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R66",
+    "path": "From_Data_Center_to_Desk_The_Critical_Role_of_AI_Powered_High_Perform.pdf",
+    "type": "pdf",
+    "bytes": 3325850,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 9,
+    "title": "White Paper-From Data Center to Desk The Critical Role of AI Powered High-Performance Computing in Modern Workspaces_V2",
+    "extraction_status": "extracted",
+    "text_bytes": 18162,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "background",
+      "ADR-004": "supporting",
+      "ADR-006": "supporting",
+      "ADR-007": "primary",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R67",
+    "path": "Front-End-RDMA-ROCE-Ethernet-Endpoint-2024.pdf",
+    "type": "pdf",
+    "bytes": 2780630,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 38,
+    "title": "Front-End RDMA Over Converged Ethernet, lightweight RoCE endpoint",
+    "extraction_status": "extracted",
+    "text_bytes": 43768,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "background",
+      "ADR-004": "primary",
+      "ADR-005": "supporting"
+    }
+  },
+  {
+    "source_id": "R68",
+    "path": "GMKtek_NucBox-K10_Intel-i9-13900HK.pdf",
+    "type": "pdf",
+    "bytes": 41328,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 1,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 1533,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-002": "background",
+      "ADR-004": "background",
+      "ADR-006": "background"
+    }
+  },
+  {
+    "source_id": "R17",
+    "path": "GPU-Initiated-Networking-NCCL.arXiv-2511.15076v2_2025.pdf",
+    "type": "pdf",
+    "bytes": 1723531,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 13,
+    "title": "GPU-Initiated Networking for NCCL",
+    "extraction_status": "extracted",
+    "text_bytes": 98613,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-007": "primary",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R69",
+    "path": "Generic-and-ML-Workloads-in-an-HPC-Datacenter-Node-Energy-Job-Failures-Node-Job-Analysis_IEEE_ICPADS_24__Workload_Characterization.pdf",
+    "type": "pdf",
+    "bytes": 592274,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 10,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 95965,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "background",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "primary",
+      "ADR-008": "background",
+      "ADR-009": "primary"
+    }
+  },
+  {
+    "source_id": "R70",
+    "path": "HPC_Storage_Performance_Design-Pattern-Comparatives.doi-13060139_2024.pdf",
+    "type": "pdf",
+    "bytes": 8565869,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 26,
+    "title": "High-Performance Computing Storage Performance and Design Patterns\u2014Btrfs and ZFS Performance for Different Use Cases",
+    "extraction_status": "extracted",
+    "text_bytes": 204509,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-003": "supporting",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R41",
+    "path": "HVDC_LVDC_PSU_18kW-Spec_1.0.0.pdf",
+    "type": "pdf",
+    "bytes": 4414113,
+    "mtime_utc": "2026-05-12T22:16:48Z",
+    "pages": 44,
+    "title": "HVDC_LVDC_PSU_18kW Spec_Rev 1.0_FINAL.docx",
+    "extraction_status": "extracted",
+    "text_bytes": 102834,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Observability / benchmarking / validation"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R71",
+    "path": "Hailo8_M2_StarterKit_ProductBrief_v1.26.pdf",
+    "type": "pdf",
+    "bytes": 217860,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 8108,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R72",
+    "path": "Helping-HPC-Users-Specify-Job-Memory-Requirements-Machine-Learning.arXiv-1611.02905v1.pdf",
+    "type": "pdf",
+    "bytes": 645127,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 8,
+    "title": "Helping HPC Users Specify Job Memory Requirements via Machine Learning",
+    "extraction_status": "extracted",
+    "text_bytes": 55050,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "Observability / benchmarking / validation"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-007": "primary",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R73",
+    "path": "HetCCL-Accelerating-LLM-Training-Heterogeneous-GPUs.arXiv-2601.22585v1_2026.pdf",
+    "type": "pdf",
+    "bytes": 1811453,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 22,
+    "title": "HetCCL: Accelerating LLM Training with Heterogeneous GPUs",
+    "extraction_status": "extracted",
+    "text_bytes": 133606,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "supporting",
+      "ADR-005": "background",
+      "ADR-007": "primary",
+      "ADR-008": "supporting"
+    }
+  },
+  {
+    "source_id": "R74",
+    "path": "High-Performance-Computing_-from-Optimization-to-Automation.HAL-Id-tel-05298148.pdf",
+    "type": "pdf",
+    "bytes": 14290827,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 109,
+    "title": "High-Performance Computing: from Optimization to Automation",
+    "extraction_status": "extracted",
+    "text_bytes": 548527,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-002": "supporting",
+      "ADR-004": "background",
+      "ADR-007": "supporting"
+    }
+  },
+  {
+    "source_id": "R75",
+    "path": "High-Performance-Routing-Multipathing-Path-Diversity-Ethernet-HPC-Networks.arXiv-2007.03776v_2020.pdf",
+    "type": "pdf",
+    "bytes": 1043501,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 18,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 183025,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R43",
+    "path": "IBM_POWER9_LC921_LC922_Family-3575pages.pdf",
+    "type": "pdf",
+    "bytes": 6944436,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "failed_or_missing",
+    "text_bytes": 0,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "background"
+    }
+  },
+  {
+    "source_id": "R76",
+    "path": "IBM_POWER9_LC921_LC922_Tech-Overview-Intro.IBM_REDP-5495-00.2018-09.epub",
+    "type": "epub",
+    "bytes": 2144814,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "not_pdf",
+    "text_bytes": null,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "background"
+    }
+  },
+  {
+    "source_id": "R77",
+    "path": "IBM_POWER9_LC921_LC922_Tech-Overview-Intro.IBM_REDP-5495-00.2018-09.pdf",
+    "type": "pdf",
+    "bytes": 9355467,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 68,
+    "title": "IBM Power Systems LC921 and LC922: Technical Overview and Introduction",
+    "extraction_status": "extracted",
+    "text_bytes": 131776,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R04",
+    "path": "IO-in-Machine-Learning-Applications-on-HPC-Systems-A-360-degree-Survey.arXiv-2404.10386v3.pdf",
+    "type": "pdf",
+    "bytes": 1483968,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 39,
+    "title": "I/O in Machine Learning Applications on HPC Systems: A 360-degree Survey",
+    "extraction_status": "extracted",
+    "text_bytes": 233327,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "supporting",
+      "ADR-004": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R78",
+    "path": "Intel-IPU_SOC-E2100.pdf",
+    "type": "pdf",
+    "bytes": 249239,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 4,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 20318,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-003": "background",
+      "ADR-004": "primary",
+      "ADR-005": "primary",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R79",
+    "path": "Intel-Optane-SSD-900P-AIC_Product-Brief.pdf",
+    "type": "pdf",
+    "bytes": 832638,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "Intel\u00ae Optane\u2122 SSD 900P Series Product Brief",
+    "extraction_status": "extracted",
+    "text_bytes": 10095,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "background",
+      "ADR-006": "primary",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "background",
+      "ADR-015": "supporting"
+    }
+  },
+  {
+    "source_id": "R80",
+    "path": "Intel-gaudi-3-ai-accelerator-cluster-ref-design-white-paper.pdf",
+    "type": "pdf",
+    "bytes": 788470,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 15,
+    "title": "Intel\u00ae Gaudi\u00ae 3 AI Accelerator Cluster Reference Design",
+    "extraction_status": "extracted",
+    "text_bytes": 72543,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-006": "background",
+      "ADR-007": "primary",
+      "ADR-008": "supporting",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R81",
+    "path": "Intel_IPU_Spec_E2100-CCQDA2HL.pdf",
+    "type": "pdf",
+    "bytes": 499269,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 4,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 15198,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "supporting",
+      "ADR-004": "primary",
+      "ADR-005": "primary",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R82",
+    "path": "Intel_NVMe-SSD-DC-P3608-AIC-Spec.pdf",
+    "type": "pdf",
+    "bytes": 1032619,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 46,
+    "title": "Intel\u00ae Solid State Drive Data Center P3608 Series Product Specification",
+    "extraction_status": "extracted",
+    "text_bytes": 158648,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-006": "supporting",
+      "ADR-007": "supporting",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R83",
+    "path": "Intel_Optane-PMem-NVDIMM-Series-200-brief-ext.pdf",
+    "type": "pdf",
+    "bytes": 1291537,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 8,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 39781,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "background",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-015": "supporting"
+    }
+  },
+  {
+    "source_id": "R84",
+    "path": "Intel_Optane-PMem-NVDIMM-Series-200-brief.pdf",
+    "type": "pdf",
+    "bytes": 1270365,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 6,
+    "title": "Intel\u00ae Optane\u2122 Persistent Memory 200 Series Brief",
+    "extraction_status": "extracted",
+    "text_bytes": 31936,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-003": "background",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "background",
+      "ADR-015": "supporting"
+    }
+  },
+  {
+    "source_id": "R85",
+    "path": "Intel_Optane_PMem_200_Series_Config_X12QP_DP_UP.pdf",
+    "type": "pdf",
+    "bytes": 8897790,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 54,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 99772,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-006": "supporting",
+      "ADR-008": "background",
+      "ADR-015": "supporting"
+    }
+  },
+  {
+    "source_id": "R86",
+    "path": "L-MTP_Leap_Multi-Token_Prediction_Beyond_Adjacent_Context_LLMs-NeurIPS-39th-2025.pdf",
+    "type": "pdf",
+    "bytes": 1538224,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 32,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 134237,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "background",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R87",
+    "path": "LINPACK-History-Benchmark-Past-Present-Future_HPL_2001.pdf",
+    "type": "pdf",
+    "bytes": 516468,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 40,
+    "title": "hpl.dvi",
+    "extraction_status": "extracted",
+    "text_bytes": 159709,
+    "topics": [
+      "DPU / SmartNIC / offload",
+      "RAG / vector index / corpus",
+      "Observability / benchmarking / validation"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-005": "background",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R88",
+    "path": "LINPACK-Top500-Benchmark.performance.ps",
+    "type": "ps",
+    "bytes": 27907385,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "text_native",
+    "text_bytes": null,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Observability / benchmarking / validation"
+    ],
+    "adr_impact": {
+      "ADR-004": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R02",
+    "path": "LLM-Inference-Scheduling-A-Survey-of-Techniques-Frameworks-and-Trade-offs.doi-10.36227-techrxiv.176238087.79673350v1.pdf",
+    "type": "pdf",
+    "bytes": 869352,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 42,
+    "title": "LLM Inference Scheduling: A Survey of Techniques, Frameworks, and Trade-offs",
+    "extraction_status": "extracted",
+    "text_bytes": 207886,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "supporting",
+      "ADR-005": "background",
+      "ADR-007": "primary",
+      "ADR-008": "supporting"
+    }
+  },
+  {
+    "source_id": "R89",
+    "path": "Lanner-Edge-Ai-Embedded.also-Halio-PCIe.Brochure.pdf",
+    "type": "pdf",
+    "bytes": 1882262,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 16,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 55910,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-005": "background",
+      "ADR-006": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R90",
+    "path": "Lanner_Industrial-IEC_brochure.pdf",
+    "type": "pdf",
+    "bytes": 2728611,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 16,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 60163,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "primary",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R91",
+    "path": "Lanner_uCPE_brochure_2022-1109.pdf",
+    "type": "pdf",
+    "bytes": 4139987,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 20,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 68542,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R19",
+    "path": "Lossless-Network-AI-ML-Storage-HPC-RDMA_Arista-Broadcom.v2.2024.pdf",
+    "type": "pdf",
+    "bytes": 3020779,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 36,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 101696,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-006": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R92",
+    "path": "MAX-M10M-00B_DataSheet_UBX-22028884.pdf",
+    "type": "pdf",
+    "bytes": 912358,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 24,
+    "title": "MAX-M10M-00B Data sheet",
+    "extraction_status": "extracted",
+    "text_bytes": 53928,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "background",
+      "ADR-007": "background"
+    }
+  },
+  {
+    "source_id": "R93",
+    "path": "MAX-M10M-20B_DataSheet_UBXDOC-963802114-13063.pdf",
+    "type": "pdf",
+    "bytes": 2586974,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 25,
+    "title": "MAX-M10M-20B Data sheet",
+    "extraction_status": "extracted",
+    "text_bytes": 51826,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-007": "background"
+    }
+  },
+  {
+    "source_id": "R94",
+    "path": "MAX-M10N-00B_DataSheet_UBXDOC-963802114-13143.pdf",
+    "type": "pdf",
+    "bytes": 1524228,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 22,
+    "title": "MAX-M10N-00B Data sheet",
+    "extraction_status": "extracted",
+    "text_bytes": 49598,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R95",
+    "path": "MAX-M10N-10B_DataSheet_UBXDOC-304424225-18248.pdf",
+    "type": "pdf",
+    "bytes": 1528975,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 22,
+    "title": "MAX-M10N-10B Data sheet",
+    "extraction_status": "extracted",
+    "text_bytes": 49587,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R96",
+    "path": "MAX-M10S_DataSheet_UBX-20035208.pdf",
+    "type": "pdf",
+    "bytes": 3259178,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 24,
+    "title": "MAX-M10S Data sheet",
+    "extraction_status": "extracted",
+    "text_bytes": 56570,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "background",
+      "ADR-007": "background"
+    }
+  },
+  {
+    "source_id": "R97",
+    "path": "MAX-M10_ProductSummary_UBX-20017987.pdf",
+    "type": "pdf",
+    "bytes": 233331,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 16096,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R98",
+    "path": "MAX-M8-FW3_DataSheet_UBX-15031506.pdf",
+    "type": "pdf",
+    "bytes": 960850,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 29,
+    "title": "MAX-M8 series",
+    "extraction_status": "extracted",
+    "text_bytes": 76916,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background"
+    }
+  },
+  {
+    "source_id": "R99",
+    "path": "MAX-M8_ProductSummary_UBX-16008997.pdf",
+    "type": "pdf",
+    "bytes": 109361,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 11310,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "background",
+      "ADR-005": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R16",
+    "path": "Managing-Scalable-Direct-Storage-GPUs_GoFS_3731569.3764857_2026.pdf",
+    "type": "pdf",
+    "bytes": 1424901,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 18,
+    "title": "Managing Scalable Direct Storage Accesses for GPUs with GoFS",
+    "extraction_status": "extracted",
+    "text_bytes": 153470,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-003": "supporting",
+      "ADR-004": "supporting",
+      "ADR-005": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R29",
+    "path": "Marvell-Five-Ways-CXL-Will-Transform-Computing-Q2-2026.pdf",
+    "type": "pdf",
+    "bytes": 3865851,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 5,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 13901,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-005": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting",
+      "ADR-015": "primary"
+    }
+  },
+  {
+    "source_id": "R100",
+    "path": "Mellanox-Bluefield-1-EN-DPU_User-Guide.pdf",
+    "type": "pdf",
+    "bytes": 1274246,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 81,
+    "title": "BlueField Software User Manual",
+    "extraction_status": "extracted",
+    "text_bytes": 211010,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-003": "background",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R101",
+    "path": "Mellanox-Bluefield-2-EN-DPU_User-Guide.pdf",
+    "type": "pdf",
+    "bytes": 5128876,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 82,
+    "title": "NVIDIA BlueField-2 Ethernet DPU User Guide",
+    "extraction_status": "extracted",
+    "text_bytes": 184284,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "supporting",
+      "ADR-005": "supporting",
+      "ADR-007": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R102",
+    "path": "Mellanox_ConnectX-5-EN_RDMA-ROCE_OCP-2.0_User-Manual.20201216.docs-mellanox-com_x_V4eO.pdf",
+    "type": "pdf",
+    "bytes": 3415268,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 66,
+    "title": "NVIDIA Mellanox ConnectX-5 Ethernet Adapter Cards for OCP Spec 2.0 User Manual",
+    "extraction_status": "extracted",
+    "text_bytes": 129779,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "primary"
+    }
+  },
+  {
+    "source_id": "R103",
+    "path": "Mellanox_InfiniBand-MLNX-15-4558_FAQ-FQ_100.2014.pdf",
+    "type": "pdf",
+    "bytes": 734193,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 16,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 40218,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R104",
+    "path": "Mikrotik_CRS309-1G-8SplusIN_200133.pdf",
+    "type": "pdf",
+    "bytes": 589934,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 2135,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R105",
+    "path": "Modern_Defense_Systems_Require_Durable_Field_Test_Solutions_with_Labo.pdf",
+    "type": "pdf",
+    "bytes": 367798,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 7,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 18539,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Observability / benchmarking / validation",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R106",
+    "path": "NIH-PFC-mPFC-Memory-Consolidation_Neurology.pdf",
+    "type": "pdf",
+    "bytes": 861302,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 21,
+    "title": "untitled",
+    "extraction_status": "extracted",
+    "text_bytes": 120996,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "supporting"
+    }
+  },
+  {
+    "source_id": "R107",
+    "path": "NetReduce_RDMA-Compatible-Network_Reduction_Distributed_DNN-Training-Accel.arXiv-2009.09736v1_2020.pdf",
+    "type": "pdf",
+    "bytes": 1197857,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 15,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 106158,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "background",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-007": "supporting",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R40",
+    "path": "OBMF-ICP-over-USB-1.0.pdf",
+    "type": "pdf",
+    "bytes": 373095,
+    "mtime_utc": "2026-05-12T22:16:30Z",
+    "pages": 18,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 33785,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "LLM inference / KV cache / scheduling",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting"
+    }
+  },
+  {
+    "source_id": "R39",
+    "path": "OCP-MRC-1.0.pdf",
+    "type": "pdf",
+    "bytes": 1893756,
+    "mtime_utc": "2026-05-12T22:33:16Z",
+    "pages": 76,
+    "title": "Multipath Reliable Connection Specification",
+    "extraction_status": "extracted",
+    "text_bytes": 185922,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "primary",
+      "ADR-007": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R38",
+    "path": "OCP-OCS_White_Paper_April_2026_FINAL.pdf",
+    "type": "pdf",
+    "bytes": 1484118,
+    "mtime_utc": "2026-05-12T22:16:11Z",
+    "pages": 37,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 62583,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R37",
+    "path": "OCP-Open-Cluster-Designs-Aligned-AI-Training-Fabric-RA.pdf",
+    "type": "pdf",
+    "bytes": 1025268,
+    "mtime_utc": "2026-05-12T22:15:50Z",
+    "pages": 77,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 156699,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "background",
+      "ADR-003": "background",
+      "ADR-004": "primary",
+      "ADR-007": "primary",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R36",
+    "path": "OCP-Open-Data-Center-for-AI-Whitepaper-FINAL.pdf",
+    "type": "pdf",
+    "bytes": 341577,
+    "mtime_utc": "2026-05-12T22:15:59Z",
+    "pages": 13,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 20321,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R108",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_3U_Backplane/BOM/BP_BOM.xlsx",
+    "type": "xlsx",
+    "bytes": 13729,
+    "mtime_utc": "2018-12-13T03:31:10Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "binary_reference",
+    "text_bytes": null,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R109",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_3U_Backplane/Board-file/OE19_backplane_1v02_b_0705_0920_customer.brd",
+    "type": "brd",
+    "bytes": 15482180,
+    "mtime_utc": "2018-09-17T17:36:46Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "binary_reference",
+    "text_bytes": null,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R110",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_3U_Backplane/Open_edge_3U_BP_BD.pdf",
+    "type": "pdf",
+    "bytes": 951911,
+    "mtime_utc": "2018-09-20T16:07:50Z",
+    "pages": 3,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 27717,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "ADR-001": "background"
+    }
+  },
+  {
+    "source_id": "R111",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_3U_Backplane/Open_edge_3U_BP_BD.stp",
+    "type": "stp",
+    "bytes": 5769274,
+    "mtime_utc": "2018-09-20T16:07:50Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "binary_reference",
+    "text_bytes": null,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R112",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_3U_Backplane/gerber-file/OE19_backplane_1v02_b_0705_0920_customer.tgz",
+    "type": "tgz",
+    "bytes": 1369424,
+    "mtime_utc": "2018-09-17T17:39:48Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "binary_reference",
+    "text_bytes": null,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R113",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_3U_Backplane/schematic/OE19_BP.pdf",
+    "type": "pdf",
+    "bytes": 470575,
+    "mtime_utc": "2018-09-21T14:47:00Z",
+    "pages": 24,
+    "title": "S4L_PDB.SCH.1.COVER",
+    "extraction_status": "extracted",
+    "text_bytes": 202445,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "ADR-001": "background"
+    }
+  },
+  {
+    "source_id": "R114",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_Power_distribution_board/BOM/PDB BOM.xlsx",
+    "type": "xlsx",
+    "bytes": 11996,
+    "mtime_utc": "2018-12-13T03:28:46Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "binary_reference",
+    "text_bytes": null,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "ADR-001": "background"
+    }
+  },
+  {
+    "source_id": "R115",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_Power_distribution_board/Open_edge_PDB.pdf",
+    "type": "pdf",
+    "bytes": 756839,
+    "mtime_utc": "2018-09-20T16:07:50Z",
+    "pages": 3,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 30525,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "ADR-001": "background"
+    }
+  },
+  {
+    "source_id": "R116",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_Power_distribution_board/Open_edge_PDB.stp",
+    "type": "stp",
+    "bytes": 4910977,
+    "mtime_utc": "2018-09-20T16:07:52Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "binary_reference",
+    "text_bytes": null,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "ADR-001": "background"
+    }
+  },
+  {
+    "source_id": "R117",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_Power_distribution_board/board-file/OE19_pdb_1v01_b_0704_1000_customer.brd",
+    "type": "brd",
+    "bytes": 8778760,
+    "mtime_utc": "2018-09-17T17:27:52Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "binary_reference",
+    "text_bytes": null,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "ADR-001": "background"
+    }
+  },
+  {
+    "source_id": "R118",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_Power_distribution_board/gerber-file/OE19_pdb_1v01_b_0704_1000_customer.tgz",
+    "type": "tgz",
+    "bytes": 1111517,
+    "mtime_utc": "2018-09-17T17:29:20Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "binary_reference",
+    "text_bytes": null,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "ADR-001": "background"
+    }
+  },
+  {
+    "source_id": "R119",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_Power_distribution_board/schematic/OE19_PDB.pdf",
+    "type": "pdf",
+    "bytes": 400493,
+    "mtime_utc": "2018-09-21T14:47:00Z",
+    "pages": 24,
+    "title": "S4L_PDB.SCH.1.COVER",
+    "extraction_status": "extracted",
+    "text_bytes": 168263,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "ADR-001": "background"
+    }
+  },
+  {
+    "source_id": "R120",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_chassis_assy/Open-Edge-Chassis-ME-BOM.XLSX",
+    "type": "xlsx",
+    "bytes": 12259,
+    "mtime_utc": "2018-12-13T03:29:56Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "binary_reference",
+    "text_bytes": null,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R121",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_chassis_assy/Open-Edge-Empty-Chassis/OE19-chassis.stp",
+    "type": "stp",
+    "bytes": 83982400,
+    "mtime_utc": "2018-11-26T19:07:38Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "binary_reference",
+    "text_bytes": null,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R122",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_chassis_assy/Open-Edge-Empty-Sled-Drawing/OE19-sled-outline-REF.dwg",
+    "type": "dwg",
+    "bytes": 92389,
+    "mtime_utc": "2018-12-06T12:03:22Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "not_pdf",
+    "text_bytes": null,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R123",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_chassis_assy/Open-Edge-Empty-Sled-Drawing/OE19-sled-outline-REF.pdf",
+    "type": "pdf",
+    "bytes": 68040,
+    "mtime_utc": "2018-12-06T12:02:48Z",
+    "pages": 1,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 1,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R124",
+    "path": "OCP-Telco/Open-Edge-Chassis/Open_edge_chassis_assy/Open-Edge-Empty-Sled-Drawing/OE19-sled-outline-REF.stp",
+    "type": "stp",
+    "bytes": 4808436,
+    "mtime_utc": "2018-11-21T17:25:58Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "binary_reference",
+    "text_bytes": null,
+    "topics": [
+      "OCP infrastructure / power / platform readiness"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R125",
+    "path": "OCP-Wiwynn-SV7100G4.pdf",
+    "type": "pdf",
+    "bytes": 2648168,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "Datasheet - SV7100G4_210917",
+    "extraction_status": "extracted",
+    "text_bytes": 6912,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "supporting"
+    }
+  },
+  {
+    "source_id": "R126",
+    "path": "OCP_Yosemite_V3_Platform-Design-Specification-1v16.pdf",
+    "type": "pdf",
+    "bytes": 5919226,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 80,
+    "title": "Hardware: Blade",
+    "extraction_status": "extracted",
+    "text_bytes": 137013,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R127",
+    "path": "ON_MULTI-TOKEN_PREDICTION_FOR_EFFICIENT_LLM_INFERENCE.arvix-2502.09419v1.pdf",
+    "type": "pdf",
+    "bytes": 1157131,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 9,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 31022,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "background",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R35",
+    "path": "ORV3-HVDC-LVDC-100kW-Power-Shelf-Spec_1.0.0.pdf",
+    "type": "pdf",
+    "bytes": 8279590,
+    "mtime_utc": "2026-05-12T22:16:57Z",
+    "pages": 34,
+    "title": "ORV3 HVDC-LVDC 100kW Power Shelf Spec_Rev 1.0_FINAL.docx",
+    "extraction_status": "extracted",
+    "text_bytes": 61751,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Observability / benchmarking / validation"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R34",
+    "path": "Open-Cluster-Designs-Aligned-AI-Inference-Fabric-Reference-Architecture.pdf",
+    "type": "pdf",
+    "bytes": 908052,
+    "mtime_utc": "2026-05-12T22:15:38Z",
+    "pages": 67,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 131938,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "background",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-007": "primary",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R128",
+    "path": "Open-Rack-Version-Meta-V3_rev1pt3_june032024.pdf",
+    "type": "pdf",
+    "bytes": 4644255,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 46,
+    "title": "Open Rack Version Meta V3 - Google Docs",
+    "extraction_status": "extracted",
+    "text_bytes": 79055,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-007": "background"
+    }
+  },
+  {
+    "source_id": "R129",
+    "path": "OpenBMC/OCP18-ProjectOlympus-OpenBMC.pdf",
+    "type": "pdf",
+    "bytes": 653709,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 13,
+    "title": "PowerPoint Presentation",
+    "extraction_status": "extracted",
+    "text_bytes": 9674,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-002": "background",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R130",
+    "path": "OpenBMC/OpenBMC-SPI-Recovery/OAi__PPC64-P9_RCS-TalosII_OpenBMC-SPI-Recovery__ICU-Bench-Checklist.2026-0402.docx",
+    "type": "docx",
+    "bytes": 45369,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "not_pdf",
+    "text_bytes": null,
+    "topics": [
+      "Unclassified / low architectural relevance"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R131",
+    "path": "OpenBMC/OpenBMC-SPI-Recovery/OAi__PPC64-P9_RCS-TalosII_OpenBMC-SPI-Recovery__ICU-Bench-Checklist.2026-0402.pdf",
+    "type": "pdf",
+    "bytes": 177547,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 6,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 38384,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Observability / benchmarking / validation"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-003": "background",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R132",
+    "path": "OpenBMC/OpenBMC-SPI-Recovery/OAi__PPC64-P9_RCS-TalosII_OpenBMC-SPI-Recovery__ICU-Bench-Checklist.2026-0402.tex",
+    "type": "tex",
+    "bytes": 9319,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "not_pdf",
+    "text_bytes": null,
+    "topics": [
+      "Unclassified / low architectural relevance"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R133",
+    "path": "OpenBMC/OpenBMC_Network_Interfaces.eba4b61e1.pdf",
+    "type": "pdf",
+    "bytes": 55458,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 6,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 24173,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-002": "background",
+      "ADR-004": "background",
+      "ADR-006": "background"
+    }
+  },
+  {
+    "source_id": "R134",
+    "path": "OpenBMC/OpenBMC_Redfish-API-Schema-Endpoints.93a2b2fc.pdf",
+    "type": "pdf",
+    "bytes": 43642,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 8,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 15816,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "supporting",
+      "ADR-004": "supporting",
+      "ADR-006": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R135",
+    "path": "OpenBMC/OpenBMC_Redfish-Command-Helper.pdf",
+    "type": "pdf",
+    "bytes": 54184,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 4,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 9217,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "background",
+      "ADR-006": "background"
+    }
+  },
+  {
+    "source_id": "R136",
+    "path": "OpenClaw-RL_Training_Agents_Talking_1v56101.3062-arxiv_2026.pdf",
+    "type": "pdf",
+    "bytes": 1432464,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 24,
+    "title": "OpenClaw-RL: Train Any Agent Simply by Talking",
+    "extraction_status": "extracted",
+    "text_bytes": 78661,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "Observability / benchmarking / validation"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-002": "background",
+      "ADR-003": "background",
+      "ADR-004": "background",
+      "ADR-007": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R137",
+    "path": "OpenVPX_SundanceDSP_Datasheet_SE2000_AMD-Versal-SoC_SOSA_C-2603.pdf",
+    "type": "pdf",
+    "bytes": 2744741,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 7873,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "primary",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R138",
+    "path": "Optane_900P_Series-Product_Brief.pdf",
+    "type": "pdf",
+    "bytes": 735707,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 9696,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "Storage media / OpenZFS / NVMe-oF",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-006": "primary",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-015": "supporting"
+    }
+  },
+  {
+    "source_id": "R07",
+    "path": "Palladium_A-DPU-enabled-Multi-Tenant-Serverless-Cloud-over-Zero-copy-Multi-node-RDMA-Fabrics.arXiv_2505.11339v1_2025.pdf",
+    "type": "pdf",
+    "bytes": 1519707,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 17,
+    "title": "Palladium: A DPU-enabled Multi-Tenant Serverless Cloud over Zero-copy Multi-node RDMA Fabrics",
+    "extraction_status": "extracted",
+    "text_bytes": 171745,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-005": "primary",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R26",
+    "path": "PolarQuant_Quantizing-KV-Caches-Polar-Transformation.arXiv-2502.02617v1.pdf",
+    "type": "pdf",
+    "bytes": 1148685,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 22,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 72718,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "primary",
+      "ADR-004": "supporting",
+      "ADR-005": "background",
+      "ADR-007": "background",
+      "ADR-008": "supporting"
+    }
+  },
+  {
+    "source_id": "R13",
+    "path": "Predictive-Load-Balancing-RDMA-Traffic.arXiv-2506.08132v1_2025.pdf",
+    "type": "pdf",
+    "bytes": 1361194,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 11,
+    "title": "Congestion-Aware Path Selection for Load Balancing in AI Clusters",
+    "extraction_status": "extracted",
+    "text_bytes": 113987,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "primary",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R25",
+    "path": "QJL-1Bit-Quantized-JL-Transform-KV-Cache-Quantization-Zero-Overhead.arXiv-2406.03482v2.pdf",
+    "type": "pdf",
+    "bytes": 4956928,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 13,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 58244,
+    "topics": [
+      "DPU / SmartNIC / offload",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "primary",
+      "ADR-005": "background",
+      "ADR-008": "supporting"
+    }
+  },
+  {
+    "source_id": "R139",
+    "path": "QLogic-Cavium_FastlinQ-ProductBrief_QL41234HLCU.pdf",
+    "type": "pdf",
+    "bytes": 346173,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 4,
+    "title": "Product Brief: FastLinQ QL41234HLCU 4-port Ethernet Adapter with Universal RDMA",
+    "extraction_status": "extracted",
+    "text_bytes": 25579,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-003": "background",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-006": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R140",
+    "path": "QoE_Cloud-File-Storage_s85_Amrehn.pdf",
+    "type": "pdf",
+    "bytes": 329122,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 7,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 51163,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "supporting",
+      "ADR-004": "background",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R141",
+    "path": "Qwen3.5-Omni-Technical-Report.arXiv-2604.15804v2.pdf",
+    "type": "pdf",
+    "bytes": 3669136,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 28,
+    "title": "Qwen3.5-Omni Technical Report",
+    "extraction_status": "extracted",
+    "text_bytes": 131067,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "supporting",
+      "ADR-003": "background",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R142",
+    "path": "RDMA-First-Object-Storage-System-SmartNIC-Offload.arXiv-2509.13997v1.pdf",
+    "type": "pdf",
+    "bytes": 2818132,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 8,
+    "title": "An RDMA-First Object Storage System with SmartNIC Offload",
+    "extraction_status": "extracted",
+    "text_bytes": 58511,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "primary",
+      "ADR-004": "primary",
+      "ADR-005": "primary",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R143",
+    "path": "RDMAvisor_Toward-Deploying-Scalable-Simple-RDMA-Service-Datacenters.arXiv-1802.01870v1_2018.pdf",
+    "type": "pdf",
+    "bytes": 1111019,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 6,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 39326,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-007": "background",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R11",
+    "path": "ROCE_Distributed-AI-Training-Meta-Scale_ACM-SIGCOMM-doi.10.1145-3651890.3672233_2024.pdf",
+    "type": "pdf",
+    "bytes": 1353579,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 14,
+    "title": "RDMA over Ethernet for Distributed AI Training at Meta Scale",
+    "extraction_status": "extracted",
+    "text_bytes": 115744,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "primary",
+      "ADR-007": "primary",
+      "ADR-008": "supporting"
+    }
+  },
+  {
+    "source_id": "R144",
+    "path": "ROS-250326-1145-1026.pdf",
+    "type": "pdf",
+    "bytes": 111717248,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 1949,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 4648244,
+    "topics": [
+      "DPU / SmartNIC / offload",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-005": "supporting"
+    }
+  },
+  {
+    "source_id": "R145",
+    "path": "Reimagining-RDMA-Through-the-Lens-of-ML.arXiv-2510.16606v1_2025.pdf",
+    "type": "pdf",
+    "bytes": 185073,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 4,
+    "title": "Reimagining RDMA Through the Lens of ML",
+    "extraction_status": "extracted",
+    "text_bytes": 40490,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "primary",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-007": "primary",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R146",
+    "path": "Rethinking_On-Policy_Distillation_LLMs_Phenomenology_Mechanism.arXiv-2604.13016v2_2026.pdf",
+    "type": "pdf",
+    "bytes": 1528155,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 30,
+    "title": "Rethinking On-Policy Distillation of Large Language Models: Phenomenology, Mechanism, and Recipe",
+    "extraction_status": "extracted",
+    "text_bytes": 133985,
+    "topics": [
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus",
+      "Observability / benchmarking / validation"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R147",
+    "path": "Revisiting-Network-Support-RDMA.doi_10.1145-3230543.3230557.2018.pdf",
+    "type": "pdf",
+    "bytes": 15070821,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 14,
+    "title": "Revisiting Network Support for RDMA",
+    "extraction_status": "extracted",
+    "text_bytes": 111316,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-003": "background",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R148",
+    "path": "RoCE-BALBOA-Service-enhanced-Data-Center-RDMA-SmartNICs-arXiv-2507.20412v1_2025.pdf",
+    "type": "pdf",
+    "bytes": 1216058,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 16,
+    "title": "RoCE BALBOA: Service-enhanced Data Center RDMA for SmartNICs",
+    "extraction_status": "extracted",
+    "text_bytes": 123364,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "background",
+      "ADR-004": "supporting",
+      "ADR-005": "primary",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R149",
+    "path": "Russia_Space_Nuclear-ASAT.pdf",
+    "type": "pdf",
+    "bytes": 839911,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 26,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 87270,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "supporting",
+      "ADR-006": "background"
+    }
+  },
+  {
+    "source_id": "R150",
+    "path": "SHIFT_Exploring_Boundary_RDMA_Network_Fault_Tolerance.arXiv-2512.11094v2.2026.pdf",
+    "type": "pdf",
+    "bytes": 1044291,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 19,
+    "title": "SHIFT: Exploring the Boundary of RDMA Network Fault Tolerance",
+    "extraction_status": "extracted",
+    "text_bytes": 136534,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "background",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-006": "background",
+      "ADR-007": "primary",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R12",
+    "path": "STrack-Reliable-Multipath-Transport-AI-ML-Clusters.arXiv-2407.15266v1.2024.pdf",
+    "type": "pdf",
+    "bytes": 1326934,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 16,
+    "title": "STrack: A Reliable Multipath Transport for AI/ML Clusters",
+    "extraction_status": "extracted",
+    "text_bytes": 142629,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R151",
+    "path": "SanBlaze-Emulators-Overview.pdf",
+    "type": "pdf",
+    "bytes": 833387,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 6,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 16785,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R152",
+    "path": "SanBlaze-NVMe-oF-Emulator.pdf",
+    "type": "pdf",
+    "bytes": 164864,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 10768,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "primary",
+      "ADR-006": "primary",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R153",
+    "path": "SanBlaze-SBExpress-DT5-NVMe.pdf",
+    "type": "pdf",
+    "bytes": 1338329,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 4995,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "Storage media / OpenZFS / NVMe-oF",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R154",
+    "path": "SanBlaze-SBExpress-RM5-NVMe.pdf",
+    "type": "pdf",
+    "bytes": 5074944,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "SANBlaze SBExpress-RM5 Data Sheet 20220310",
+    "extraction_status": "extracted",
+    "text_bytes": 8032,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "Storage media / OpenZFS / NVMe-oF",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R155",
+    "path": "Scaling_Edge_AI___Hardware_and_Software_from_Prototype_to_Deployment.pdf",
+    "type": "pdf",
+    "bytes": 2478467,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 8,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 17927,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R33",
+    "path": "Server_MHS_DC-SCM-Specs-and-Designs---OpenCompute.pdf",
+    "type": "pdf",
+    "bytes": 123601,
+    "mtime_utc": "2026-05-12T22:20:05Z",
+    "pages": 5,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 28118,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "supporting",
+      "ADR-006": "supporting"
+    }
+  },
+  {
+    "source_id": "R156",
+    "path": "Simulating-LLM-training-workloads-heterogeneous-compute-network-infra.arXiv-2508.05370v1_2025.pdf",
+    "type": "pdf",
+    "bytes": 2034868,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 9,
+    "title": "Simulating LLM training workloads for heterogeneous compute and network infrastructure",
+    "extraction_status": "extracted",
+    "text_bytes": 58956,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-007": "primary",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R157",
+    "path": "Solarflare_FPGA_40GBE_24GB-ECC_SFA7942Q.pdf",
+    "type": "pdf",
+    "bytes": 493081,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "Layout 1",
+    "extraction_status": "extracted",
+    "text_bytes": 7989,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-005": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R158",
+    "path": "Supermicro_MBD-X12SPA-TF_UserManual_MNL-2273.pdf",
+    "type": "pdf",
+    "bytes": 14552043,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 145,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 1080159,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R159",
+    "path": "Supermicro_MBD-X12SPL-F_UserManual_MNL-2270.pdf",
+    "type": "pdf",
+    "bytes": 16847021,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 127,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 820448,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R28",
+    "path": "Survey-Disaggregated-Memory_Cross-layer_Technique-Insights-Next-Gen-Datacenters.arXiv_2503.20275v1_2025.pdf",
+    "type": "pdf",
+    "bytes": 2288630,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 35,
+    "title": "Survey of Disaggregated Memory: Cross-layer Technique Insights for Next-Generation Datacenters",
+    "extraction_status": "extracted",
+    "text_bytes": 291976,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "supporting",
+      "ADR-007": "primary",
+      "ADR-008": "background",
+      "ADR-009": "background",
+      "ADR-015": "primary"
+    }
+  },
+  {
+    "source_id": "R160",
+    "path": "Survey-Storage-Systems_CF-Transactions-HPC.doi.10.1007-s42514-025-00268-5.2025.pdf",
+    "type": "pdf",
+    "bytes": 3122265,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 21,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 138890,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "supporting",
+      "ADR-004": "supporting",
+      "ADR-006": "primary",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R21",
+    "path": "Survey-Storage-Systems_HPC.CCF-Tx-On-HPC.doi-10.1007-s42514-025-00268-5.2025.pdf",
+    "type": "pdf",
+    "bytes": 3122265,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 21,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 138890,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "supporting",
+      "ADR-004": "supporting",
+      "ADR-006": "primary",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R161",
+    "path": "SystemSpecific/6cb8b4389d9f0423d53e0f3ec78ce3f5fdaf.pdf",
+    "type": "pdf",
+    "bytes": 3745263,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 17,
+    "title": "Cybenetics - Thermaltake Toughpower GF2 ARGB 750W",
+    "extraction_status": "extracted",
+    "text_bytes": 66276,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "background",
+      "ADR-004": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R162",
+    "path": "SystemSpecific/Arista-Ai-Networking_Building-Lossless-Ethernet-Fabrics.pdf",
+    "type": "pdf",
+    "bytes": 727783,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 9,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 49278,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "primary",
+      "ADR-007": "primary",
+      "ADR-008": "background",
+      "ADR-009": "primary"
+    }
+  },
+  {
+    "source_id": "R163",
+    "path": "SystemSpecific/Arista-Broadcom-AI-Networking-Deployment-Guide.pdf",
+    "type": "pdf",
+    "bytes": 3738151,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 25,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 57593,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-007": "primary",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R164",
+    "path": "SystemSpecific/Arista-DCS-7010T-48_Datasheet.pdf",
+    "type": "pdf",
+    "bytes": 1702418,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 7,
+    "title": "7010T Gigabit Ethernet Data Center Switches - Data Sheet",
+    "extraction_status": "extracted",
+    "text_bytes": 31984,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R165",
+    "path": "SystemSpecific/Arista-DCS-7060X_7260X_Datasheet.pdf",
+    "type": "pdf",
+    "bytes": 4897656,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 11,
+    "title": "7060X 7260X Datasheet 03-0010-13",
+    "extraction_status": "extracted",
+    "text_bytes": 46104,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "primary",
+      "ADR-007": "supporting",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R166",
+    "path": "SystemSpecific/EVE-Spectrum-4K-IPS_ES07D03_UserManual.pdf",
+    "type": "pdf",
+    "bytes": 1522152,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 65,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 116915,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R167",
+    "path": "SystemSpecific/IBM-LC922-Technical-Overview.REDBOOK-P5495.pdf",
+    "type": "pdf",
+    "bytes": 9355467,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 68,
+    "title": "IBM Power Systems LC921 and LC922: Technical Overview and Introduction",
+    "extraction_status": "extracted",
+    "text_bytes": 131776,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R168",
+    "path": "SystemSpecific/Jetson/ABOX-5210G-Series_Datasheet_20220812.pdf",
+    "type": "pdf",
+    "bytes": 3634767,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 14380,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R169",
+    "path": "SystemSpecific/Jetson/IBOX-600-IP66_Datasheet_20250509.pdf",
+    "type": "pdf",
+    "bytes": 2363690,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "IBOX-600-IP66_Datasheet_20240430",
+    "extraction_status": "extracted",
+    "text_bytes": 10538,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "primary",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R170",
+    "path": "SystemSpecific/Jetson/IBOX-600_Datasheet_20250509.pdf",
+    "type": "pdf",
+    "bytes": 3053479,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "IBOX-600_Datasheet_20241220",
+    "extraction_status": "extracted",
+    "text_bytes": 10473,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "primary",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R171",
+    "path": "SystemSpecific/Jetson/IBOX-601-G2_Datasheet_251030-1.pdf",
+    "type": "pdf",
+    "bytes": 2059958,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "IBOX-601-G2_Datasheet_251030",
+    "extraction_status": "extracted",
+    "text_bytes": 16344,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "primary",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R172",
+    "path": "SystemSpecific/Jetson/IBOX-601-M12X_Datasheet_251030-1.pdf",
+    "type": "pdf",
+    "bytes": 2114872,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "IBOX-601-M12X_Datasheet_251030",
+    "extraction_status": "extracted",
+    "text_bytes": 16373,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "primary",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R173",
+    "path": "SystemSpecific/Jetson/IBOX-602P-IP66_Datasheet_251030-1.pdf",
+    "type": "pdf",
+    "bytes": 2019581,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "IBOX-602P-IP66_Datasheet_251030",
+    "extraction_status": "extracted",
+    "text_bytes": 16845,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "primary",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R174",
+    "path": "SystemSpecific/Jetson/IBOX-604-G2_Datasheet_251222.pdf",
+    "type": "pdf",
+    "bytes": 919642,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "IBOX-604-G2_Datasheet_251222",
+    "extraction_status": "extracted",
+    "text_bytes": 17294,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "primary",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R175",
+    "path": "SystemSpecific/Jetson/IBOX-650P-IP66_Datasheet_251030-1.pdf",
+    "type": "pdf",
+    "bytes": 2386810,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "IBOX-650P-IP66_Datasheet_251030",
+    "extraction_status": "extracted",
+    "text_bytes": 21116,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R176",
+    "path": "SystemSpecific/Jetson/IBOX-650P-T1_Datasheet_251030-1.pdf",
+    "type": "pdf",
+    "bytes": 2481010,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "IBOX-650P-T1_Datasheet_251030",
+    "extraction_status": "extracted",
+    "text_bytes": 22161,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R177",
+    "path": "SystemSpecific/Jetson/IMB-600-Developer-Kit_Datasheet_250917-1.pdf",
+    "type": "pdf",
+    "bytes": 909234,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "IMB-600 Developer Kit_Datasheet_250917",
+    "extraction_status": "extracted",
+    "text_bytes": 8740,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "supporting",
+      "ADR-006": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R178",
+    "path": "SystemSpecific/Lenovo-Legion-Tab-8.8-Gen3-Specifications.pdf",
+    "type": "pdf",
+    "bytes": 238809,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 15,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 36709,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R20",
+    "path": "SystemSpecific/Lossless-Ethernet-Design-Guide-Ai-Fabrics-RoCEv2_2026.pdf.pdf",
+    "type": "pdf",
+    "bytes": 59266,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 4,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 18903,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-007": "primary",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R179",
+    "path": "SystemSpecific/Mikrotik/04-4XG-INdimensionaldrawings_250529.pdf",
+    "type": "pdf",
+    "bytes": 221303,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 1,
+    "title": "304-4XG-IN dimensional drawings",
+    "extraction_status": "extracted",
+    "text_bytes": 761,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-004": "background",
+      "ADR-007": "background"
+    }
+  },
+  {
+    "source_id": "R180",
+    "path": "SystemSpecific/Mikrotik/CCR2004-16G-2SPC_240129.png",
+    "type": "png",
+    "bytes": 65069,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R181",
+    "path": "SystemSpecific/Mikrotik/CCR2004-16G-2S_240151.png",
+    "type": "png",
+    "bytes": 81175,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R182",
+    "path": "SystemSpecific/Mikrotik/CCR2004-16G-2S_251045.pdf",
+    "type": "pdf",
+    "bytes": 1278690,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 4,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 4401,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "supporting",
+      "ADR-005": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R183",
+    "path": "SystemSpecific/Mikrotik/CCR2004-1G-12S2XS_250452.pdf",
+    "type": "pdf",
+    "bytes": 1046759,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 3713,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R184",
+    "path": "SystemSpecific/Mikrotik/CCR2004-1G-12Splus2XS_200459.jpg",
+    "type": "jpg",
+    "bytes": 138941,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R185",
+    "path": "SystemSpecific/Mikrotik/CCR2004-1G-12Splus2XS_200459.png",
+    "type": "png",
+    "bytes": 138941,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R186",
+    "path": "SystemSpecific/Mikrotik/CCR2116-12G-4S_240122.png",
+    "type": "png",
+    "bytes": 82087,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R187",
+    "path": "SystemSpecific/Mikrotik/CCR2116-12G-4S_260316.pdf",
+    "type": "pdf",
+    "bytes": 1271706,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 4,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 4641,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-005": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R188",
+    "path": "SystemSpecific/Mikrotik/CRS304-4XG-IN_240918.pdf",
+    "type": "pdf",
+    "bytes": 7284356,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 4,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 5165,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "supporting",
+      "ADR-005": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R189",
+    "path": "SystemSpecific/Mikrotik/CRS304-XG_240945.png",
+    "type": "png",
+    "bytes": 48589,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R190",
+    "path": "SystemSpecific/Mikrotik/CRS309-1G-8S_220900.png",
+    "type": "png",
+    "bytes": 47312,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R191",
+    "path": "SystemSpecific/Mikrotik/CRS320-8P-8B-4SRM_240740.pdf",
+    "type": "pdf",
+    "bytes": 3710653,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 4830,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-005": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R192",
+    "path": "SystemSpecific/Mikrotik/CRS320-8P-8B-4S_240753.png",
+    "type": "png",
+    "bytes": 74787,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R193",
+    "path": "SystemSpecific/Mikrotik/CRS326-4C20G2QRM_240321.pdf",
+    "type": "pdf",
+    "bytes": 1416201,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 3953,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "background",
+      "ADR-005": "background",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R194",
+    "path": "SystemSpecific/Mikrotik/CRS326-4C20G2Q_240228.png",
+    "type": "png",
+    "bytes": 90458,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R195",
+    "path": "SystemSpecific/Mikrotik/CRS354-48G-4S2Qr4_240933.png",
+    "type": "png",
+    "bytes": 80829,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R196",
+    "path": "SystemSpecific/Mikrotik/CRS354-48G-4Splus2QplusRM_240947.pdf",
+    "type": "pdf",
+    "bytes": 1059421,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 4,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 4862,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R197",
+    "path": "SystemSpecific/Mikrotik/E60iUGS_250516.png",
+    "type": "png",
+    "bytes": 41281,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R198",
+    "path": "SystemSpecific/Mikrotik/ID171_CCR2116-12G-4S_DOC_220159.pdf",
+    "type": "pdf",
+    "bytes": 1608496,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 1,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 1,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R199",
+    "path": "SystemSpecific/Mikrotik/L009UiGS-2HaxD-IN_230524.png",
+    "type": "png",
+    "bytes": 62872,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R200",
+    "path": "SystemSpecific/Mikrotik/L009UiGS-2HaxD-IN_250355.pdf",
+    "type": "pdf",
+    "bytes": 3779742,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 5,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 8512,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "supporting",
+      "ADR-005": "background",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R201",
+    "path": "SystemSpecific/Mikrotik/L009UiGS-RM_230555.png",
+    "type": "png",
+    "bytes": 55440,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R202",
+    "path": "SystemSpecific/Mikrotik/L009UiGS-RM_230751.pdf",
+    "type": "pdf",
+    "bytes": 3242312,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 5,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 7870,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "supporting",
+      "ADR-005": "background",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R203",
+    "path": "SystemSpecific/Mikrotik/MA53UGHbeH_260229.png",
+    "type": "png",
+    "bytes": 145352,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R204",
+    "path": "SystemSpecific/Mikrotik/RB5009UGSIN_250413.pdf",
+    "type": "pdf",
+    "bytes": 1241384,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 4,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 3851,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "supporting",
+      "ADR-005": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R205",
+    "path": "SystemSpecific/Mikrotik/RB5009UGS_220852.png",
+    "type": "png",
+    "bytes": 53304,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R206",
+    "path": "SystemSpecific/Mikrotik/RB5009UPrSIN_250443.pdf",
+    "type": "pdf",
+    "bytes": 1332776,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 4,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 6091,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R207",
+    "path": "SystemSpecific/Mikrotik/RB5009UPrS_220805.png",
+    "type": "png",
+    "bytes": 53643,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "none": "irrelevant"
+    }
+  },
+  {
+    "source_id": "R208",
+    "path": "SystemSpecific/Mikrotik/hAPbeMedia_260257.pdf",
+    "type": "pdf",
+    "bytes": 5275227,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 5,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 6696,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R209",
+    "path": "SystemSpecific/Mikrotik/hEXS_250535.pdf",
+    "type": "pdf",
+    "bytes": 2191305,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 5402,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R210",
+    "path": "SystemSpecific/POWER9_Chiplets-IDs_RaptorCS.png",
+    "type": "png",
+    "bytes": 133176,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": null,
+    "title": "",
+    "extraction_status": "image_only",
+    "text_bytes": null,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "background"
+    }
+  },
+  {
+    "source_id": "R211",
+    "path": "SystemSpecific/Supermicro_AMD_H13SAE-MF_QRG-2627.pdf",
+    "type": "pdf",
+    "bytes": 3428519,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 13,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 28540,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "supporting"
+    }
+  },
+  {
+    "source_id": "R212",
+    "path": "SystemSpecific/Supermicro_SYS-E100-12T-H_Manual_MNL-2459.pdf",
+    "type": "pdf",
+    "bytes": 5749911,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 81,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 146127,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R213",
+    "path": "SystemSpecific/Supermicro_X12SPL-F_UserManual.pdf",
+    "type": "pdf",
+    "bytes": 5967172,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 30,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 39929,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Observability / benchmarking / validation",
+      "Hardware inventory / system-specific references"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "background",
+      "ADR-004": "supporting"
+    }
+  },
+  {
+    "source_id": "R214",
+    "path": "SystemSpecific/Yoga_Tab_Plus_Spec.pdf",
+    "type": "pdf",
+    "bytes": 839474,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 7,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 12964,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R215",
+    "path": "Task-Scheduling-in-Geo-Distributed-Computing-A-Survey.arXiv_2501.15504v1.pdf",
+    "type": "pdf",
+    "bytes": 733103,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 20,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 173267,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-007": "primary",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R32",
+    "path": "Test-Guide-for-Data-Center-Timing.pdf",
+    "type": "pdf",
+    "bytes": 692567,
+    "mtime_utc": "2026-05-12T22:16:40Z",
+    "pages": 31,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 54603,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "Observability / benchmarking / validation"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R216",
+    "path": "The-Journey-Default-Mode-Network-Development-Function-Impact-Mental-Health_doi-org-10-3390-biology-14040395.pdf",
+    "type": "pdf",
+    "bytes": 3331707,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 37,
+    "title": "The Journey of the Default Mode Network: Development, Function, and Impact on Mental Health",
+    "extraction_status": "extracted",
+    "text_bytes": 200707,
+    "topics": [
+      "AI fabric / RDMA / multipath networking"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "supporting",
+      "ADR-005": "background",
+      "ADR-006": "background",
+      "ADR-007": "background"
+    }
+  },
+  {
+    "source_id": "R217",
+    "path": "The_xAI_100000-GPU-Ai-cluster-xai-colossus-reveals-its-secrets.2024.pdf",
+    "type": "pdf",
+    "bytes": 25889069,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 5,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 8243,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R218",
+    "path": "Thermal_Infrared_Sensor_Design_Considerations_for_Counter_UAS_Defense.pdf",
+    "type": "pdf",
+    "bytes": 1290982,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 7,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 15218,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Observability / benchmarking / validation"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "background",
+      "ADR-007": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R219",
+    "path": "Towards-Large-Scale-RDMA-Networks-without-Performance-Anomalies.Xinhao-Kong.2024.pdf",
+    "type": "pdf",
+    "bytes": 6138815,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 173,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 396906,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R27",
+    "path": "TurboQuant-Online-Vector-Quantization-Near-Optimal-Distortion-Rate.arXiv-2504.19874v1.pdf",
+    "type": "pdf",
+    "bytes": 861881,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 25,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 100626,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "primary",
+      "ADR-003": "supporting",
+      "ADR-004": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "supporting",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R220",
+    "path": "USENIX_ACM_SIGOPS_Symposium-OS-Principles_2025-1013.3731569.pdf",
+    "type": "pdf",
+    "bytes": 106493301,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 1178,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 10253800,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "supporting",
+      "ADR-004": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R221",
+    "path": "Understanding-TBW-in-SSD-Procurement_-A-Key-Factor-for-Reliability-&-Performance.pdf",
+    "type": "pdf",
+    "bytes": 16755438,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 5,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 10842,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "background",
+      "ADR-004": "background",
+      "ADR-006": "primary",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R222",
+    "path": "Understanding-intra-node-communication-HPC-systems-Datacenters.arXiv-2502.20965v1_2025.pdf",
+    "type": "pdf",
+    "bytes": 1006045,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 15,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 96941,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-006": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "primary"
+    }
+  },
+  {
+    "source_id": "R223",
+    "path": "Upstart-Xsight-Labs-Raises-Up-The-Programmable-Switch-Banner-High.pdf",
+    "type": "pdf",
+    "bytes": 10550662,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 9,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 17311,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-005": "primary",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R224",
+    "path": "Viability-Small-Scale-HPC-Cloud-Infra_2018.pdf",
+    "type": "pdf",
+    "bytes": 370131,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 12,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 71758,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "background",
+      "ADR-004": "primary",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R225",
+    "path": "What-is-QLC-Everpure-Pure-Storage.pdf",
+    "type": "pdf",
+    "bytes": 54224,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 7800,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "background",
+      "ADR-006": "primary",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R31",
+    "path": "Whitepaper_OCP_Ready-Requirements-Energy-Storage-Systems-Final.pdf",
+    "type": "pdf",
+    "bytes": 1901705,
+    "mtime_utc": "2026-05-12T22:17:05Z",
+    "pages": 64,
+    "title": "WHITE PAPER:  OCP READY REQUIREMENTS FOR ENERGY STORAGE SYSTEMS",
+    "extraction_status": "extracted",
+    "text_bytes": 124489,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "background",
+      "ADR-005": "background",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R226",
+    "path": "Winning_the_Counter_UAS_Detection_Battle_Advanced_SDR_Solutions_for_E.pdf",
+    "type": "pdf",
+    "bytes": 3398902,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 6,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 23176,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R227",
+    "path": "Xilinx_Alveo-U25-Product-Brief.pdf",
+    "type": "pdf",
+    "bytes": 119362,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 11774,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "primary",
+      "ADR-005": "primary",
+      "ADR-007": "background",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R228",
+    "path": "Xsight-E-Product_Series_Infographic.pdf",
+    "type": "pdf",
+    "bytes": 3771525,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 1,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 29175,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-005": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R229",
+    "path": "Xsight-E1-AIC-PB.pdf",
+    "type": "pdf",
+    "bytes": 1533539,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 4,
+    "title": "E1-AIC Product Brief - November 2025",
+    "extraction_status": "extracted",
+    "text_bytes": 15515,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-005": "primary",
+      "ADR-006": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R230",
+    "path": "Xsight-E1-Server-PB.pdf",
+    "type": "pdf",
+    "bytes": 1329406,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "E1-Server Product Brief - June 2025",
+    "extraction_status": "extracted",
+    "text_bytes": 9449,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-006": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "supporting",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R231",
+    "path": "Xsight-E1-SoC-PB.pdf",
+    "type": "pdf",
+    "bytes": 1214860,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 3,
+    "title": "E1-SoC Product Brief - June 2025",
+    "extraction_status": "extracted",
+    "text_bytes": 8712,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-006": "supporting",
+      "ADR-007": "background",
+      "ADR-008": "supporting",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R232",
+    "path": "Xsight-E1_DPU_long_4.pdf",
+    "type": "pdf",
+    "bytes": 3368506,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 15,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 29676,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "supporting",
+      "ADR-005": "primary",
+      "ADR-006": "supporting",
+      "ADR-007": "primary",
+      "ADR-008": "supporting",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R233",
+    "path": "Xsight-Labs-Blog.pdf",
+    "type": "pdf",
+    "bytes": 13262074,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 8,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 816,
+    "topics": [
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-005": "background"
+    }
+  },
+  {
+    "source_id": "R234",
+    "path": "Xsight-Labs-E1-DPU-64-core-Arm-Neoverse-N2-800G-DPU_ServeTheHome.pdf",
+    "type": "pdf",
+    "bytes": 17402901,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 5,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 6812,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-005": "primary",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R235",
+    "path": "Xsight-Labs-Newsroom-Announcements.pdf",
+    "type": "pdf",
+    "bytes": 15409386,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 8,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 1400,
+    "topics": [
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-005": "background"
+    }
+  },
+  {
+    "source_id": "R236",
+    "path": "Xsight-Labs-Presents-AI-Infrastructure-Field-Day.2026.pdf",
+    "type": "pdf",
+    "bytes": 46666,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 5,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 19323,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "supporting",
+      "ADR-004": "primary",
+      "ADR-005": "primary",
+      "ADR-007": "primary",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R237",
+    "path": "Xsight-Labs_-Availability-E1-SoC_Cloud-Edge-AI-DataCenters_StorageNewsletter.pdf",
+    "type": "pdf",
+    "bytes": 198785,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 4493,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "supporting",
+      "ADR-005": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R238",
+    "path": "Xsight-Recharges-the-Cloud-ToR-White-Paper.pdf",
+    "type": "pdf",
+    "bytes": 1291015,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 7,
+    "title": "Xsight Recharges the Cloud ToR",
+    "extraction_status": "extracted",
+    "text_bytes": 18719,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "primary",
+      "ADR-005": "primary",
+      "ADR-007": "supporting",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R239",
+    "path": "Xsight-Softens-the-DPU.pdf",
+    "type": "pdf",
+    "bytes": 1393948,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 7,
+    "title": "Xsight Softens the DPU",
+    "extraction_status": "extracted",
+    "text_bytes": 16934,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-005": "primary",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R240",
+    "path": "Xsight-X-Product-Series-Infographic.pdf",
+    "type": "pdf",
+    "bytes": 3667892,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 1,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 14662,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "DPU / SmartNIC / offload",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-005": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R241",
+    "path": "Xsight-X2-PB-Public.pdf",
+    "type": "pdf",
+    "bytes": 1276105,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 2,
+    "title": "X2 Product Brief - August 2024",
+    "extraction_status": "extracted",
+    "text_bytes": 12649,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-004": "primary",
+      "ADR-005": "background",
+      "ADR-007": "primary",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R242",
+    "path": "Xsight-XISA_Public.pdf",
+    "type": "pdf",
+    "bytes": 4235727,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 123,
+    "title": "X-Switch ISA (XISA) - PUBLIC - March 2025",
+    "extraction_status": "extracted",
+    "text_bytes": 278159,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "supporting",
+      "ADR-005": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R243",
+    "path": "ZFS-Specific/Comparative_ZFS_VXFS_EXT4_CRM-Environs_2021_AB8.pdf",
+    "type": "pdf",
+    "bytes": 177427,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 9,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 27124,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-003": "supporting",
+      "ADR-004": "supporting",
+      "ADR-006": "supporting",
+      "ADR-007": "primary",
+      "ADR-008": "background",
+      "ADR-009": "background"
+    }
+  },
+  {
+    "source_id": "R23",
+    "path": "ZFS-Specific/Evaluation_of_ZFS_as_an_efficient_WLCG_storage_bac.pdf",
+    "type": "pdf",
+    "bytes": 218648,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 9,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 30229,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "background",
+      "ADR-003": "background",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R244",
+    "path": "ZFS-Specific/Hybrid-AI-Models-ZFS-Usage-Forecasting_IJSRET_V8_issue2_305_2022.pdf",
+    "type": "pdf",
+    "bytes": 597276,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 10,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 63014,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "supporting",
+      "ADR-003": "supporting",
+      "ADR-004": "background",
+      "ADR-005": "background",
+      "ADR-006": "primary",
+      "ADR-007": "primary",
+      "ADR-008": "background",
+      "ADR-009": "primary"
+    }
+  },
+  {
+    "source_id": "R245",
+    "path": "ZFS-Specific/Oracle-Sun_ZFS_Storage_Appliance_Installation_Guide.PN-E78910-02.2017-07.pdf",
+    "type": "pdf",
+    "bytes": 15646480,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 214,
+    "title": "Oracle\u00ae ZFS Storage Appliance Installation Guide - For ZS5-\u200bx, ZS4-\u200b4, ZS3-\u200bx, 7x20 Controllers, and DEx-\u200b24, Sun Disk Shelves, Release OS8.\u200b7.0",
+    "extraction_status": "extracted",
+    "text_bytes": 270892,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-005": "supporting",
+      "ADR-006": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R246",
+    "path": "ZFS-Specific/Using_ZFS_Manage_Grid_Storage_Middleware_doi.org-10.1051-epjconf-201921404043_2019.pdf",
+    "type": "pdf",
+    "bytes": 218005,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 5,
+    "title": "Using ZFS to manage Grid storage and improve middleware resilience",
+    "extraction_status": "extracted",
+    "text_bytes": 15504,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "supporting",
+      "ADR-004": "supporting",
+      "ADR-006": "background",
+      "ADR-007": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R22",
+    "path": "ZFS-Specific/ZFS_IO_Performance-Optimization-Schemes-Manycore-HPC-Systems_000000178050_2023.pdf",
+    "type": "pdf",
+    "bytes": 9457338,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 125,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 191448,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "background",
+      "ADR-003": "supporting",
+      "ADR-004": "background",
+      "ADR-006": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R247",
+    "path": "dpBento_Benchmarking_DPUs_for_Data_Processing.arXiv2504.05536v1_2025.pdf",
+    "type": "pdf",
+    "bytes": 2274513,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 14,
+    "title": "dpBento: Benchmarking DPUs for Data Processing",
+    "extraction_status": "extracted",
+    "text_bytes": 140911,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "background",
+      "ADR-004": "supporting",
+      "ADR-005": "primary",
+      "ADR-007": "supporting",
+      "ADR-008": "background",
+      "ADR-009": "supporting"
+    }
+  },
+  {
+    "source_id": "R248",
+    "path": "marvell-ethernet-adapters-fastlinq-41000-series-product-brief.pdf",
+    "type": "pdf",
+    "bytes": 762690,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 10,
+    "title": "Marvell FastLinQ 41000 Series Adapters Product Brief",
+    "extraction_status": "extracted",
+    "text_bytes": 46567,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "background",
+      "ADR-004": "primary",
+      "ADR-005": "supporting",
+      "ADR-007": "supporting",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R01",
+    "path": "vLLM_Efficient-Memory-Management-LLM-Serving-PagedAttention.arXiv-2309.06180v1.2023.pdf",
+    "type": "pdf",
+    "bytes": 1459631,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 16,
+    "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+    "extraction_status": "extracted",
+    "text_bytes": 154077,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "LLM inference / KV cache / scheduling"
+    ],
+    "adr_impact": {
+      "ADR-001": "primary",
+      "ADR-002": "primary",
+      "ADR-003": "background",
+      "ADR-004": "background",
+      "ADR-007": "supporting",
+      "ADR-008": "supporting"
+    }
+  },
+  {
+    "source_id": "R249",
+    "path": "xAI-Colossus_100K-GPU_Built-19days.2024.pdf",
+    "type": "pdf",
+    "bytes": 32140,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 1,
+    "title": "",
+    "extraction_status": "extracted",
+    "text_bytes": 2267,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-004": "background",
+      "ADR-008": "background"
+    }
+  },
+  {
+    "source_id": "R250",
+    "path": "zFS_A_Scalable_Distributed_File_System_Using_Object_Disks__IBM_zFS_2003.pdf",
+    "type": "pdf",
+    "bytes": 406275,
+    "mtime_utc": "2026-05-12T00:50:09Z",
+    "pages": 12,
+    "title": "zFS - a scalable distributed file system using object disks - Mass Storage Systems and Technologies, 2003. (MSST 2003). Proceedings. 20th IEEE/11th NASA Goddard",
+    "extraction_status": "extracted",
+    "text_bytes": 61053,
+    "topics": [
+      "AI fabric / RDMA / multipath networking",
+      "Storage media / OpenZFS / NVMe-oF",
+      "RAG / vector index / corpus"
+    ],
+    "adr_impact": {
+      "ADR-001": "supporting",
+      "ADR-002": "background",
+      "ADR-003": "background",
+      "ADR-004": "supporting",
+      "ADR-006": "supporting",
+      "ADR-008": "supporting"
+    }
+  },
+  {
+    "source_id": "R251",
+    "path": "Intel-Network-Edge-Container-Metal-Reference-Systems-Architecture-User-Guide.1706608508.pdf",
+    "type": "pdf",
+    "bytes": 8373158,
+    "mtime_utc": "2026-05-14T03:17:47Z",
+    "pages": 37,
+    "title": "Network and Edge Container Bare Metal Reference System Architecture User Guide",
+    "extraction_status": "extracted",
+    "text_bytes": 163684,
+    "topics": [
+      "OCP infrastructure / power / platform readiness",
+      "AI fabric / RDMA / multipath networking",
+      "DPU / SmartNIC / offload",
+      "Observability / benchmarking / validation"
+    ],
+    "adr_impact": {
+      "ADR-001": "background",
+      "ADR-004": "supporting",
+      "ADR-005": "supporting",
+      "ADR-006": "supporting",
+      "ADR-007": "supporting",
+      "ADR-009": "primary",
+      "ADR-013": "supporting",
+      "ADR-014": "supporting"
+    }
+  },
+  {
+    "source_id": "R252",
+    "path": "Intel-QAT-Latest-8960-C3000.pdf",
+    "type": "pdf",
+    "bytes": 1216342,
+    "mtime_utc": "2026-05-14T03:17:47Z",
+    "pages": 113,
+    "title": "336211_QAT Software for Linux - RN - HW version 1.7",
+    "extraction_status": "extracted",
+    "text_bytes": 344623,
+    "topics": [
+      "DPU / SmartNIC / offload",
+      "OCP infrastructure / power / platform readiness",
+      "Observability / benchmarking / validation",
+      "Storage media / OpenZFS / NVMe-oF"
+    ],
+    "adr_impact": {
+      "ADR-005": "primary",
+      "ADR-006": "supporting",
+      "ADR-007": "supporting",
+      "ADR-009": "primary",
+      "ADR-013": "primary",
+      "ADR-014": "primary"
+    }
+  }
+]

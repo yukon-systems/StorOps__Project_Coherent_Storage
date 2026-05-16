@@ -1,0 +1,65 @@
+@startuml
+!pragma useVerticalIf on
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam activity {
+  BackgroundColor #F7FAFF
+  BorderColor #2F5597
+  FontColor #1F1F1F
+  DiamondBackgroundColor #FFF2CC
+  DiamondBorderColor #7F6000
+  StartColor #385723
+  EndColor #385723
+}
+skinparam note {
+  BackgroundColor #E2F0D9
+  BorderColor #548235
+}
+skinparam ArrowColor #2F5597
+title Print Section 04 - Validation Evidence and Output Pack
+start
+:Input from Sections 01-03:
+selected governance spine and domain standards;
+:Choose workload validation suite;
+
+if (AI factory or LLM inference/training?) then (yes)
+  :Use MLCommons/MLPerf plus project-local
+TTFT, TPOT, KV-cache, RAG,
+and fabric-health gates;
+elseif (HPC / supercomputing?) then (yes)
+  :Use TOP500/HPL where relevant,
+SPEC HPG, IO500, and application kernels;
+elseif (Storage subsystem?) then (yes)
+  :Use IO500, SPECstorage,
+fio-like engineering tests,
+and failure/rebuild drills;
+elseif (Database / big data?) then (yes)
+  :Use TPC-family benchmarks such as TPCx-HS
+and application-specific query/ingest tests;
+elseif (High-frequency trading?) then (yes)
+  :Use STAC benchmarks and deterministic latency,
+timing, timestamping, and audit gates;
+else (other)
+  :Use SLO/SLA evidence,
+resilience drills, and workload-specific
+acceptance tests;
+endif
+
+:Emit architecture process-sequence pack:
+context + viewpoints,
+ADR set,
+standards conformance matrix,
+interface contracts,
+failure semantics,
+telemetry/SLO model,
+benchmark/test plan;
+:Review for overlaps:
+standards body owns conformance,
+framework owns decision/governance,
+benchmark owns evidence;
+stop
+legend right
+  Print-safe validation branch.
+  Output: evidence plan and durable architecture pack.
+endlegend
+@enduml

@@ -1,0 +1,238 @@
+{
+  "title": "CXL Technology, Optane PMem Comparison, Marvell 2026 Forecast, and Storage-Networking Impact",
+  "generated_date": "2026-05-14",
+  "package": "Project Coherent Storage ADRs 2026-Q2 v2",
+  "artifact_type": "archival_synthesis",
+  "scope": "Local RAG/ADR-derived CXL analysis with date-sensitive public-source checks for 2026 vendor status.",
+  "executive_summary": "CXL is the forward path for heterogeneous memory expansion, warm-tier pooling, and near-memory acceleration. Compared with Intel Optane PMem 200/300, CXL is less tied to one CPU vendor or board generation, supports broader packaging and fabric topologies, and is moving from direct-attached expansion into rack-level memory pooling. Project Coherent Storage should treat CXL as governed T1/T1.5 memory capacity, not local DRAM, not durable NAND, and not automatically suitable for hot GPU/DPU paths without topology and p99 latency proof.",
+  "cxl_roles": [
+    {
+      "role": "CXL Type-3 / CXL.mem",
+      "description": "Coherent memory expansion and memory pooling",
+      "project_use": [
+        "warm KV/prefix staging",
+        "Coherence metadata",
+        "vector-index heads",
+        "object metadata",
+        "ARC/page-cache budget expansion"
+      ]
+    },
+    {
+      "role": "CXL.cache",
+      "description": "Accelerator cache-coherent access to host memory",
+      "project_use": [
+        "future accelerator-side staging",
+        "controlled memory sharing where platform support exists"
+      ]
+    },
+    {
+      "role": "CXL.io",
+      "description": "PCIe-like control and configuration path",
+      "project_use": [
+        "device discovery",
+        "management",
+        "telemetry",
+        "fabric-control integration"
+      ]
+    },
+    {
+      "role": "direct-attached CXL",
+      "description": "CXL attached near one root complex",
+      "project_use": [
+        "preferred placement for latency-sensitive warm roles"
+      ]
+    },
+    {
+      "role": "switched or pooled CXL",
+      "description": "Shared or fabric memory capacity",
+      "project_use": [
+        "T1.5 warm/shared memory after fabric-manager, ownership, fencing, RAS, telemetry, latency, and rollback qualification"
+      ]
+    }
+  ],
+  "allowed_uses": [
+    "Coherence-CE warm KV/prefix staging",
+    "Coherence metadata/cache expansion",
+    "vector-index heads and object metadata",
+    "OpenZFS ARC/page-cache capacity under explicit budgets",
+    "storage-service buffers where NUMA/root-complex placement is local enough",
+    "block-presented OpenZFS roles only after power-loss, flush, endurance, mirroring, import, and replacement validation"
+  ],
+  "forbidden_or_high_risk_uses": [
+    "active per-token decode memory",
+    "unqualified OpenZFS SLOG, special vdev, or durable media",
+    "durable acknowledgements backed only by volatile CXL",
+    "hidden switched, auto-bifurcated, or oversubscribed hot-path CXL placement",
+    "vLLM-visible lower-layer controls"
+  ],
+  "optane_comparison": [
+    {
+      "dimension": "platform_scope",
+      "optane_pmem_200_300": "PMem 200 is tied to selected 3rd Gen Intel Xeon Scalable platforms; PMem 300 was intended for 4th Gen Xeon but Intel cancelled production enablement.",
+      "cxl_improvement": "Industry standard usable across Intel, AMD, Arm, and accelerator-centric platforms when CPU, firmware, OS, and device support qualify."
+    },
+    {
+      "dimension": "product_lifecycle",
+      "optane_pmem_200_300": "Optane PMem is discontinued; PMem 300 did not become a production platform.",
+      "cxl_improvement": "CXL ecosystem and standards continue forward through CXL 2.0, 3.x, and 4.0 generations."
+    },
+    {
+      "dimension": "packaging",
+      "optane_pmem_200_300": "PMem DIMM/DDR-T module model; Optane SSDs are separate NVMe/AIC storage devices, not PMem DIMMs.",
+      "cxl_improvement": "Supports PCIe AIC, EDSFF/E3.S/E1.S-class, U.3-style platform packaging where wired appropriately, and switch/fabric topologies."
+    },
+    {
+      "dimension": "memory_pooling",
+      "optane_pmem_200_300": "Primarily local socket/platform population.",
+      "cxl_improvement": "Enables direct-attached, multi-headed, switched, and pooled memory architectures."
+    },
+    {
+      "dimension": "heterogeneous_deployment",
+      "optane_pmem_200_300": "Intel-centric.",
+      "cxl_improvement": "Better fit for mixed Intel/AMD/Arm/GPU/DPU infrastructure."
+    },
+    {
+      "dimension": "cost_model",
+      "optane_pmem_200_300": "Reduced DRAM cost per capacity on supported Intel systems, but with platform lock-in and population rules.",
+      "cxl_improvement": "Can reuse DDR4/DDR5 behind CXL controllers, reduce stranded memory, pool capacity, and avoid overprovisioning every node."
+    },
+    {
+      "dimension": "durability",
+      "optane_pmem_200_300": "Explicitly persistent in App Direct mode.",
+      "cxl_improvement": "Device-specific; CXL may be volatile or persistent and persistence must be proven per device and role."
+    }
+  ],
+  "cost_structure_benefits": [
+    {
+      "benefit": "reduced_stranded_memory",
+      "summary": "Memory can be pooled or shared instead of statically trapped behind one CPU/socket."
+    },
+    {
+      "benefit": "memory_reuse_and_refresh_efficiency",
+      "summary": "DDR4/DDR5 can be placed behind CXL expansion controllers, reducing refresh pressure versus replacing every node with high-density DDR5."
+    },
+    {
+      "benefit": "higher_rack_density_and_lower_facility_pressure",
+      "summary": "More memory per rack can reduce the need to add whole servers for memory capacity alone."
+    },
+    {
+      "benefit": "improved_expensive_accelerator_utilization",
+      "summary": "Warm data staged nearer to CPU/GPU/DPU consumers can reduce storage-network hydration delays."
+    },
+    {
+      "benefit": "independent_memory_scaling",
+      "summary": "Memory capacity can be scaled separately from CPU/GPU count in qualified profiles."
+    }
+  ],
+  "latency_bandwidth_2026": {
+    "position": "CXL is not equivalent to local DRAM; it is fast enough for many warm-tier and near-memory roles and can reduce pressure on DRAM and storage-network tiers.",
+    "data_points": [
+      "Marvell Structera A/X materials describe CXL 2.0 / PCIe 5.0 devices with up to 200 GB/s memory bandwidth, DDR5-6400 support, inline LZ4 compression, AES-XTS, secure boot, and hardware security features.",
+      "Marvell Structera S 30260 is positioned as a 260-lane CXL 3.0 switch for rack-level memory pooling, with aggregate bandwidth up to 4 TB/s, and customer sampling expected in calendar Q3 2026.",
+      "Marvell reports Structera S 20256 CXL 2.0 switch production status.",
+      "CXL 4.0 doubles signaling bandwidth from 64 GT/s to 128 GT/s while retaining CXL 3.x protocol enhancements.",
+      "Local disaggregated-memory RAG material frames CXL as far memory: higher latency than local DRAM but closer to memory semantics than NVMe/storage tiers."
+    ],
+    "required_measurements": [
+      "p50/p95/p99 latency",
+      "sustained and contended bandwidth",
+      "CPU socket/root-complex locality",
+      "NUMA distance",
+      "link width and speed",
+      "switch hop count and oversubscription",
+      "thermal and error state",
+      "fabric-manager/CFM freshness",
+      "pool ownership and fencing state",
+      "rollback/demotion behavior"
+    ]
+  },
+  "marvell_2026_forecast": {
+    "components": [
+      {
+        "name": "Structera X",
+        "role": "memory-expansion controller",
+        "interpretation": "capacity expansion and warm-tier memory; no durability assumption from volatile memory expansion"
+      },
+      {
+        "name": "Structera A",
+        "role": "near-memory accelerator",
+        "interpretation": "optional memory-side compute/offload for compression, filtering, metadata, vector/RAG-side functions; not vLLM-visible"
+      },
+      {
+        "name": "Structera S",
+        "role": "CXL switch family for pooled memory",
+        "interpretation": "qualified T1.5 rack-level memory pooling when fabric manager, ownership, RAS, telemetry, latency, and failover pass local gates"
+      },
+      {
+        "name": "XConn Apollo/Apollo 2",
+        "role": "hybrid PCIe/CXL switching lineage acquired by Marvell",
+        "interpretation": "evidence that CXL switching is a current vendor roadmap/product category, not merely speculative research"
+      }
+    ],
+    "forecast": [
+      "2026: CXL moves from node-local expansion into qualified rack-level pooling.",
+      "2026 customer sampling: Marvell positions Structera S 30260 for calendar Q3 2026 sampling.",
+      "2027-2028: Marvell expects XConn-related switching products to contribute revenue, suggesting confidence in scale-out adoption.",
+      "Architectural consequence: reject hidden or unmanaged PCIe switching, but allow explicit CXL fabric for governed warm pools after qualification."
+    ]
+  },
+  "storage_networking_benefits": {
+    "near_term": [
+      "larger storage-service caches without overbuying local DRAM",
+      "more ARC/page-cache capacity under governed budgets",
+      "faster metadata and object-index staging",
+      "better warm KV/prefix locality before hitting NVMe/RDMA tiers",
+      "reduced repeated-read pressure on the storage network",
+      "more flexible CPU/DPU/GPU staging buffers when topology is local enough"
+    ],
+    "future": [
+      "rack-level memory pools as shared resources for storage services",
+      "CXL fabric managers integrated into scheduler admission and failure semantics",
+      "richer hierarchy: DRAM -> CXL warm pool -> NVMe/OpenZFS -> object/archive",
+      "near-memory acceleration for compression, filtering, indexing, and metadata operations before data traverses the storage network",
+      "reduced per-node stranded memory and independent memory scaling for storage clusters"
+    ],
+    "risks": [
+      "CXL introduces another fabric with its own failure modes.",
+      "Fabric-manager, ownership, fencing, hotness, migration, link state, RAS, p99 latency, and rollback behavior must be governed like RDMA fabric and NVMe-oF state.",
+      "Latency-sensitive OpenZFS, DPU, GPU, and Coherence roles must reject hidden switch layers and unmeasured bifurcation."
+    ]
+  },
+  "recommended_architectural_position": [
+    "Adopt CXL as a governed T1/T1.5 memory tier.",
+    "Prefer CPU/root-complex-local CXL for latency-sensitive warm roles.",
+    "Permit switched CXL only when it is explicit, inventoried, measured, and fabric-managed.",
+    "Keep OpenZFS durable truth on qualified block media.",
+    "Never let volatile CXL produce durable acknowledgements.",
+    "Feed CXL health/topology/latency into Coherence-CE scheduler admission.",
+    "Use CXL to relieve DRAM and storage-network pressure, not to bypass Coherence-CE or expose lower layers to vLLM."
+  ],
+  "source_grounding": {
+    "local_adr_rag_artifacts": [
+      "adr/ADR-015_CXL_Memory_Tiering_and_OpenZFS_Interaction.md",
+      "review-artifacts/cxl-marvell-xconn-reference-sweep-2026-05-13.md",
+      "review-artifacts/final-review-note.md",
+      "review-artifacts/rag-manifest.json",
+      "Marvell-Five-Ways-CXL-Will-Transform-Computing-Q2-2026.pdf",
+      "Intel_Optane-PMem-NVDIMM-Series-200-brief.pdf",
+      "Intel_Optane-PMem-NVDIMM-Series-200-brief-ext.pdf",
+      "Intel_Optane_PMem_200_Series_Config_X12QP_DP_UP.pdf",
+      "Survey-Disaggregated-Memory_Cross-layer_Technique-Insights-Next-Gen-Datacenters.arXiv_2503.20275v1_2025.pdf",
+      "Intel-Optane-SSD-900P-AIC_Product-Brief.pdf",
+      "Optane_900P_Series-Product_Brief.pdf"
+    ],
+    "public_references_checked": [
+      "https://computeexpresslink.org/about-cxl/",
+      "https://www.marvell.com/products/cxl.html",
+      "https://www.marvell.com/company/newsroom/marvell-next-gen-cxl-switch-memory-pooling-breaks-ai-memory-wall.html",
+      "https://www.marvell.com/company/newsroom/marvell-to-acquire-xconn-technologies-expanding-leadership-in-ai-data-center-connectivity.html",
+      "https://www.intel.com/content/www/us/en/support/articles/000093792/memory-and-storage/intel-optane-persistent-memory.html",
+      "https://www.intel.com/content/www/us/en/support/articles/000094568/memory-and-storage/intel-optane-persistent-memory.html"
+    ]
+  },
+  "archival_notes": [
+    "This report is a synthesis artifact, not a new ADR decision by itself.",
+    "ADR-015 remains the normative Project Coherent Storage decision record for CXL placement and OpenZFS interaction.",
+    "Vendor roadmap claims must continue to be locally qualified before production-like use."
+  ]
+}
