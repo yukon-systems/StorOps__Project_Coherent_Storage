@@ -1,0 +1,25 @@
+@startuml
+!theme plain
+title v4 CXL Memory Pool Governance for UA-Link Pods
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+component "CXL Fabric / Pool Manager" as FM #D6EAF8
+component "CXL Type-3 / Pool Devices" as DEV #FCF3CF
+component "Coherence-CE Placement Policy" as CE #D5F5E3
+component "Scheduler Admission" as S #E8DAEF
+component "OpenZFS Durable Tier" as Z #FADBD8
+
+FM --> DEV : ownership epoch\nlink + RAS + thermal
+DEV --> CE : capacity + latency + bandwidth
+CE --> S : pool pressure + class suitability
+S --> CE : admit / demote / drain
+CE --> Z : durable classes via write policy
+
+note bottom of DEV
+Volatile CXL cannot acknowledge durability.
+Persistent/block roles require ADR-015 media qualification.
+end note
+@enduml

@@ -62,3 +62,7 @@ CXL remains preferred for heterogeneous future deployments because it is not tie
 - CXL 3.1 and CXL 4.0 support statements.
 - Linux CXL driver, `ndctl`/`libcxl`, cxl-reskit, and SMDK sources.
 - CXL KV-cache, CXL shared-memory KV, CXL SSD, CXL-NDP, ByteFS, and CXL database research papers in the RAG corpus.
+
+## v4 update: CXL memory pools inside UA-Link pods
+
+v4 binds CXL memory-pool admission to pod topology. CXL pools may be colocated with UA-Link accelerator domains, but UA-Link does not provide CXL ownership, persistence, or durability semantics. CXL pool managers must expose ownership epochs, link state, memory poison/error state, thermal state, p99 latency, bandwidth, and rollback/fencing behavior to Coherence-CE and scheduler admission.

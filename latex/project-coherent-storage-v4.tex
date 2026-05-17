@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{url}
+\geometry{margin=1in}
+\title{Project Coherent Storage v4: UA-Link Pod-Scale Systems with CXL Memory Pools and RDMA/RoCEv2 Storage Fabrics}
+\author{Project Coherent Storage Working Draft}
+\date{May 17, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+This v4 architecture update focuses Project Coherent Storage on pod-scale accelerator systems. It adds UA-Link as a governed scale-up fabric option, CXL memory pools as Coherence-owned T1/T1.5 warm memory, RDMA/RoCEv2 as a tuned scale-out and storage transport, DPU/SmartNIC offload as a mandatory storage-network boundary, and heterogeneous general-purpose GPU scheduling through capability profiles. Inference actors continue to bind only to Coherence-CE; lower-layer UA-Link, CXL, OpenZFS, NVMe-oF, RoCEv2, and DPU details remain hidden behind policy and telemetry.
+\end{abstract}
+\section{Pod-scale architecture}
+UA-Link is modeled as a pod/rack scale-up accelerator fabric, while RoCEv2/RDMA Ethernet remains the scale-out and storage data plane. Coherence-CE remains the API and placement boundary.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/v4-pod-scale-planes.png}
+\caption{v4 pod-scale planes.}
+\end{figure}
+\section{RDMA and RoCEv2 tuning}
+RoCEv2 is admitted only with explicit traffic classes, PFC scope, ECN/DCQCN thresholds, MTU/FEC verification, rail mapping, and telemetry gates.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/v4-rdma-roce-tuning-gates.png}
+\caption{RoCEv2 tuning and admission gates.}
+\end{figure}
+\section{CXL memory pools}
+CXL memory pools are admitted as T1/T1.5 warm memory resources owned by Coherence-CE and the scheduler. They do not provide durability unless device semantics and OpenZFS media-qualification gates prove persistence and recovery.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/v4-cxl-memory-pool-governance.png}
+\caption{CXL pool governance for UA-Link pods.}
+\end{figure}
+\section{Heterogeneous GP-GPU scheduling}
+NVIDIA, AMD, Intel, DPU/IPU, FPGA/NPU, and edge accelerators are admitted through capability profiles that describe memory, collectives, direct RDMA semantics, UA-Link or vendor scale-up domain, CXL reachability, and DPU/NIC affinity.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/v4-heterogeneous-gpu-scheduler.png}
+\caption{Heterogeneous GP-GPU scheduler profiles.}
+\end{figure}
+\section{Conclusion}
+The v4 update separates scale-up, scale-out, storage, management, timing, and memory-pool planes while preserving Coherence-CE as the actor-visible contract. UA-Link, CXL, RoCEv2, DPU offload, and heterogeneous GPUs become governed resources with explicit evidence and admission gates.
+\bibliographystyle{unsrt}
+\bibliography{references}
+\end{document}

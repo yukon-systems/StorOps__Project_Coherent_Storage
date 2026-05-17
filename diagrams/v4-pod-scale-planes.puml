@@ -1,0 +1,32 @@
+@startuml
+!theme plain
+title v4 Pod-Scale Planes: UA-Link, CXL, RoCEv2, DPU Storage
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+actor "vLLM / OpenAI API\nInference actors" as Actor
+component "Coherence-CE\nMemory Mesh" as CE #D6EAF8
+rectangle "Pod / Rack Scale-Up Domain" as Pod #FCF3CF {
+  component "GP-GPU / xPU nodes\nNVIDIA / AMD / Intel" as GPU
+  component "UA-Link scale-up fabric\naccelerator load/store/atomics" as UAL
+  component "CXL T1/T1.5 pools\nwarm KV, metadata, vector heads" as CXL
+}
+rectangle "Scale-Out / Storage Planes" as SO #D5F5E3 {
+  component "RoCEv2/RDMA scale-out\nrail or Clos" as RDMA
+  component "DPU / SmartNIC\nNVMe-oF + RDMA mediation" as DPU
+  database "OpenZFS mirrored NAND\ndurable block substrate" as ZFS
+}
+component "Scheduler admission\nlocality + telemetry" as Sched #E8DAEF
+
+Actor --> CE : API only
+CE --> GPU : hot KV / decode placement
+GPU <--> UAL : scale-up collectives
+CE --> CXL : warm/recomputable state
+CE --> RDMA : cross-pod / object / hydration
+RDMA --> DPU
+DPU --> ZFS
+CE --> Sched : metrics
+Sched --> CE : GREEN/AMBER/RED/DRAIN
+@enduml

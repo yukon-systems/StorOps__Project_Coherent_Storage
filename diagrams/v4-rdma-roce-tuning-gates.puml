@@ -1,0 +1,27 @@
+@startuml
+!theme plain
+title v4 RDMA/RoCEv2 Tuning and Admission Gates
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+start
+:Define traffic classes;
+:Map DSCP/PCP -> queues;
+if (Lossless class required?) then (yes)
+  :Enable scoped PFC;
+  :Validate headroom and pause thresholds;
+else (no)
+  :Use best-effort or ECN-only class;
+endif
+:Configure ECN/DCQCN per speed/buffer profile;
+:Validate MTU/FEC/link consistency end-to-end;
+:Bind GPU/NIC rails and DPU locality;
+:Collect telemetry: pause, ECN marks, CNP, drops, RTT, p99;
+if (Telemetry stale or congestion above SLO?) then (yes)
+  :Scheduler AMBER/RED/DRAIN;
+  :Demote storage/KV/collective admissions;
+else (no)
+  :Scheduler GREEN for qualified scope;
+endif
+stop
+@enduml
