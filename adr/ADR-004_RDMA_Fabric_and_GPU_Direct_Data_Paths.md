@@ -103,3 +103,7 @@ Inference storage has multiple traffic shapes that should not all share one prio
 The v3 evidence set retains NVIDIA BlueField/STX, Xsight/Hammerspace, Broadcom CXL/PCIe retimer, Marvell NVMe-oF, and Pure/Marvell NVMe-oF/RoCE materials. These sources are useful for fabric, DPU, signal-integrity, and AI-storage roadmap analysis. They must not be promoted to direct Marvell/XConn+CXL integration claims unless a source explicitly states that relationship.
 
 Acceptance addition: architecture reports must classify each vendor or standard reference as direct, adjacent, negative-control, or not-found-in-current-sweep before using it as a public claim.
+
+## v4 update: pod-scale RoCEv2 tuning and traffic-plane separation
+
+v4 refines the RDMA fabric decision by separating UA-Link scale-up, RoCEv2/RDMA scale-out, DPU-mediated storage/NVMe-oF, management, frontend, and timing planes. RoCEv2 is accepted only with explicit traffic classes, PFC scope, ECN/DCQCN thresholds, MTU/headroom verification, rail-aware placement, stale-telemetry demotion, and rollback profiles. OCP MRC and packet-spraying techniques are tracked as future multipath/RDMA options and must be locally qualified before production use.

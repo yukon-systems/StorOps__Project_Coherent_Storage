@@ -110,3 +110,7 @@ The post-refresh Intel BMRA and QAT sources add a host/platform accelerator dist
 | R251 | Intel BMRA reference architecture automation, BIOS, SR-IOV/IOMMU, device-plugin, telemetry-aware scheduling, and QAT deployment context. |
 | R252 | Intel QAT release notes for supported hardware, crypto/compression services, Xen/SR-IOV limits, trust assumptions, reset/driver hazards, and virtualization caveats. |
 | ADR-015 | CXL placement and role-governance rules that constrain DPU/GPU/NVMe slot decisions. |
+
+## v4 update: DPU/IPU placement in pod-scale storage fabrics
+
+v4 keeps DPU/SmartNIC hardware mandatory for storage-network paths and adds pod-local placement requirements. DPU/IPU devices must be inventoried with GPU/NIC/CXL/root-complex locality, storage/NVMe-oF queue ownership, RDMA memory registration behavior, isolation policy, telemetry endpoint, and failover class. Host fallback remains a degraded resilience path, not the normal production data path.

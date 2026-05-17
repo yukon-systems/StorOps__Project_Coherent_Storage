@@ -151,3 +151,7 @@ Disallowed degradation actions:
 | R38 | OCS as a future dynamic cluster-reconfiguration option that scheduler policy must explicitly gate. |
 | R251, R252 | BMRA telemetry-aware scheduling and QAT trust/VF/PF/endpoint/fallback state used as scheduler inputs. |
 | R29, O10, O11, ADR-015 | CXL memory expansion, form-factor/topology choices, and placement-governance requirements. |
+
+## v4 update: UA-Link, CXL pool, rail, and heterogeneous accelerator locality
+
+v4 adds scheduler dimensions for UA-Link pod membership, CXL pool ownership/health, rail/NIC/GPU affinity, DPU locality, and heterogeneous accelerator profiles. Admission must prefer same-pod/same-rail placement for collective-heavy and KV-hydration-heavy scopes, demote stale fabric telemetry, and avoid mixed-vendor critical inference placements unless the collective/runtime profile is qualified.

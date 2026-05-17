@@ -1,91 +1,69 @@
-# Project Coherent Storage ADR Package v3
+# Project Coherent Storage, ADR Package v4
 
-**Project:** Project Coherent Storage  
-**Version:** 2026-Q2  
-**Package revision:** v3 roadmap, rapid-awareness, CXL/DPU/AI-storage research update  
-**Directory:** `RFC_Proj-Coherent-Storage-ADRs-2026-Q2.v3`  
-**Generated:** 2026-05-15  
-**Status:** Proposed / research-publication draft
+**Project:** Project Coherent Storage
+**Version:** 2026-Q2
+**Package revision:** v4 UA-Link pod-scale, CXL memory pools, RDMA/RoCEv2 tuning, heterogeneous GP-GPU compute
+**Generated:** 2026-05-17
+**Status:** Proposed
 
 ## Purpose
 
-This v3 package updates the Project Coherent Storage ADR set after the May 15, 2026 Marvell/XConn/CXL/DPU/RDMA/NVMe-oF/AI-storage RAG refresh. It preserves the v2 architectural baseline while adding:
+This v4 package refreshes the v3 ADR set using the expanded 2026-05-17 RAG corpus and the updated `src/ADR-Storage-Reference-Arch/AGENTS.md` directives. It keeps the core v2/v3 invariant: inference actors connect to the Coherence-CE Memory Mesh and never bind directly to OpenZFS, DPU, RoCEv2, NVMe-oF, CXL, or UA-Link internals.
 
-1. A tiered **Rapid Awareness Training Session** report for Executive Summary, Director Review, and Technical Engineering / Architecture Review Board audiences;
-2. Updated ADR guidance for CXL roadmap evidence, CXL-enabled KV-cache research, DPU/protocol-offload storage paths, and public-claim guardrails;
-3. PlantUML diagrams for audience tiering, data path, CXL decision flow, and arXiv/RAG metadata ingestion;
-4. ArXiv-ready source files in Markdown, LaTeX, and BibTeX; and
-5. An explicit research-metadata workflow for arXiv API/bulk-data usage, including current API rate-limit evidence captured during this run.
+v4 adds a renewed architectural focus on:
 
-## Iterative Improvements 
+1. **UA-Link enabled pod-scale systems** as a scale-up accelerator domain inside pod/rack boundaries.
+2. **Network architecture across scale-up and scale-out planes**, separating UA-Link accelerator fabrics, Ethernet/RDMA scale-out, storage/NVMe-oF fabrics, management, and timing.
+3. **CXL memory pools** as governed T1/T1.5 memory capacity for warm KV/prefix state, metadata, vector heads, and future shared-memory research paths.
+4. **RDMA/RoCEv2 performance tuning** with explicit PFC/ECN/DCQCN, traffic-class, rail, telemetry, and failure semantics.
+5. **General-purpose GPU and heterogeneous accelerator scheduling**, covering NVIDIA/AMD/Intel GPU families, cross-vendor collectives, DPU/IPU offload, CXL-GPU research, and admission-control policy.
+6. **arXiv S3 bulk archive enablement**, implemented under `src/RAG-Scripts/arxiv-s3/` as credential-safe requester-pays tooling.
 
-| Area | v2 position | v3 update |
-| --- | --- | --- |
-| CXL role | Governed T1/T1.5 memory tier; explicit switch-fabric qualification; OpenZFS-adjacent use only by semantics | Adds roadmap/public-evidence tiers, Marvell/XConn acquisition and product-roadmap evidence, XConn CXL 3.1/PCIe 6.2 direction, and latest CXL KV-cache / CXL SSD research. |
-| KV cache | vLLM and peer runtimes connect only to Coherence-CE; no OpenZFS/DPU/RDMA leakage | Adds CXL-PNM and TraCT research as **Coherence-owned implementation options**, not actor-visible API changes. |
-| DPU / protocol offload | DPU/SmartNIC hardware required for storage network paths, with host fallback degraded | Adds NVIDIA BlueField/STX, Xsight/Hammerspace, Broadcom retimer, Marvell NVMe-oF, Pure/Marvell NVMe-oF/RoCE evidence as direct/adjacent/negative-control classes. |
-| Public claims | v2 cited RAG sources but did not classify partnership directness in training form | v3 introduces evidence-grade guardrails: direct, adjacent, negative-control, and not-found-in-current-sweep. |
-| Research publication | Markdown ADR package only | Adds arXiv-oriented `latex/project-coherent-storage-v3.tex`, `latex/references.bib`, and `latex/README-arxiv-submission.md`. |
-| Metadata refresh | RAG source manifests | Adds `research/arxiv-cxl-dpu-storage-metadata-2026-05-15.*`; arXiv API attempts were rate-limited and documented. |
+## v4 source basis
 
-- TODO: Update ArXiv repo sync workflow for SLURM, switch to s3cli bucket deltas for worker pool.
-- TODO: Enable lsyncd from non-cluster nodes, sync (unidirectional) ad-hoc research docs to pipeline ionotify process.
+The v4 source pass extracted text from 363 PDFs in `src/RAG-DATA` into `project-coherent-rag-v4-text`.
 
-## Document index
+- Text extraction OK: 360 PDFs
+- Source map: `review-artifacts/v4-rag-extraction-and-source-map.md`
+
+Important sources include the UA-Link white paper, UniFabriX UA-Link material, OCP Open Cluster inference/training fabric reference architectures, OCP MRC, Arista/Broadcom lossless Ethernet/RoCE material, AMD Pensando/Pollara cluster and product collateral, Intel Gaudi 3 cluster design, CXL/KV/GPU research, and prior Marvell/XConn/CXL/DPU materials.
+
+## Package index
 
 | Path | Purpose |
 | --- | --- |
-| `reports/rapid-awareness-training-cxl-dpu-ai-storage-2026-q2-v3.md` | Main tiered report for executives, directors, and ARB/engineering. |
-| `adr/ADR-015_CXL_Memory_Tiering_and_OpenZFS_Interaction.md` | Revised v3 CXL/OpenZFS interaction ADR. |
-| `adr/ADR-016_Roadmap_Evidence_and_Public_Claim_Guardrails.md` | New ADR: how to classify roadmap/partnership evidence in reports and training. |
-| `adr/ADR-017_Research_Metadata_and_Arxiv_Publication_Workflow.md` | New ADR: arXiv metadata/API/bulk-data and publication workflow. |
-| `diagrams/*.puml` + `.png` + `.svg` | PlantUML source and rendered diagrams. |
-| `latex/project-coherent-storage-v3.tex` | arXiv-oriented LaTeX manuscript. |
-| `latex/references.bib` | BibTeX bibliography for the manuscript and report. |
-| `research/arxiv-cxl-dpu-storage-metadata-2026-05-15.*` | API query plan/result artifact; current run encountered arXiv 429 rate limits. |
+| `reports/ualink-pod-scale-cxl-rdma-gpgpu-v4.md` | Main v4 architecture report. |
+| `adr/ADR-018_UALink_Pod_Scale_Fabric_and_Compute_Domains.md` | New ADR for UA-Link pod-scale scale-up domains. |
+| `adr/ADR-019_Pod_Scale_Network_Architecture_and_RDMA_RoCEv2_Tuning.md` | New ADR for scale-out/storage networking and RoCEv2 tuning. |
+| `adr/ADR-020_CXL_Memory_Pools_for_UALink_Pods.md` | New ADR for CXL pool semantics in UA-Link pods. |
+| `adr/ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.md` | New ADR for heterogeneous GPU/accelerator scheduling. |
+| `diagrams/v4-*.puml`, `.png`, `.svg` | v4 PlantUML source and renders. |
+| `review-artifacts/v4-rag-extraction-and-source-map.*` | Extraction evidence and source map. |
 
 ## ADR index
 
-The package inherits ADR-001 through ADR-014 from v2 and updates/extends the CXL and publication-facing layers:
+ADR-001 through ADR-017 are inherited from v3 with v4 notes appended where lower-layer behavior changes. New v4 ADRs are:
 
-| ADR | Title | v3 disposition |
+| ADR | Title | Decision summary |
 | --- | --- | --- |
-| ADR-001 | Inference Storage Principles and SLOs | Inherited; v3 report reiterates TTFT/TPOT/cache locality training framing. |
-| ADR-002 | Hot KV and Prefix Cache Data Plane | Inherited with v3 note: CXL KV research is hidden behind Coherence-CE. |
-| ADR-003 | Model Weight, Object, and Corpus Data Tiers | Inherited. |
-| ADR-004 | RDMA Fabric and GPU-Direct Data Paths | Inherited with v3 note: DPU/STX/Xsight/Broadcom are evidence-classified before claims. |
-| ADR-005 | DPU and SmartNIC Offload Boundaries | Inherited; v3 report reinforces DPU hardware as required for storage-network offload. |
-| ADR-006 | OpenZFS, NVMe-oF, and Media Layout | Inherited; v3 keeps OpenZFS durability below Coherence-CE. |
-| ADR-007 | Inference Scheduler Locality and Admission Control | Inherited; v3 adds audience-level scheduler admission teaching path. |
-| ADR-008 | RAG Vector Index and Corpus Service | Inherited. |
-| ADR-009 | Observability, Benchmarking, and Rollout Gates | Inherited; v3 adds training-readiness and claim-evidence validation. |
-| ADR-010 | Coherence-CE Write Policy to OpenZFS | Inherited. |
-| ADR-011 | KV Durability Classes | Inherited. |
-| ADR-012 | Coherence-CE vLLM Adapter API Contract | Inherited; no actor-visible CXL/DPU/OpenZFS leakage. |
-| ADR-013 | Failure Semantics and Fencing | Inherited; v3 emphasizes CXL fabric manager and metadata-pipeline failure modes. |
-| ADR-014 | Coherence Metrics to Scheduler Admission | Inherited. |
-| ADR-015 | CXL Memory Tiering and OpenZFS Interaction | Revised for v3 research and roadmap tiers. |
-| ADR-016 | Roadmap Evidence and Public Claim Guardrails | New. |
-| ADR-017 | Research Metadata and arXiv Publication Workflow | New. |
+| ADR-018 | UA-Link Pod-Scale Fabric and Compute Domains | Treat UA-Link as a pod/rack-scale accelerator scale-up fabric below Coherence-CE and scheduler policy, not as an actor-visible API. |
+| ADR-019 | Pod-Scale Network Architecture and RDMA/RoCEv2 Tuning | Define separate UA-Link, scale-out RDMA, storage/NVMe-oF, management, and timing planes with explicit RoCEv2 tuning gates. |
+| ADR-020 | CXL Memory Pools for UA-Link Pods | Govern CXL memory pools as T1/T1.5 warm memory behind Coherence-CE with fabric-manager, ownership, latency, and failure evidence. |
+| ADR-021 | Heterogeneous GP-GPU Compute and Scheduler Governance | Admit NVIDIA, AMD, Intel, DPU/IPU, FPGA/NPU, and edge accelerators through capability profiles, not vendor assumptions. |
 
-### Context Driven Decision-Paths Matrix
-Oh look, a visualization... everyone likes images. Spatial concepts in visual format can be helpful. Make good choices.
+## arXiv S3 tooling
 
-- ![Coherent Storage - Data Paths](diagrams/v3-coherence-ce-data-path.svg)
+Credential-safe requester-pays S3 tools were added at:
 
-- ![Coherent Storage - Provides Multi-Faceted Workload Acceleration](review-artifacts/architecture-framework-standards-choice-workflow-2026-05-15-print-section-04-validation-output.svg)
+`src/RAG-Scripts/arxiv-s3/`
 
-## RAG evidence basis
+They support manifest fetch, manifest indexing, full/targeted/monthly download planning, raw tar retention, full explosion of PDF/source tar chunks, PDF text extraction, and validation reporting. Downloading waits on AWS requester-pays credentials and AWS CLI installation.
 
-Primary RAG addenda used by v3:
+## Public claim guardrail
 
-- `~/src/RAG-DATA/ARCHIVE-ADD-Marvell-XConn-CXL-DPU-RDMA-NVMeoF-2026-05-15.json`
-- `~/src/RAG-DATA/ARCHIVE-ADD-Strategic-Partnerships-CXL-AI-Storage-2026-05-15.json`
-- `~/src/RAG-DATA/ARCHIVE-ADD-V3-Arxiv-CXL-KV-Storage-Latest-2026-05-15.json`
-- `~/src/RAG-DATA/STRATEGIC-PARTNERSHIP-EVIDENCE-MATRIX-CXL-AI-STORAGE-2026-05-15.md`
+UA-Link, CXL, RoCEv2, DPU, and heterogeneous GPU claims must use the v3/v4 evidence-grade rule:
 
-Important guardrail: v3 distinguishes direct Marvell/XConn CXL evidence from adjacent NVIDIA BlueField/STX, Xsight, Broadcom, Pure Storage, Dell/HPE, IBM, Oracle/OCI, and OpenZFS evidence. Adjacent evidence may inform architecture, but must not be promoted to a direct partnership/integration claim without a direct source.
-
-## arXiv readiness boundary
-
-The LaTeX/BibTeX files are source-ready drafts, not a completed arXiv submission. This host has `bibtex` and `plantuml`, but no `pdflatex`, `latexmk`, or `tectonic`; PDF compilation was therefore not performed locally. The package includes an arXiv submission checklist and keeps diagrams as PNG/SVG plus PlantUML source.
+- Direct: source explicitly states the relationship or capability.
+- Adjacent: relevant to architecture but not proof of a named integration.
+- Negative-control: retained to prevent overclaiming.
+- Not found in current sweep: searched but no direct source-backed mention found.
