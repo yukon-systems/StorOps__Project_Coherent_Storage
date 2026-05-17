@@ -67,14 +67,21 @@ The package inherits ADR-001 through ADR-014 from v2 and updates/extends the CXL
 | ADR-016 | Roadmap Evidence and Public Claim Guardrails | New. |
 | ADR-017 | Research Metadata and arXiv Publication Workflow | New. |
 
+### Context Driven Decision-Paths Matrix
+Oh look, a visualization... everyone likes images. Spatial concepts in visual format can be helpful. Make good choices.
+
+- ![Coherent Storage - Data Paths](diagrams/v3-coherence-ce-data-path.svg)
+
+- ![Coherent Storage - Provides Multi-Faceted Workload Acceleration](review-artifacts/architecture-framework-standards-choice-workflow-2026-05-15-print-section-04-validation-output.svg)
+
 ## RAG evidence basis
 
 Primary RAG addenda used by v3:
 
-- `/home/cdex-routeros/src/RAG-DATA/ARCHIVE-ADD-Marvell-XConn-CXL-DPU-RDMA-NVMeoF-2026-05-15.json`
-- `/home/cdex-routeros/src/RAG-DATA/ARCHIVE-ADD-Strategic-Partnerships-CXL-AI-Storage-2026-05-15.json`
-- `/home/cdex-routeros/src/RAG-DATA/ARCHIVE-ADD-V3-Arxiv-CXL-KV-Storage-Latest-2026-05-15.json`
-- `/home/cdex-routeros/src/RAG-DATA/STRATEGIC-PARTNERSHIP-EVIDENCE-MATRIX-CXL-AI-STORAGE-2026-05-15.md`
+- `~/src/RAG-DATA/ARCHIVE-ADD-Marvell-XConn-CXL-DPU-RDMA-NVMeoF-2026-05-15.json`
+- `~/src/RAG-DATA/ARCHIVE-ADD-Strategic-Partnerships-CXL-AI-Storage-2026-05-15.json`
+- `~/src/RAG-DATA/ARCHIVE-ADD-V3-Arxiv-CXL-KV-Storage-Latest-2026-05-15.json`
+- `~/src/RAG-DATA/STRATEGIC-PARTNERSHIP-EVIDENCE-MATRIX-CXL-AI-STORAGE-2026-05-15.md`
 
 Important guardrail: v3 distinguishes direct Marvell/XConn CXL evidence from adjacent NVIDIA BlueField/STX, Xsight, Broadcom, Pure Storage, Dell/HPE, IBM, Oracle/OCI, and OpenZFS evidence. Adjacent evidence may inform architecture, but must not be promoted to a direct partnership/integration claim without a direct source.
 
