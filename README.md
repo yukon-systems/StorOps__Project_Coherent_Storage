@@ -11,15 +11,13 @@
 
 This v3 package updates the Project Coherent Storage ADR set after the May 15, 2026 Marvell/XConn/CXL/DPU/RDMA/NVMe-oF/AI-storage RAG refresh. It preserves the v2 architectural baseline while adding:
 
-1. a tiered **Rapid Awareness Training Session** report for Executive Summary, Director Review, and Technical Engineering / Architecture Review Board audiences;
-2. updated ADR guidance for CXL roadmap evidence, CXL-enabled KV-cache research, DPU/protocol-offload storage paths, and public-claim guardrails;
+1. A tiered **Rapid Awareness Training Session** report for Executive Summary, Director Review, and Technical Engineering / Architecture Review Board audiences;
+2. Updated ADR guidance for CXL roadmap evidence, CXL-enabled KV-cache research, DPU/protocol-offload storage paths, and public-claim guardrails;
 3. PlantUML diagrams for audience tiering, data path, CXL decision flow, and arXiv/RAG metadata ingestion;
-4. arXiv-ready source files in Markdown, LaTeX, and BibTeX; and
-5. an explicit research-metadata workflow for arXiv API/bulk-data usage, including current API rate-limit evidence captured during this run.
+4. ArXiv-ready source files in Markdown, LaTeX, and BibTeX; and
+5. An explicit research-metadata workflow for arXiv API/bulk-data usage, including current API rate-limit evidence captured during this run.
 
-The v3 package intentionally uses the user-requested hyphenated package name, while v0-v2 remain under their original dotted names.
-
-## What changed from v2
+## Iterative Improvements 
 
 | Area | v2 position | v3 update |
 | --- | --- | --- |
@@ -29,6 +27,9 @@ The v3 package intentionally uses the user-requested hyphenated package name, wh
 | Public claims | v2 cited RAG sources but did not classify partnership directness in training form | v3 introduces evidence-grade guardrails: direct, adjacent, negative-control, and not-found-in-current-sweep. |
 | Research publication | Markdown ADR package only | Adds arXiv-oriented `latex/project-coherent-storage-v3.tex`, `latex/references.bib`, and `latex/README-arxiv-submission.md`. |
 | Metadata refresh | RAG source manifests | Adds `research/arxiv-cxl-dpu-storage-metadata-2026-05-15.*`; arXiv API attempts were rate-limited and documented. |
+
+- TODO: Update ArXiv repo sync workflow for SLURM, switch to s3cli bucket deltas for worker pool.
+- TODO: Enable lsyncd from non-cluster nodes, sync (unidirectional) ad-hoc research docs to pipeline ionotify process.
 
 ## Document index
 
