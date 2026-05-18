@@ -16,6 +16,9 @@
 - **Automation:** Tracked workflows, machine profiles, neteng scopes, etc located in _'Infra-Stage4-LLVM-NoGNU'_ repository.
 - **Status:** Proposed / Review
 
+## Visualized High-Level Architecture Scope
+![Top-down Project Coherent Storage stack](../diagrams/project-coherent-storage_engineering-deep-dive-stack.png)
+
 ## Purpose
 
 This package refreshes the ADR set using the expanded RAG corpus and the project directives. It keeps the core invariant: inference actors connect to the Coherence-CE Memory Mesh and never bind directly to OpenZFS, DPU, RoCEv2, NVMe-oF, CXL, UA-Link, VLANs, RDMA memory handles, or physical storage internals.
