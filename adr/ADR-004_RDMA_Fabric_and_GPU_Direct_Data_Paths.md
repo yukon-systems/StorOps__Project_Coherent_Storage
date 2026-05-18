@@ -6,6 +6,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
+## Architecture diagram
+
+![ADR-004_RDMA_Fabric_and_GPU_Direct_Data_Paths](diagrams/ADR-004_RDMA_Fabric_and_GPU_Direct_Data_Paths.png)
+
 ## Decision summary
 
 Treat the RoCEv2 fabric as an inference data plane with isolated traffic classes, rack/rail locality, adaptive multipath, receiver-aware admission, and GPU-direct capable storage reads where the hardware and runtime are qualified.

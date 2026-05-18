@@ -5,6 +5,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-17
 
+## Architecture diagram
+
+![ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance](diagrams/ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.png)
+
 ## Decision summary
 
 Admit heterogeneous general-purpose GPU and accelerator resources through capability profiles. The scheduler must reason about GPU vendor/runtime, HBM capacity, collective library, RDMA memory semantics, UA-Link or vendor scale-up topology, CXL pool locality, DPU/NIC proximity, power/cooling headroom, and failure domain.

@@ -6,6 +6,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
+## Architecture diagram
+
+![ADR-006_OpenZFS_NVMe_oF_and_Media_Layout](diagrams/ADR-006_OpenZFS_NVMe_oF_and_Media_Layout.png)
+
 ## Decision summary
 
 Use OpenZFS and NVMe-oF cross-node mirrored NAND as the core durable block-storage foundation, while tuning pool layout, media classes, zvol/dataset use, and replication around inference read latency, write endurance, cache rebuild behavior, and clear separation from active decode KV synchronization.

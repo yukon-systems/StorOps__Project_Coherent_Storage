@@ -1,4 +1,4 @@
-# Architecture Report: UA-Link Pod-Scale Systems, CXL Memory Pools, RDMA/RoCEv2, and Heterogeneous GP-GPU Compute
+# Project Coherent Storage: Architecture Report
 
 **Project:** Project Coherent Storage  
 **Architecture cycle:** 2026-Q2  

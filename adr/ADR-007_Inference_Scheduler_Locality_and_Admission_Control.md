@@ -6,6 +6,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
+## Architecture diagram
+
+![ADR-007_Inference_Scheduler_Locality_and_Admission_Control](diagrams/ADR-007_Inference_Scheduler_Locality_and_Admission_Control.png)
+
 ## Decision summary
 
 Make the inference scheduler storage-aware through service-level signals. Admission and placement must consider model residency, Coherence-CE KV/prefix locality, RAG index locality, fabric/storage health, accelerator memory pressure, and request SLO class before work is accepted, without requiring inference runtimes to know lower storage layers.

@@ -6,6 +6,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
+## Architecture diagram
+
+![ADR-008_RAG_Vector_Index_and_Corpus_Service](diagrams/ADR-008_RAG_Vector_Index_and_Corpus_Service.png)
+
 ## Decision summary
 
 Make RAG corpus, embedding, vector-index, retrieval-result, and chunk-hydration storage first-class services. Store source chunks and derived indexes as immutable versioned artifacts, keep hot index heads and high-value shards close to inference workers, and gate production use on both latency and recall quality.

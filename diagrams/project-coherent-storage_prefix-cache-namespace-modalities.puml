@@ -1,0 +1,43 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+title Project Coherent Storage - Prefix-Cache Namespace Modalities
+start
+:Client or adapter submits prefix-cache request;
+if (operation is exact put/get/delete?) then (yes)
+  if (prefix_id present?) then (yes)
+    :Continue;
+  else (no)
+    :Reject 400 invalid_identity;
+    stop
+  endif
+else (search/invalidate)
+  :Require request body with search vector, identity,\nor bounded invalidation predicate;
+endif
+if (mode == unified?) then (Unified Namespace)
+  :Use /prefix-cache/unified/{namespace}/prefixes/{prefix_id}\nfor exact operations;
+  :Search/invalidate at unified search or invalidate route;
+  :Coherence-CE hides region/datacenter/mesh routing;
+elseif (mode == dimensional_indexed?) then (Dimensional Indexed Namespace)
+  :Require index_id and authorized dimensions;
+  :Use /prefix-cache/dimensional/{namespace}/indexes/{index_id}/prefixes/{prefix_id};
+  :Search/invalidate index-local first;
+  if (escalation authorized?) then (yes)
+    :Escalate to parent/region/global policy scope;
+  else (no)
+    :Return local hit/miss or bounded invalidation result;
+  endif
+else (legacy alias)
+  :Allow /prefix-cache/{namespace}/{prefix_id}\nonly as deprecated Unified Namespace alias;
+endif
+:Emit metrics by namespace_mode, namespace, index_id,\ncache_kind, locality_epoch, status;
+stop
+legend right
+Recommended dimensions:
+- tenant_id, region, datacenter, mesh_pool, pod, rack
+- model_id, tokenizer_id, adapter_id, runtime_profile_hash
+- durability_class, locality_epoch, data_class
+endlegend
+@enduml

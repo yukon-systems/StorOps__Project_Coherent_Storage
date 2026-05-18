@@ -1,0 +1,69 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #34495E
+skinparam activity {
+  BackgroundColor #FDFEFE
+  BorderColor #566573
+  DiamondBackgroundColor #FCF3CF
+  DiamondBorderColor #B7950B
+  StartColor #145A32
+  EndColor #922B21
+}
+skinparam note {
+  BackgroundColor #FEF9E7
+  BorderColor #B7950B
+}
+title ADR-022 - S3/Object REST Translator and Prefix-Cache Routes
+
+legend right
+Design defaults for diagrams unless an ADR narrows them:
+- Actor/API: HTTPS 443 or 8443; OpenAI-compatible API plus Coherence-native API.
+- RoCEv2: UDP destination 4791; jumbo MTU 9000; PFC only on RDMA priorities.
+- NVMe-oF: discovery/controller service on TCP/RDMA port 4420; DPU-mediated targets.
+- Telemetry: OTLP gRPC 4317, OTLP HTTP 4318, Prometheus 9090/9100, gNMI 9339.
+- Timing: PTP event/general UDP 319/320 on an isolated timing/management class.
+- VLAN plan: site-specific IDs are allowed, but classes must stay isolated:
+  mgmt/OOB, frontend/API, RDMA rail-A, RDMA rail-B, storage/NVMe-oF, telemetry, timing.
+- Trunks: 802.1Q tagged uplinks; rail-A and rail-B must not share a failure domain.
+- Buffers: kv_hbm_active, kv_dram_warm, kv_cxl_warm, kv_rdma_staging,
+  zfs_slog, zfs_arc, zfs_l2arc, object_cache, vector_head_cache.
+endlegend
+
+start
+partition "Ingress protocols" {
+  :S3 client calls s3_net_service\nHTTP 8080 S3 object protocol;
+  :REST client calls rest_net_service\nHTTP 8000 JSON/binary REST;
+}
+partition "Translation layer" {
+  if (S3 request?) then (yes)
+    :meta_translate_service normalizes\nmethod, bucket, key, query, headers;
+    if (bucket maps to prefix-cache?) then (prefix)
+      :Resolve namespace_mode, namespace,\noptional index_id, and prefix_id by policy;
+    else (object)
+      :Map to /objects/{bucket}/{key};
+    endif
+  else (REST native)
+    :Validate route against OpenAPI contract;
+  endif
+}
+partition "Prefix-cache contract" {
+  if (exact put/get/delete?) then (exact)
+    if (prefix_id present?) then (valid)
+      :Route to /prefix-cache/{mode}/.../prefixes/{prefix_id};
+    else (invalid)
+      :Reject keyless exact operation\n400 invalid_identity;
+      stop
+    endif
+  else (collection)
+    :Search or invalidate requires explicit body\nand bounded predicate/escalation policy;
+  endif
+}
+partition "Backend adapters" {
+  :Use replaceable object, KV, vector,\nprefix-cache, and metadata adapters;
+  :Emit metrics by operation, namespace_mode,\nindex_id, cache hit/miss, latency, error;
+}
+stop
+@enduml

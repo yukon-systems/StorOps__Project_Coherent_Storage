@@ -6,6 +6,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
+## Architecture diagram
+
+![ADR-003_Model_Weight_Object_and_Corpus_Data_Tiers](diagrams/ADR-003_Model_Weight_Object_and_Corpus_Data_Tiers.png)
+
 ## Decision summary
 
 Use immutable, versioned, content-addressed object/file tiers for model weights, tokenizers, adapters, RAG corpus chunks, generated artifacts, and checkpoints, with RDMA-first delivery paths where supported and POSIX/object compatibility where required.

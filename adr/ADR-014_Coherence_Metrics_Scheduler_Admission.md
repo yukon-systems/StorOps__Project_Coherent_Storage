@@ -6,6 +6,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
+## Architecture diagram
+
+![ADR-014_Coherence_Metrics_Scheduler_Admission](diagrams/ADR-014_Coherence_Metrics_Scheduler_Admission.png)
+
 ## Decision summary
 
 Roll Coherence-CE metrics into scheduler admission through a normalized health and locality summary. The scheduler consumes Coherence-owned service signals, not raw vLLM guesses and not lower-layer storage/fabric internals. Admission states are GREEN, AMBER, RED, and DRAIN by model, tenant, durability class, prefix shard, locality scope, and time window.

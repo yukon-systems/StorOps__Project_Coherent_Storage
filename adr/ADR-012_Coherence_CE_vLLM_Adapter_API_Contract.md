@@ -6,6 +6,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
+## Architecture diagram
+
+![ADR-012_Coherence_CE_vLLM_Adapter_API_Contract](diagrams/ADR-012_Coherence_CE_vLLM_Adapter_API_Contract.png)
+
 ## Decision summary
 
 Expose an exact Coherence-CE API contract to vLLM adapters and OpenAI-compatible gateways. vLLM and peer inference actors call Coherence-CE only. They receive hit/miss/payload/durability/admission semantics and never receive lower-layer storage, DPU, NVMe-oF, RoCEv2, or RDMA configuration.
@@ -24,6 +28,7 @@ The key boundary is architectural: inference clients can know that Coherence-CE 
 - Allow OpenAI-compatible requests to carry Coherence hints only as opaque metadata or headers that do not expose lower-layer internals.
 - Require vLLM adapters to configure only Coherence-CE endpoint, credentials, model/runtime profile, timeout, and default durability class.
 - Define all adapter-visible errors as API-layer reasons: `miss`, `stale`, `incompatible_profile`, `durability_unavailable`, `admission_rejected`, `quota_exceeded`, `mesh_degraded`, or `timeout`.
+- Carry namespace modality as a logical Coherence-CE descriptor only: `unified` or `dimensional_indexed`. The descriptor may include `namespace`, `index_id`, and dimensions, but must never expose lower-layer storage or fabric identifiers.
 - Publish the OpenAPI 3.1 contract in `api/coherence-ce-vllm-adapter.openapi.yaml`.
 
 ## OpenAI-compatible inference plane
@@ -76,6 +81,21 @@ Every lookup and publish must include a compatible KV identity:
 | `prefix_hash` | Hash of normalized token prefix plus policy salt. |
 | `block_range` | Logical block range or block index. |
 | `placement_epoch` | Optional epoch; required for extendable/session state. |
+| `namespace_descriptor.mode` | `unified` or `dimensional_indexed`; defaults to `unified` when absent by policy. |
+| `namespace_descriptor.namespace` | Logical Coherence-CE namespace. |
+| `namespace_descriptor.index_id` | Required for dimensional indexed operations; not a physical path, DPU, RDMA, VLAN, CXL, or zpool identifier. |
+| `namespace_descriptor.dimensions` | Optional tenant, region, datacenter, mesh pool, pod, model/runtime, durability, data-class, and locality-epoch dimensions. |
+
+## Namespace modality contract
+
+ADR-023 defines the two namespace modalities used by Coherence-CE and the S3/Object REST translator. The vLLM adapter contract exposes only the logical descriptor:
+
+| Modality | Adapter-visible meaning | Lower-layer exposure |
+| --- | --- | --- |
+| `unified` | One logical namespace; Coherence-CE hides locality and routing. | None. |
+| `dimensional_indexed` | Namespace plus `index_id` and declared dimensions for locality-aware lookup/admission. | None. |
+
+The adapter may request a namespace descriptor to preserve cache locality, but Coherence-CE remains authoritative. Policy may rewrite, reject, drain, or degrade a descriptor when telemetry, durability, tenant isolation, or failure semantics require it.
 
 ## Response contract
 
@@ -93,7 +113,9 @@ Payload references are Coherence-CE references. They are not OpenZFS paths, NVMe
 
 ## S3-object-style translation
 
-Coherence-CE may expose an S3-object-style REST translation for runtimes that prefer object payload flows. This translation remains a Coherence-CE API. Object keys are logical Coherence object IDs, not filesystem paths or block-device identifiers. The translation must preserve the same identity, durability, authorization, and audit semantics as the native KV endpoints.
+Coherence-CE may expose an S3-object-style REST translation for runtimes that prefer object payload flows. This translation remains a Coherence-CE API. Object keys are logical Coherence object IDs, not filesystem paths or block-device identifiers. The translation must preserve the same identity, namespace modality, durability, authorization, and audit semantics as the native KV endpoints.
+
+The translator API must not offer ambiguous keyless exact prefix-cache operations. Exact put/get/delete operations require `prefix_id`; search and predicate invalidation use collection routes with request bodies.
 
 ## Error semantics
 
@@ -128,6 +150,7 @@ Coherence-CE may expose an S3-object-style REST translation for runtimes that pr
 ## Acceptance criteria
 
 - `api/coherence-ce-vllm-adapter.openapi.yaml` parses as OpenAPI 3.1 YAML.
+- KV identity and context schemas include a logical namespace descriptor for Unified Namespace and Dimensional Indexed Namespace operation.
 - vLLM adapter setup requires only Coherence-CE endpoint/protocol credentials and runtime profile.
 - OpenAI-compatible Chat/Responses requests can pass optional Coherence hints without changing standard response shape.
 - Lower-layer storage/fabric/offload identifiers are absent from request and response schemas.

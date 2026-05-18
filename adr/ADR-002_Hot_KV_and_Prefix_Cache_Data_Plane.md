@@ -6,6 +6,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
+## Architecture diagram
+
+![ADR-002_Hot_KV_and_Prefix_Cache_Data_Plane](diagrams/ADR-002_Hot_KV_and_Prefix_Cache_Data_Plane.png)
+
 ## Decision summary
 
 Make Coherence-CE Memory Mesh the exclusive KV/prefix-cache data-plane boundary for LLM inference actors. vLLM and peer runtimes connect only to Coherence-CE supported APIs; Coherence-CE is backed by the coherent NAND block substrate: OpenZFS/NVMe-oF with DPU-handled RoCEv2 and cross-node mirrored vdevs where qualified.

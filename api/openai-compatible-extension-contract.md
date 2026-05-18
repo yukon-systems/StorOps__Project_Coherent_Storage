@@ -28,6 +28,9 @@ OpenAI-compatible callers may provide optional hints in metadata or headers. The
 | `metadata.coherence.session_id` | `agent-run-2026-05-13-001` | Bind request to KV-D4 session context when tenant policy allows. |
 | `metadata.coherence.durability_class` | `KV-D2` | Request a class; Coherence-CE may downgrade, reject, or override by policy. |
 | `metadata.coherence.prefix_policy` | `reuse_preferred` | Hint for lookup/publish behavior. |
+| `metadata.coherence.namespace_mode` | `unified` or `dimensional_indexed` | Logical namespace modality request; Coherence-CE remains authoritative. |
+| `metadata.coherence.namespace` | `tenant-a.model-x` | Logical namespace, never a physical storage or fabric identifier. |
+| `metadata.coherence.index_id` | `region-usw2.dc-a.pod-07.epoch-42` | Optional dimensional index token for locality-aware cache routing; policy may reject or rewrite it. |
 | `metadata.coherence.trace_id` | `trace-01HX...` | Correlate gateway, scheduler, Coherence, and runtime logs. |
 | `Idempotency-Key` | opaque UUID | Deduplicate gateway-mediated publishes or retries. |
 | tenant/project header | deployment-specific | Select tenant policy and quota. |
@@ -49,7 +52,8 @@ OpenAI-compatible clients, vLLM adapters, and peer inference actors must not sen
 - QAT device, driver, firmware, PF/VF, service, rate-limit, reset, or fallback selectors;
 - CXL device, pool, switch, root-complex, bifurcation, fabric-manager, hotness, or migration selectors;
 - RoCEv2, RDMA, rkey, memory-region, queue-pair, completion-queue, PFC, ECN, CNP, or rail selectors;
-- rack power, PSU, ESS, timing, or management-channel override fields.
+- rack power, PSU, ESS, timing, or management-channel override fields;
+- physical or lower-layer namespace selectors disguised as Coherence namespace values.
 
 Those signals are owned by Coherence-CE, storage services, fabric services, platform services, and scheduler admission. The inference client sees only policy-level acceptance, rejection, recompute, queue, throttle, or degraded results.
 
@@ -57,7 +61,7 @@ Those signals are owned by Coherence-CE, storage services, fabric services, plat
 
 1. Accept standard OpenAI-compatible request.
 2. Extract allowed metadata and headers.
-3. Resolve tenant/model/runtime policy.
+3. Resolve tenant/model/runtime policy and namespace modality.
 4. Ask Coherence-CE for admission and prefix lookup when applicable.
 5. Route to vLLM or peer runtime with only Coherence-CE endpoint/protocol credentials and runtime profile.
 6. Publish reusable KV/prefix state back through Coherence-CE when runtime policy allows.
@@ -82,7 +86,7 @@ Adapter configuration contains:
 - runtime profile and layout version;
 - default durability class or tenant policy reference.
 
-Adapter configuration does not contain OpenZFS, NVMe-oF, DPU, QAT, CXL, RoCEv2, or RDMA configuration.
+Adapter configuration does not contain OpenZFS, NVMe-oF, DPU, QAT, CXL, RoCEv2, or RDMA configuration. Namespace modality is represented only as a logical Coherence-CE descriptor, aligned with ADR-023.
 
 ## Error mapping
 
@@ -108,4 +112,5 @@ OpenAI-compatible endpoints are compatibility surfaces, not storage-control surf
 - ADR-005: DPU, SmartNIC, and QAT offload boundaries.
 - ADR-012: Coherence-CE vLLM Adapter API Contract.
 - ADR-014: Coherence Metrics to Scheduler Admission.
+- ADR-023: Coherence-CE Namespace Modalities.
 - R251/R252: BMRA/QAT host accelerator evidence used only below the Coherence-CE contract.

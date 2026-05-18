@@ -5,6 +5,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-17
 
+## Architecture diagram
+
+![ADR-018_UALink_Pod_Scale_Fabric_and_Compute_Domains](diagrams/ADR-018_UALink_Pod_Scale_Fabric_and_Compute_Domains.png)
+
 ## Decision summary
 
 Adopt UA-Link as a governed candidate for pod/rack-scale accelerator scale-up domains. UA-Link is a lower-layer accelerator fabric and must remain hidden behind Coherence-CE and scheduler policy. It does not replace RoCEv2/RDMA scale-out, DPU-mediated NVMe-oF storage, OpenZFS durability, or the Coherence-CE API contract.
