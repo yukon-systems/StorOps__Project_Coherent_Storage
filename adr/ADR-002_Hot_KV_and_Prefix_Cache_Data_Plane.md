@@ -1,8 +1,8 @@
 # ADR-002: Hot KV and Prefix Cache Data Plane
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2  
-**Package:** v2 inference persistence and API ADR set, RAG refresh 2026-05-13  
+**Architecture cycle:** 2026-Q2  
+**Package:** Inference persistence and API ADR set, RAG refresh 2026-05-13  
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
@@ -12,7 +12,7 @@ Make Coherence-CE Memory Mesh the exclusive KV/prefix-cache data-plane boundary 
 
 ## Context
 
-The v0 package defined Mode K as an optional prefix-cache/KV workload tier and treated cross-node ZFS mirroring as experimental Mode X. The refresh corrects that maturity split: cross-node mirrored ZFS/NVMe-oF is a core requirement for the underlying coherent NAND block-storage tier, while Coherence-CE Memory Mesh is the service boundary above it. The RAG corpus reinforces that KV cache is not an ordinary file or block workload. It is request-shaped, model-versioned, token-position-sensitive, eviction-prone, and tightly coupled to LLM schedulers.
+The baseline package defined Mode K as an optional prefix-cache/KV workload tier and treated cross-node ZFS mirroring as experimental Mode X. The refresh corrects that maturity split: cross-node mirrored ZFS/NVMe-oF is a core requirement for the underlying coherent NAND block-storage tier, while Coherence-CE Memory Mesh is the service boundary above it. The RAG corpus reinforces that KV cache is not an ordinary file or block workload. It is request-shaped, model-versioned, token-position-sensitive, eviction-prone, and tightly coupled to LLM schedulers.
 
 vLLM-style serving systems manage KV cache as paged blocks with block tables, sharing, preemption, and dynamic growth, but in this architecture they must not learn OpenZFS pools, DPU services, NVMe-oF namespaces, RoCEv2 classes, or RDMA memory details. They call Coherence-CE Memory Mesh through supported inference-facing APIs, including native REST, S3-object-style REST translation, or other approved destination protocols. Coherence-CE owns placement, hydration, replica selection, protocol translation, and persistence into the storage substrate. The OCP inference fabric profile reinforces that Coherence-CE mesh traffic, model-load traffic, storage-backend traffic, and background work must be isolated rather than treated as one converged flow.
 
@@ -20,7 +20,7 @@ vLLM-style serving systems manage KV cache as paged blocks with block tables, sh
 
 - Promote Coherence-CE Memory Mesh to the default active inference KV/prefix-cache service.
 - Require every KV-cache client, including vLLM and peer runtimes, to connect to Coherence-CE only; clients must not bind to OpenZFS, DPU, NVMe-oF, RoCEv2, RDMA memory, or block-storage implementation details.
-- Promote v0 Mode X terminology into a core gated coherent NAND block-storage requirement: cross-node ZFS mirrored vdevs over NVMe-oF/RDMA provide the durable block substrate below Coherence-CE after node-loss, fabric-loss, import, checksum, latency, and resilver gates pass.
+- Promote baseline Mode X terminology into a core gated coherent NAND block-storage requirement: cross-node ZFS mirrored vdevs over NVMe-oF/RDMA provide the durable block substrate below Coherence-CE after node-loss, fabric-loss, import, checksum, latency, and resilver gates pass.
 - Store hot prefix/KV entries in Coherence-CE with identity fields for model, tokenizer, adapter, quantization profile, prompt-prefix hash, layer/head/block metadata, and data-layout version.
 - Keep authoritative KV placement, replica state, API translation, hydration policy, and backing-store binding inside Coherence-CE. Do not use Redis alone as durable authority.
 - Replicate hot KV entries at the Coherence-CE mesh layer across failure domains. The default policy is one primary plus one secondary; higher replication is workload-specific.
@@ -109,8 +109,8 @@ vLLM-style serving systems manage KV cache as paged blocks with block tables, sh
 | R15 | RDMA protocol choices for data exchange and memory management. |
 | R34, R37 | OCP inference/training fabric profiles supporting separation of KV, model, storage, gateway, and background traffic. |
 
-## v3 research update: CXL-backed KV remains Coherence-owned
+## Research update: CXL-backed KV remains Coherence-owned
 
-The v3 RAG refresh added CXL KV-cache research, including CXL-enabled processing-near-memory for 1M-token inference and rack-scale CXL shared-memory KV cache designs. These sources strengthen the case for CXL as a warm KV/prefix staging and memory-pressure relief tier, but they do **not** change the actor-facing contract: vLLM and peer inference runtimes continue to call Coherence-CE only. Coherence-CE owns any mapping to GPU HBM, host DRAM, CXL T1/T1.5, RDMA object paths, or OpenZFS-backed durability.
+The RAG refresh added CXL KV-cache research, including CXL-enabled processing-near-memory for 1M-token inference and rack-scale CXL shared-memory KV cache designs. These sources strengthen the case for CXL as a warm KV/prefix staging and memory-pressure relief tier, but they do **not** change the actor-facing contract: vLLM and peer inference runtimes continue to call Coherence-CE only. Coherence-CE owns any mapping to GPU HBM, host DRAM, CXL T1/T1.5, RDMA object paths, or OpenZFS-backed durability.
 
 Acceptance addition: no vLLM adapter field, OpenAI-compatible extension, or scheduler request may expose CXL device identifiers, OpenZFS vdevs, RDMA QPs, DPU queues, or NVMe-oF namespace details as required API inputs.

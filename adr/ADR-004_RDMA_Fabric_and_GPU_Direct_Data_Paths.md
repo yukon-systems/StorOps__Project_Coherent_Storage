@@ -1,8 +1,8 @@
 # ADR-004: RDMA Fabric and GPU-Direct Data Paths
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2  
-**Package:** v2 inference persistence and API ADR set, RAG refresh 2026-05-13  
+**Architecture cycle:** 2026-Q2  
+**Package:** Inference persistence and API ADR set, RAG refresh 2026-05-13  
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
@@ -12,13 +12,13 @@ Treat the RoCEv2 fabric as an inference data plane with isolated traffic classes
 
 ## Context
 
-The v0 fabric decision established dual independent lossless RoCEv2 fabrics with PFC, ECN/DCQCN, jumbo MTU, and telemetry gates. The research corpus shows that large AI fabrics require more than enabling RoCE. PFC can create head-of-line blocking, DCQCN is workload-sensitive, ECMP can underuse path diversity, AI workloads create elephant flows and incast-like bursts, and GPU-directed or GPU-initiated communication is increasingly important.
+The baseline fabric decision established dual independent lossless RoCEv2 fabrics with PFC, ECN/DCQCN, jumbo MTU, and telemetry gates. The research corpus shows that large AI fabrics require more than enabling RoCE. PFC can create head-of-line blocking, DCQCN is workload-sensitive, ECMP can underuse path diversity, AI workloads create elephant flows and incast-like bursts, and GPU-directed or GPU-initiated communication is increasingly important.
 
 Inference storage has multiple traffic shapes that should not all share one priority: Coherence-CE mesh/client API calls, Coherence-CE mesh-to-storage hydration/persistence, large model loads, vector index reads, corpus chunk reads, checkpoints, logs, and control-plane operations. The 2026 OCP inference and training fabric RAs add concrete cluster profiles, SONiC lifecycle expectations, rail-optimized topology, RoCE-oriented QoS, and Day-2 observability. OCP MRC also introduces a candidate multipath reliable transport model, while OCS is a future fabric option for lower power, jitter, and reconfiguration rather than a default data path.
 
 ## Decision
 
-- Preserve v0 Fabric A/B physical independence and RDMA validation gates.
+- Preserve baseline Fabric A/B physical independence and RDMA validation gates.
 - Add inference traffic classes and admission policies for KV hydration, model/object loads, RAG/vector reads, checkpoint/artifact I/O, accelerator collectives, and control traffic.
 - Use PFC only on approved lossless RDMA priorities. Do not make the whole fabric lossless.
 - Use ECN/CNP telemetry and switch/NIC counters as rollout gates, but do not assume DCQCN tuning alone will solve all AI traffic patterns.
@@ -98,12 +98,12 @@ Inference storage has multiple traffic shapes that should not all share one prio
 | R34, R37 | OCP inference and training fabric RAs: profiles, rail optimization, RoCE QoS, SONiC lifecycle, and observability. |
 | R38, R39 | OCS and MRC as future transport/reconfiguration candidates requiring explicit canary gates. |
 
-## v3 research update: adjacent accelerator-storage ecosystems
+## Research update: adjacent accelerator-storage ecosystems
 
-The v3 evidence set retains NVIDIA BlueField/STX, Xsight/Hammerspace, Broadcom CXL/PCIe retimer, Marvell NVMe-oF, and Pure/Marvell NVMe-oF/RoCE materials. These sources are useful for fabric, DPU, signal-integrity, and AI-storage roadmap analysis. They must not be promoted to direct Marvell/XConn+CXL integration claims unless a source explicitly states that relationship.
+The evidence set retains NVIDIA BlueField/STX, Xsight/Hammerspace, Broadcom CXL/PCIe retimer, Marvell NVMe-oF, and Pure/Marvell NVMe-oF/RoCE materials. These sources are useful for fabric, DPU, signal-integrity, and AI-storage roadmap analysis. They must not be promoted to direct Marvell/XConn+CXL integration claims unless a source explicitly states that relationship.
 
 Acceptance addition: architecture reports must classify each vendor or standard reference as direct, adjacent, negative-control, or not-found-in-current-sweep before using it as a public claim.
 
-## v4 update: pod-scale RoCEv2 tuning and traffic-plane separation
+## Pod-scale update: pod-scale RoCEv2 tuning and traffic-plane separation
 
-v4 refines the RDMA fabric decision by separating UA-Link scale-up, RoCEv2/RDMA scale-out, DPU-mediated storage/NVMe-oF, management, frontend, and timing planes. RoCEv2 is accepted only with explicit traffic classes, PFC scope, ECN/DCQCN thresholds, MTU/headroom verification, rail-aware placement, stale-telemetry demotion, and rollback profiles. OCP MRC and packet-spraying techniques are tracked as future multipath/RDMA options and must be locally qualified before production use.
+The pod-scale update refines the RDMA fabric decision by separating UA-Link scale-up, RoCEv2/RDMA scale-out, DPU-mediated storage/NVMe-oF, management, frontend, and timing planes. RoCEv2 is accepted only with explicit traffic classes, PFC scope, ECN/DCQCN thresholds, MTU/headroom verification, rail-aware placement, stale-telemetry demotion, and rollback profiles. OCP MRC and packet-spraying techniques are tracked as future multipath/RDMA options and must be locally qualified before production use.

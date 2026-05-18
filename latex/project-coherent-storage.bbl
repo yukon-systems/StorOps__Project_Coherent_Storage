@@ -1,0 +1,81 @@
+\begin{thebibliography}{10}
+
+\bibitem{marvellStructeraS2026}
+{Marvell Technology}.
+\newblock Marvell launches next-generation cxl switch, enabling memory pooling
+  to break through the ai memory wall, 2026.
+\newblock Archived in Project Coherent Storage RAG-DATA as
+  Marvell-Structera-S-CXL-Switch-Memory-Pooling-AI-Memory-Wall-Newsroom.2026.pdf.
+
+\bibitem{marvellXConnAcquire2026}
+{Marvell Technology}.
+\newblock Marvell to acquire xconn technologies, expanding leadership in ai
+  data center connectivity, 2026.
+
+\bibitem{xconnApollo22025}
+{XConn Technologies}.
+\newblock Xconn technologies unveils new apollo 2 hybrid switch compliant with
+  cxl 3.1 and pcie gen 6.2 standards, 2025.
+
+\bibitem{cxl31Support2024}
+{CXL Consortium}.
+\newblock Cxl 3.1 statement of support, 2024.
+
+\bibitem{cxl40Support2025}
+{CXL Consortium}.
+\newblock Cxl 4.0 statement of support, 2025.
+
+\bibitem{kimCXLPNM2025}
+Dowon Kim, MinJae Lee, Janghyeon Kim, HyuckSung Kwon, Hyeonggyu Jeong, Sang-Soo
+  Park, Minyong Yoon, Si-Dong Roh, Yongsuk Kwon, Jinin So, and Jungwook Choi.
+\newblock Scalable processing-near-memory for 1m-token llm inference:
+  Cxl-enabled kv-cache management beyond gpu limits, 2025.
+
+\bibitem{yoonTraCT2025}
+Dongha Yoon, Younghoon Min, Hoshik Kim, Sam~H. Noh, and Jongryool Kim.
+\newblock Tract: Disaggregated llm serving with cxl shared memory kv cache at
+  rack-scale, 2025.
+
+\bibitem{kwonCXLSSD2025}
+Miryeong Kwon, Donghyun Gouk, Junhyeok Jang, Jinwoo Baek, Hyunwoo You, Sangyoon
+  Ji, Hongjoo Jung, Junseok Moon, Seungkwan Kang, Seungjun Lee, and Myoungsoo
+  Jung.
+\newblock From block to byte: Transforming pcie ssds with cxl memory protocol
+  and instruction annotation, 2025.
+
+\bibitem{yangWIO2026}
+Yiwei Yang, Yanpeng Hu, Yusheng Zheng, Estabon Ramos, Jianchang Su, Andi Quinn,
+  and Wei Zhang.
+\newblock Wio: Upload-enabled computational storage on cxl ssds, 2026.
+
+\bibitem{nvidiaBlueFieldSTX2026}
+{NVIDIA}.
+\newblock Nvidia launches bluefield-4 stx storage architecture with broad
+  industry adoption, 2026.
+
+\bibitem{broadcomBCM85667}
+{Broadcom}.
+\newblock Bcm85667 pcie gen 6.2 and cxl 3.1 retimer product brief, 2025.
+
+\bibitem{xsightHammerspace2025}
+{Xsight Labs}.
+\newblock Hammerspace selects the xsight labs e1 800g dpu to enable a flattened
+  open network architecture for ai warm storage, 2025.
+
+\bibitem{arxivSubmitTex}
+{arXiv}.
+\newblock Submitting tex files, 2026.
+
+\bibitem{arxivReferencesFAQ}
+{arXiv}.
+\newblock Frequently asked questions about references, 2026.
+
+\bibitem{arxivPrep}
+{arXiv}.
+\newblock Preparing your article for submission to arxiv, 2026.
+
+\bibitem{arxivBulkData}
+{arXiv}.
+\newblock arxiv bulk data access, 2026.
+
+\end{thebibliography}

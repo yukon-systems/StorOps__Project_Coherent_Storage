@@ -1,8 +1,8 @@
 # ADR-003: Model Weight, Object, and Corpus Data Tiers
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2  
-**Package:** v2 inference persistence and API ADR set, RAG refresh 2026-05-13  
+**Architecture cycle:** 2026-Q2  
+**Package:** Inference persistence and API ADR set, RAG refresh 2026-05-13  
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
@@ -14,7 +14,7 @@ Use immutable, versioned, content-addressed object/file tiers for model weights,
 
 LLM serving systems need two storage personalities. The hot KV tier is request-shaped and latency critical. Model weights, adapters, tokenizers, RAG corpora, embeddings, and batch artifacts are different: they are large, versioned, often immutable, prefetchable, and must be reproducible. RDMA-first object storage and DPU-offloaded storage research show a practical direction: keep a small control plane for names, capabilities, and manifests, and move data through high-throughput RDMA paths when possible.
 
-The v0 architecture already uses NVMe-oF/OpenZFS and DPU/SPDK-capable target paths. This ADR adds an inference object/corpus tier above that substrate. OCP inference cluster guidance also separates gateway, scale-out, storage, and distributed inference profiles, so model/corpus delivery must be schedulable by fabric profile rather than a best-effort shared bulk path.
+The baseline architecture already uses NVMe-oF/OpenZFS and DPU/SPDK-capable target paths. This ADR adds an inference object/corpus tier above that substrate. OCP inference cluster guidance also separates gateway, scale-out, storage, and distributed inference profiles, so model/corpus delivery must be schedulable by fabric profile rather than a best-effort shared bulk path.
 
 ## Decision
 

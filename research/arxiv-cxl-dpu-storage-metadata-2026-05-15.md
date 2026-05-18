@@ -16,9 +16,9 @@ The arXiv export API returned HTTP 429 during this run. The following high-signa
 
 | arXiv ID | Title | Local/RAG status |
 | --- | --- | --- |
-| [2511.00321v1](https://arxiv.org/abs/2511.00321) | Scalable Processing-Near-Memory for 1M-Token LLM Inference: CXL-Enabled KV-Cache Management Beyond GPU Limits | `/home/cdex-routeros/src/RAG-DATA/CXL-PNM-1M-Token-LLM-Inference-KV-Cache-arXiv-2511.00321v1.2025.pdf` |
-| [2512.18194v1](https://arxiv.org/abs/2512.18194) | TraCT: Disaggregated LLM Serving with CXL Shared Memory KV Cache at Rack-Scale | `/home/cdex-routeros/src/RAG-DATA/TraCT-Disaggregated-LLM-Serving-CXL-Shared-Memory-KV-Rack-Scale-arXiv-2512.18194v1.2025.pdf` |
-| [2604.02442v1](https://arxiv.org/abs/2604.02442) | WIO: Upload-Enabled Computational Storage on CXL SSDs | `/home/cdex-routeros/src/RAG-DATA/CXL-WIO-Upload-Enabled-Computational-Storage-on-CXL-SSDs-arXiv-2604.02442v1.2026.pdf` |
-| [2506.15613v1](https://arxiv.org/abs/2506.15613) | From Block to Byte: Transforming PCIe SSDs with CXL Memory Protocol and Instruction Annotation | `/home/cdex-routeros/src/RAG-DATA/CXL-From-Block-to-Byte-Bus-level-Addressable-CXL-SSDs-arXiv-2506.15613v1.2025.pdf` |
+| [2511.00321v1](https://arxiv.org/abs/2511.00321) | Scalable Processing-Near-Memory for 1M-Token LLM Inference: CXL-Enabled KV-Cache Management Beyond GPU Limits | `RAG-DATA/CXL-PNM-1M-Token-LLM-Inference-KV-Cache-arXiv-2511.00321v1.2025.pdf` |
+| [2512.18194v1](https://arxiv.org/abs/2512.18194) | TraCT: Disaggregated LLM Serving with CXL Shared Memory KV Cache at Rack-Scale | `RAG-DATA/TraCT-Disaggregated-LLM-Serving-CXL-Shared-Memory-KV-Rack-Scale-arXiv-2512.18194v1.2025.pdf` |
+| [2604.02442v1](https://arxiv.org/abs/2604.02442) | WIO: Upload-Enabled Computational Storage on CXL SSDs | `RAG-DATA/CXL-WIO-Upload-Enabled-Computational-Storage-on-CXL-SSDs-arXiv-2604.02442v1.2026.pdf` |
+| [2506.15613v1](https://arxiv.org/abs/2506.15613) | From Block to Byte: Transforming PCIe SSDs with CXL Memory Protocol and Instruction Annotation | `RAG-DATA/CXL-From-Block-to-Byte-Bus-level-Addressable-CXL-SSDs-arXiv-2506.15613v1.2025.pdf` |
 
-Manual fallback manifest: `/home/cdex-routeros/src/RAG-DATA/ARCHIVE-ADD-V3-Arxiv-CXL-KV-Storage-Latest-2026-05-15.json`
+Manual fallback manifest: `RAG-DATA/ARCHIVE-ADD-V3-Arxiv-CXL-KV-Storage-Latest-2026-05-15.json`

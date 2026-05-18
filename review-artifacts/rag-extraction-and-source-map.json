@@ -1,0 +1,222 @@
+{
+  "failures": [
+    {
+      "bytes": 6944436,
+      "chars": 0,
+      "file": "ibm-power9-lc921-lc922-family-3575pages.d942b834.pdf",
+      "status": "failed",
+      "stderr": "Syntax Error: Couldn't find trailer dictionary\nSyntax Error: Catalog object is wrong type (null)\nSyntax Error: Couldn't find trailer dictionary\nInternal Error: xref num -1 not found but needed, try to reconstruct\nSyntax Error: Couldn't find trailer dictionary\nSyntax Error: Couldn't find trailer dictionary\nSyntax Error: Catalog object is wrong type (null)\nSyntax Error: Couldn't read page catalog\n"
+    },
+    {
+      "bytes": 1608496,
+      "chars": 1,
+      "file": "id171-ccr2116-12g-4s-doc-220159.f98d8c32.pdf",
+      "status": "failed",
+      "stderr": ""
+    },
+    {
+      "bytes": 68040,
+      "chars": 1,
+      "file": "oe19-sled-outline-ref.26db1d40.pdf",
+      "status": "failed",
+      "stderr": ""
+    }
+  ],
+  "generated": "2026-05-17",
+  "key_sources": [
+    {
+      "bytes": 791255,
+      "exists": true,
+      "file": "ualink-white-paper-publication-final-updated.6a11ffed.pdf",
+      "id": "S01",
+      "path": "RAG-DATA/ualink-white-paper-publication-final-updated.6a11ffed.pdf",
+      "text_chars": 38372,
+      "use": "UALink open scale-up interconnect, rack-scale pod, bandwidth/latency/efficiency targets, SAI/Redfish ecosystem."
+    },
+    {
+      "bytes": 4546227,
+      "exists": true,
+      "file": "unifabrix-ualink-webminar-20251210-pdf.2da3f553.pdf",
+      "id": "S02",
+      "path": "RAG-DATA/unifabrix-ualink-webminar-20251210-pdf.2da3f553.pdf",
+      "text_chars": 48983,
+      "use": "UALink pod landscape, 800Gbps per port framing, CXL memory-pool adjacency, system-node terminology."
+    },
+    {
+      "bytes": 1006045,
+      "exists": true,
+      "file": "understanding-intra-node-communication-hpc-systems.3b1067f4.pdf",
+      "id": "S03",
+      "path": "RAG-DATA/understanding-intra-node-communication-hpc-systems.3b1067f4.pdf",
+      "text_chars": 96941,
+      "use": "Intra-node accelerator communication can interfere with inter-node traffic; pod designs need local/remote congestion modeling."
+    },
+    {
+      "bytes": 908052,
+      "exists": true,
+      "file": "open-cluster-designs-aligned-ai-inference-fabric-r.c994e6ef.pdf",
+      "id": "S04",
+      "path": "RAG-DATA/open-cluster-designs-aligned-ai-inference-fabric-r.c994e6ef.pdf",
+      "text_chars": 131938,
+      "use": "OCP inference fabric RA: Minimal vs Distributed Inference, OPG/XOC sizes, gateway, telemetry, RoCE toggles, host/NIC tuning."
+    },
+    {
+      "bytes": 1025268,
+      "exists": true,
+      "file": "ocp-open-cluster-designs-aligned-ai-training-fabri.a4f50f3e.pdf",
+      "id": "S05",
+      "path": "RAG-DATA/ocp-open-cluster-designs-aligned-ai-training-fabri.a4f50f3e.pdf",
+      "text_chars": 156699,
+      "use": "OCP training fabric RA: OPG-M/XOC-N, rail-optimized/single-homed topologies, dual-plane 400G, RoCE QoS, lifecycle."
+    },
+    {
+      "bytes": 1893756,
+      "exists": true,
+      "file": "ocp-mrc-1-0.d59de939.pdf",
+      "id": "S06",
+      "path": "RAG-DATA/ocp-mrc-1-0.d59de939.pdf",
+      "text_chars": 185922,
+      "use": "OCP Multipath Reliable Connection: packet spraying, SACK/NACK, congestion control and reliable multipath RDMA semantics."
+    },
+    {
+      "bytes": 59266,
+      "exists": true,
+      "file": "lossless-ethernet-design-guide-ai-fabrics-rocev2-2.ccf8088f.pdf",
+      "id": "S07",
+      "path": "RAG-DATA/lossless-ethernet-design-guide-ai-fabrics-rocev2-2.ccf8088f.pdf",
+      "text_chars": 18903,
+      "use": "RoCEv2 lossless Ethernet guidance: PFC/ECN/DCQCN, MTU, telemetry, tuning risks."
+    },
+    {
+      "bytes": 727783,
+      "exists": true,
+      "file": "arista-ai-networking-building-lossless-ethernet-fa.f3be4e10.pdf",
+      "id": "S08",
+      "path": "RAG-DATA/arista-ai-networking-building-lossless-ethernet-fa.f3be4e10.pdf",
+      "text_chars": 49278,
+      "use": "Lossless Ethernet for AI fabrics and packet-spraying/context for ECMP/RoCE operations."
+    },
+    {
+      "bytes": 3738151,
+      "exists": true,
+      "file": "arista-broadcom-ai-networking-deployment-guide.c654bda1.pdf",
+      "id": "S09",
+      "path": "RAG-DATA/arista-broadcom-ai-networking-deployment-guide.c654bda1.pdf",
+      "text_chars": 57593,
+      "use": "Arista/Broadcom deployment guidance for AI Ethernet fabrics, QoS, ECN/PFC and operational tuning."
+    },
+    {
+      "bytes": 4522429,
+      "exists": true,
+      "file": "amd-instinct-mi325x-pensando-pollara-gpu-cluster.c3b06df5.pdf",
+      "id": "S10",
+      "path": "RAG-DATA/amd-instinct-mi325x-pensando-pollara-gpu-cluster.c3b06df5.pdf",
+      "text_chars": 152676,
+      "use": "AMD Instinct + Pensando/Pollara cluster architecture evidence for GPU/NIC/DPU rail design."
+    },
+    {
+      "bytes": 2384832,
+      "exists": true,
+      "file": "amd-pensado-400gbe-pollara-400-1q400p-product-brie.ce4c5a74.pdf",
+      "id": "S11",
+      "path": "RAG-DATA/amd-pensado-400gbe-pollara-400-1q400p-product-brie.ce4c5a74.pdf",
+      "text_chars": 17920,
+      "use": "AMD Pensando Pollara 400GbE product brief: AI networking and RoCEv2 scale-out offload context."
+    },
+    {
+      "bytes": 286800,
+      "exists": true,
+      "file": "amd-pensando-pollara-400gbe-programmability-ai-net.3faf93f4.pdf",
+      "id": "S12",
+      "path": "RAG-DATA/amd-pensando-pollara-400gbe-programmability-ai-net.3faf93f4.pdf",
+      "text_chars": 5901,
+      "use": "Pollara programmability and AI network telemetry/packet-spraying adjacency."
+    },
+    {
+      "bytes": 788470,
+      "exists": true,
+      "file": "intel-gaudi-3-ai-accelerator-cluster-ref-design-wh.9227fcb2.pdf",
+      "id": "S13",
+      "path": "RAG-DATA/intel-gaudi-3-ai-accelerator-cluster-ref-design-wh.9227fcb2.pdf",
+      "text_chars": 72543,
+      "use": "Intel Gaudi 3 cluster reference design: heterogeneous accelerator pod implications and RoCE/QoS tuning."
+    },
+    {
+      "bytes": 1811453,
+      "exists": true,
+      "file": "hetccl-accelerating-llm-training-heterogeneous-gpu.1faeac80.pdf",
+      "id": "S14",
+      "path": "RAG-DATA/hetccl-accelerating-llm-training-heterogeneous-gpu.1faeac80.pdf",
+      "text_chars": 133606,
+      "use": "HetCCL research: cross-vendor NVIDIA/AMD GPU collectives using RDMA without application changes."
+    },
+    {
+      "bytes": 1785267,
+      "exists": true,
+      "file": "cxl-gpu-expanding-gpu-memory-capacity-arxiv-2506-1.ce395410.pdf",
+      "id": "S15",
+      "path": "RAG-DATA/cxl-gpu-expanding-gpu-memory-capacity-arxiv-2506-1.ce395410.pdf",
+      "text_chars": 75211,
+      "use": "CXL-GPU research: GPU memory expansion using CXL and direct GPU storage expansion concepts."
+    },
+    {
+      "bytes": 4268478,
+      "exists": true,
+      "file": "cxl-pnm-1m-token-llm-inference-kv-cache-arxiv-2511.794adce5.pdf",
+      "id": "S16",
+      "path": "RAG-DATA/cxl-pnm-1m-token-llm-inference-kv-cache-arxiv-2511.794adce5.pdf",
+      "text_chars": 117052,
+      "use": "CXL-enabled processing-near-memory for long-context KV-cache management."
+    },
+    {
+      "bytes": 697023,
+      "exists": true,
+      "file": "tract-disaggregated-llm-serving-cxl-shared-memory.f94bd7ea.pdf",
+      "id": "S17",
+      "path": "RAG-DATA/tract-disaggregated-llm-serving-cxl-shared-memory.f94bd7ea.pdf",
+      "text_chars": 91416,
+      "use": "TraCT research: rack-scale CXL shared-memory KV cache for disaggregated LLM serving."
+    },
+    {
+      "bytes": 120395,
+      "exists": true,
+      "file": "cxl-4-0-statement-of-support-2025.f2bd38d2.pdf",
+      "id": "S18",
+      "path": "RAG-DATA/cxl-4-0-statement-of-support-2025.f2bd38d2.pdf",
+      "text_chars": 7486,
+      "use": "CXL standards-roadmap evidence for future memory-pool evolution."
+    },
+    {
+      "bytes": 155499,
+      "exists": true,
+      "file": "cxl-3-1-statement-of-support-final-2024.4b83c90c.pdf",
+      "id": "S19",
+      "path": "RAG-DATA/cxl-3-1-statement-of-support-final-2024.4b83c90c.pdf",
+      "text_chars": 9831,
+      "use": "CXL 3.1 standards support evidence."
+    },
+    {
+      "bytes": 29895,
+      "exists": true,
+      "file": "nvidia-bluefield4-stx-storage-architecture-broad-a.3081f7ed.pdf",
+      "id": "S20",
+      "path": "RAG-DATA/nvidia-bluefield4-stx-storage-architecture-broad-a.3081f7ed.pdf",
+      "text_chars": 7189,
+      "use": "Adjacent AI-storage accelerator evidence for BlueField/STX; not direct UA-Link/CXL evidence."
+    },
+    {
+      "bytes": 49808,
+      "exists": true,
+      "file": "xsight-hammerspace-e1-800g-dpu-ai-warm-storage-202.812f4f3e.pdf",
+      "id": "S21",
+      "path": "RAG-DATA/xsight-hammerspace-e1-800g-dpu-ai-warm-storage-202.812f4f3e.pdf",
+      "text_chars": 1286,
+      "use": "Adjacent DPU + AI warm storage evidence for DPU/network offload comparisons."
+    }
+  ],
+  "rag_dir": "RAG-DATA",
+  "text_cache": "processing-cache/project-coherent-rag-text",
+  "text_failed": 3,
+  "text_ok": 360,
+  "total_pdfs": 363
+}

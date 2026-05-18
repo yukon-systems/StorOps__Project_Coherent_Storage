@@ -1,7 +1,7 @@
 # ADR-016: Roadmap Evidence and Public Claim Guardrails
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2.v3  
+**Architecture cycle:** 2026-Q2  
 **Status:** Proposed  
 **Generated:** 2026-05-15
 
@@ -11,7 +11,7 @@ Architecture reports, training decks, and arXiv-oriented papers must classify ve
 
 ## Context
 
-The v3 research sweep found strong direct evidence for Marvell/XConn/CXL direction and strong adjacent evidence for AI-storage accelerator ecosystems. Without claim grading, it is easy to conflate NVIDIA BlueField/STX storage ecosystem evidence with Marvell/XConn CXL integration, or to treat OpenZFS source retention as proof of a CXL/OpenZFS integration.
+The research sweep found strong direct evidence for Marvell/XConn/CXL direction and strong adjacent evidence for AI-storage accelerator ecosystems. Without claim grading, it is easy to conflate NVIDIA BlueField/STX storage ecosystem evidence with Marvell/XConn CXL integration, or to treat OpenZFS source retention as proof of a CXL/OpenZFS integration.
 
 ## Decision
 
@@ -35,7 +35,7 @@ The v3 research sweep found strong direct evidence for Marvell/XConn/CXL directi
 
 ## Acceptance criteria
 
-- Every roadmap table in v3 reports includes an evidence-grade column or explicit guardrail text.
+- Every roadmap table in reports includes an evidence-grade column or explicit guardrail text.
 - No public claim says “partnership,” “integration,” or “support” unless the cited source states it directly.
 - Adjacent sources may be used for risk, opportunity, or comparison language only.
 - Negative-control sources remain in the RAG corpus with explanation.

@@ -1,0 +1,65 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #34495E
+skinparam activity {
+  BackgroundColor #FDFEFE
+  BorderColor #566573
+  DiamondBackgroundColor #FCF3CF
+  DiamondBorderColor #B7950B
+  StartColor #145A32
+  EndColor #922B21
+}
+skinparam note {
+  BackgroundColor #FEF9E7
+  BorderColor #B7950B
+}
+title ADR-020 - CXL Memory Pools for Pod-Scale Systems
+
+legend right
+Design defaults for diagrams unless an ADR narrows them:
+- Actor/API: HTTPS 443 or 8443; OpenAI-compatible API plus Coherence-native API.
+- RoCEv2: UDP destination 4791; jumbo MTU 9000; PFC only on RDMA priorities.
+- NVMe-oF: discovery/controller service on TCP/RDMA port 4420; DPU-mediated targets.
+- Telemetry: OTLP gRPC 4317, OTLP HTTP 4318, Prometheus 9090/9100, gNMI 9339.
+- Timing: PTP event/general UDP 319/320 on an isolated timing/management class.
+- VLAN plan: site-specific IDs are allowed, but classes must stay isolated:
+  mgmt/OOB, frontend/API, RDMA rail-A, RDMA rail-B, storage/NVMe-oF, telemetry, timing.
+- Trunks: 802.1Q tagged uplinks; rail-A and rail-B must not share a failure domain.
+- Buffers: kv_hbm_active, kv_dram_warm, kv_cxl_warm, kv_rdma_staging,
+  zfs_slog, zfs_arc, zfs_l2arc, object_cache, vector_head_cache.
+endlegend
+
+start
+partition "Pool discovery" {
+  :Discover CXL type, capacity, switch/fabric manager,\nroot-complex distance, RAS, poison, thermal state;
+  if (device is behind hidden switch layers\nor auto-bifurcated unknown topology?) then (reject)
+    :Reject latency-sensitive placement; require explicit topology;
+    stop
+  endif
+}
+partition "Ownership and allocation" {
+  :CXL pool manager grants ownership_epoch\nto Coherence-CE, not to inference actor;
+  if (pool is same pod/root-complex as target GPU?) then (preferred)
+    :Allocate kv_cxl_warm/vector_head_cache\nwith NUMA-aware latency budget;
+  else (remote)
+    :Use only for lower-priority warm state\nor reject for SLO-bound path;
+  endif
+}
+partition "Data flow" {
+  :Coherence moves warm KV: kv_dram_warm <-> kv_cxl_warm\nthen hydrates kv_hbm_active when admitted;
+  if (durability class requires persistence?) then (durable)
+    :Flush to DPU/OpenZFS; CXL pool is capacity tier,\nnot the durable storage ACK;
+  endif
+}
+partition "Failure gate" {
+  if (poison, link flap, fabric-manager loss, or p99 drift?) then (degrade)
+    :Fence ownership_epoch, copy out if possible,\nmark pool AMBER/RED/DRAIN;
+  else (healthy)
+    :Expose pool pressure and locality to scheduler;
+  endif
+}
+stop
+@enduml

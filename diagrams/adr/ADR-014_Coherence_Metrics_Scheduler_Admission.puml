@@ -1,0 +1,61 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #34495E
+skinparam activity {
+  BackgroundColor #FDFEFE
+  BorderColor #566573
+  DiamondBackgroundColor #FCF3CF
+  DiamondBorderColor #B7950B
+  StartColor #145A32
+  EndColor #922B21
+}
+skinparam note {
+  BackgroundColor #FEF9E7
+  BorderColor #B7950B
+}
+title ADR-014 - Coherence Metrics Rollup to Scheduler Admission
+
+legend right
+Design defaults for diagrams unless an ADR narrows them:
+- Actor/API: HTTPS 443 or 8443; OpenAI-compatible API plus Coherence-native API.
+- RoCEv2: UDP destination 4791; jumbo MTU 9000; PFC only on RDMA priorities.
+- NVMe-oF: discovery/controller service on TCP/RDMA port 4420; DPU-mediated targets.
+- Telemetry: OTLP gRPC 4317, OTLP HTTP 4318, Prometheus 9090/9100, gNMI 9339.
+- Timing: PTP event/general UDP 319/320 on an isolated timing/management class.
+- VLAN plan: site-specific IDs are allowed, but classes must stay isolated:
+  mgmt/OOB, frontend/API, RDMA rail-A, RDMA rail-B, storage/NVMe-oF, telemetry, timing.
+- Trunks: 802.1Q tagged uplinks; rail-A and rail-B must not share a failure domain.
+- Buffers: kv_hbm_active, kv_dram_warm, kv_cxl_warm, kv_rdma_staging,
+  zfs_slog, zfs_arc, zfs_l2arc, object_cache, vector_head_cache.
+endlegend
+
+start
+partition "Metric sources" {
+  :Collect kv_hit_rate, dirty_bytes, flush_age,\nHBM/DRAM/CXL pressure, DPU queue depth;
+  :Collect RoCE p99, ECN/PFC, zpool state,\nmodel residency, corpus retrieval latency;
+}
+partition "Rollup pipeline" {
+  if (metric timestamp beyond TTL?) then (stale)
+    :Mark source stale; do not infer health from silence;
+  else (fresh)
+    :Normalize by tenant, model, pod, rail,\nKV class, and locality domain;
+  endif
+  :Compute admission vector GREEN/AMBER/RED/DRAIN\nwith reason codes and rollback hint;
+}
+partition "Scheduler decision" {
+  if (GREEN?) then (admit)
+    :Place request with lease and SLO budget;
+  elseif (AMBER?) then (conditional)
+    :Cap batch, prewarm, select alternate rail,\nor queue behind flush;
+  else (RED/DRAIN)
+    :Reject, migrate, or drain host/pod;
+  endif
+}
+partition "Audit" {
+  :Persist decision inputs and trace_id\nfor RCA and reproducible benchmark comparison;
+}
+stop
+@enduml

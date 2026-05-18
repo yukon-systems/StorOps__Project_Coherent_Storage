@@ -1,17 +1,17 @@
 # ADR-017: Research Metadata and arXiv Publication Workflow
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2.v3  
+**Architecture cycle:** 2026-Q2  
 **Status:** Proposed  
 **Generated:** 2026-05-15
 
 ## Decision summary
 
-Maintain the v3 research package as Markdown plus arXiv-oriented LaTeX and BibTeX. Research refreshes should use arXiv metadata APIs and arXiv bulk-data options when available, but must record rate limits, query failures, and manual fallback steps as part of the evidence trail.
+Maintain the research package as Markdown plus arXiv-oriented LaTeX and BibTeX. Research refreshes should use arXiv metadata APIs and arXiv bulk-data options when available, but must record rate limits, query failures, and manual fallback steps as part of the evidence trail.
 
 ## Context
 
-The v3 package is intended to be publishable as a technical research artifact. arXiv submission guidance requires careful TeX preparation, portable source packaging, and reliable references. During this run, calls to the arXiv export API returned HTTP 429 rate-limit responses. That limitation is captured in `research/arxiv-cxl-dpu-storage-metadata-2026-05-15.json` rather than hidden.
+The package is intended to be publishable as a technical research artifact. arXiv submission guidance requires careful TeX preparation, portable source packaging, and reliable references. During this run, calls to the arXiv export API returned HTTP 429 rate-limit responses. That limitation is captured in `research/arxiv-cxl-dpu-storage-metadata-2026-05-15.json` rather than hidden.
 
 ## Decision
 
@@ -27,7 +27,7 @@ The v3 package is intended to be publishable as a technical research artifact. a
 | Artifact | Purpose |
 | --- | --- |
 | `reports/*.md` | Human-reviewable report source. |
-| `latex/project-coherent-storage-v3.tex` | arXiv-oriented manuscript source. |
+| `latex/project-coherent-storage.tex` | arXiv-oriented manuscript source. |
 | `latex/references.bib` | Reference database. |
 | `latex/README-arxiv-submission.md` | Submission checklist and local validation boundary. |
 | `research/arxiv-cxl-dpu-storage-metadata-*.json` | Metadata query results, API failures, and latest-paper candidates. |

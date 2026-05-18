@@ -5,7 +5,7 @@
   "manual_fallback_latest_candidates": [
     {
       "arxiv_id": "2511.00321v1",
-      "local_file": "/home/cdex-routeros/src/RAG-DATA/CXL-PNM-1M-Token-LLM-Inference-KV-Cache-arXiv-2511.00321v1.2025.pdf",
+      "local_file": "RAG-DATA/CXL-PNM-1M-Token-LLM-Inference-KV-Cache-arXiv-2511.00321v1.2025.pdf",
       "pdf_url": "https://arxiv.org/pdf/2511.00321",
       "reason": "Manual fallback after arXiv API HTTP 429; relevant CXL KV-cache PNM research.",
       "source_url": "https://arxiv.org/abs/2511.00321",
@@ -13,7 +13,7 @@
     },
     {
       "arxiv_id": "2512.18194v1",
-      "local_file": "/home/cdex-routeros/src/RAG-DATA/TraCT-Disaggregated-LLM-Serving-CXL-Shared-Memory-KV-Rack-Scale-arXiv-2512.18194v1.2025.pdf",
+      "local_file": "RAG-DATA/TraCT-Disaggregated-LLM-Serving-CXL-Shared-Memory-KV-Rack-Scale-arXiv-2512.18194v1.2025.pdf",
       "pdf_url": "https://arxiv.org/pdf/2512.18194",
       "reason": "Manual fallback after arXiv API HTTP 429; relevant rack-scale CXL shared-memory KV cache research.",
       "source_url": "https://arxiv.org/abs/2512.18194",
@@ -21,7 +21,7 @@
     },
     {
       "arxiv_id": "2604.02442v1",
-      "local_file": "/home/cdex-routeros/src/RAG-DATA/CXL-WIO-Upload-Enabled-Computational-Storage-on-CXL-SSDs-arXiv-2604.02442v1.2026.pdf",
+      "local_file": "RAG-DATA/CXL-WIO-Upload-Enabled-Computational-Storage-on-CXL-SSDs-arXiv-2604.02442v1.2026.pdf",
       "pdf_url": "https://arxiv.org/pdf/2604.02442",
       "reason": "Already archived RAG source; relevant CXL SSD/computational-storage research.",
       "source_url": "https://arxiv.org/abs/2604.02442",
@@ -29,14 +29,14 @@
     },
     {
       "arxiv_id": "2506.15613v1",
-      "local_file": "/home/cdex-routeros/src/RAG-DATA/CXL-From-Block-to-Byte-Bus-level-Addressable-CXL-SSDs-arXiv-2506.15613v1.2025.pdf",
+      "local_file": "RAG-DATA/CXL-From-Block-to-Byte-Bus-level-Addressable-CXL-SSDs-arXiv-2506.15613v1.2025.pdf",
       "pdf_url": "https://arxiv.org/pdf/2506.15613",
       "reason": "Already archived RAG source; relevant CXL SSD/block-to-byte research.",
       "source_url": "https://arxiv.org/abs/2506.15613",
       "title": "From Block to Byte: Transforming PCIe SSDs with CXL Memory Protocol and Instruction Annotation"
     }
   ],
-  "manual_fallback_manifest": "/home/cdex-routeros/src/RAG-DATA/ARCHIVE-ADD-V3-Arxiv-CXL-KV-Storage-Latest-2026-05-15.json",
+  "manual_fallback_manifest": "RAG-DATA/ARCHIVE-ADD-V3-Arxiv-CXL-KV-Storage-Latest-2026-05-15.json",
   "queries": {},
   "query_errors": [
     {

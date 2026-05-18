@@ -2,8 +2,8 @@
 
 Generated: 2026-05-13
 
-- Text cache: `/tmp/project-coherent-rag-text`
-- Supplemental text cache: `/tmp/project-coherent-rag-text-extra`
+- Text cache: `processing-cache/project-coherent-rag-text`
+- Supplemental text cache: `processing-cache/project-coherent-rag-text-extra`
 - PDFs already extracted before this refresh: 204
 - PDFs extracted during the base refresh: 12
 - PDFs extracted during the Intel BMRA/QAT supplement: 2
@@ -39,7 +39,7 @@ Generated: 2026-05-13
 
 ## Intel BMRA/QAT supplemental PDFs
 
-These PDFs were added to the on-host RAG corpus after the base 250-file refresh and extracted into `/tmp/project-coherent-rag-text-extra`.
+These PDFs were added to the on-host RAG corpus after the base 250-file refresh and extracted into `processing-cache/project-coherent-rag-text-extra`.
 
 | File | Text bytes | Source ID | ADR impact |
 | --- | ---: | --- | --- |

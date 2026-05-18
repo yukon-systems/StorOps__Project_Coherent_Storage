@@ -1,11 +1,12 @@
-# arXiv submission notes for Project Coherent Storage v4
+# arXiv submission notes for Project Coherent Storage
 
 This directory contains an arXiv-oriented source draft, not a completed submission.
 
 ## Files
 
-- `project-coherent-storage-v4.tex` - LaTeX manuscript source.
+- `project-coherent-storage.tex` - LaTeX manuscript source.
 - `references.bib` - BibTeX reference file.
+- `project-coherent-storage.bbl` - generated bibliography file from the latest successful local build.
 - `figures/*.png` - rendered PlantUML diagrams referenced by the manuscript.
 
 ## arXiv guidance consulted
@@ -17,20 +18,22 @@ This directory contains an arXiv-oriented source draft, not a completed submissi
 
 ## Local validation boundary
 
-This host currently has `bibtex` and `plantuml`, but no `pdflatex`, `latexmk`, or `tectonic`. Therefore the manuscript source was syntax/structure checked locally, but not compiled into a PDF on this host.
+This host has `pdflatex`, `latexmk`, `bibtex`, and `plantuml`; `tectonic` was not present during the latest validation pass. The manuscript source was compiled locally with `latexmk -pdf -interaction=nonstopmode -halt-on-error project-coherent-storage.tex`. The build produced a PDF and completed with non-fatal float-placement warnings only.
 
-Before submission, run on a TeX-capable host:
+Before submission, rerun on the release host:
 
 ```sh
-pdflatex project-coherent-storage-v4.tex
-bibtex references.bib
+pdflatex project-coherent-storage.tex
+bibtex project-coherent-storage
+pdflatex project-coherent-storage.tex
+pdflatex project-coherent-storage.tex
 ```
 
 Then inspect the produced PDF, bibliography, figure placement, and overfull/underfull warnings.
 
 ## Source-package checklist
 
-- Keep `.tex`, `.bib`, and referenced figures in the uploaded source bundle.
+- Keep `.tex`, `.bib`, `.bbl`, and referenced figures in the uploaded source bundle.
 - Do not include local absolute paths.
 - Confirm every `\cite{...}` key exists in `references.bib`.
 - Confirm all figures referenced by `\includegraphics` exist.
@@ -38,6 +41,6 @@ Then inspect the produced PDF, bibliography, figure placement, and overfull/unde
 - Use evidence-grade language for all vendor/partnership claims.
 
 
-## v4 note
+## Current manuscript note
 
-The v4 manuscript source is `project-coherent-storage-v4.tex`; it reuses `references.bib` and `figures/v4-*.png`.
+The manuscript source is `project-coherent-storage.tex`; it reuses `references.bib` and neutral figure filenames.

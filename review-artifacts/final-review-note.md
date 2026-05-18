@@ -1,16 +1,16 @@
-# Final Review Note: Project Coherent Storage v2 ADR Package
+# Final Review Note: Project Coherent Storage ADR Package
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2  
-**Package:** v2 inference persistence and API ADR set, RAG refresh 2026-05-13  
+**Architecture cycle:** 2026-Q2  
+**Package:** Inference persistence and API ADR set, RAG refresh 2026-05-13  
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
 ## Review scope
 
-This v2 package starts from the reviewed v1 inference-optimized ADR package and adds the missing implementation decisions requested for Coherence-CE policy, vLLM adapter contracts, failure semantics, scheduler admission, and CXL/PMem hardware-tier governance.
+This package starts from the reviewed inference-optimized ADR package and adds the missing implementation decisions requested for Coherence-CE policy, vLLM adapter contracts, failure semantics, scheduler admission, and CXL/PMem hardware-tier governance.
 
-The v2 changes preserve the user-confirmed layering:
+The changes preserve the user-confirmed layering:
 
 ```text
 vLLM / peer inference actors
@@ -23,7 +23,7 @@ vLLM / peer inference actors
 
 Inference actors use Coherence-CE APIs only and are not configured with OpenZFS, DPU, NVMe-oF, RoCEv2, or RDMA details. They receive Coherence-CE API results: hit/miss, payload reference, durability class/state, recompute/degrade/queue/reject reason, and scheduler-safe admission hints.
 
-## Added v2 ADRs
+## Added ADRs
 
 | ADR | Added decision |
 | --- | --- |
@@ -45,7 +45,7 @@ Inference actors use Coherence-CE APIs only and are not configured with OpenZFS,
 
 ## Source grounding
 
-The v2 ADRs continue to use the v1 RAG manifest, the local `/tmp/project-coherent-rag-text` extraction cache, and the same-day Intel BMRA/QAT supplemental extraction cache at `/tmp/project-coherent-rag-text-extra`. The key local source anchors are:
+The ADRs continue to use the RAG manifest, the local `processing-cache/project-coherent-rag-text` extraction cache, and the same-day Intel BMRA/QAT supplemental extraction cache at `processing-cache/project-coherent-rag-text-extra`. The key local source anchors are:
 
 - R01 for vLLM/PagedAttention KV-cache memory pressure, block identity, sharing, and preemption.
 - R02/R03/R30 for scheduler, TTFT/TPOT, and inference-serving SLOs.
@@ -56,7 +56,7 @@ The v2 ADRs continue to use the v1 RAG manifest, the local `/tmp/project-coheren
 - R251/R252 for Intel BMRA deployment automation, BIOS/kernel/IOMMU/SR-IOV/hugepage/device-plugin preparation, QAT deployment context, and QAT crypto/compression trust, reset, VF/PF, Xen, endpoint, and fallback limits.
 - R28/R29 plus Optane RAG references for CXL/PMem memory-tier direction, CXL pooling/telemetry, and Optane PMem/SSD comparison points.
 
-The v2 package also cites official documentation not present in the on-host RAG set:
+The package also cites official documentation not present in the on-host RAG set:
 
 - O01 Oracle Coherence read-through/write-through/write-behind caching documentation.
 - O02 Oracle Coherence cache persistence documentation.
@@ -95,14 +95,14 @@ The v2 package also cites official documentation not present in the on-host RAG 
 
 ## Validation targets
 
-The v2 package should pass these local checks before review handoff:
+The package should pass these local checks before review handoff:
 
 - README indexes ADR-001 through ADR-015.
-- All new ADRs have v2 package metadata and source documents sections.
+- All new ADRs have package metadata and source documents sections.
 - OpenAPI YAML parses.
 - Coherence-native schema contains KV-D0 through KV-D5, lookup, publish, reserve, flush, promote, evict, health, and admission summary endpoints.
 - vLLM-facing OpenAPI schemas do not expose lower-layer implementation identifiers.
 - Operations docs include failure and admission behavior by KV durability class and CXL topology/latency/fabric-manager/pool-ownership fault class.
 - QAT validation proves trusted PF/VF assignment, host-driver/removal quiesce gates, q35/VM compatibility where used, crypto/compression correctness, decompression buffer guards, endpoint reset behavior, and CPU fallback/drain scheduler reason-code rollup.
 - CXL validation proves role classification, OCP CMS topology class, source-of-truth topology, same-root-complex preference, hidden switch/bifurcation rejection, explicit CXL switch-fabric qualification, CXL-vs-DRAM latency measurement, OpenZFS role limits, and scheduler reason-code rollup.
-- The v1 package remains intact for comparison.
+- Historical package snapshots remain available for comparison.

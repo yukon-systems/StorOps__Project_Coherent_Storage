@@ -1,8 +1,8 @@
 # ADR-009: Observability, Benchmarking, and Rollout Gates
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2  
-**Package:** v2 inference persistence and API ADR set, RAG refresh 2026-05-13  
+**Architecture cycle:** 2026-Q2  
+**Package:** Inference persistence and API ADR set, RAG refresh 2026-05-13  
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
@@ -12,7 +12,7 @@ Gate Project Coherent Storage 2026-Q2 rollout on LLM-visible performance, storag
 
 ## Context
 
-The v0 ADR set defined fabric, storage, automation, and observability gates. The inference-optimized architecture adds additional failure modes: KV cache fragmentation, prefix-cache misses, cold model loads, vector-index tail latency, RAG recall regressions, DPU offload opacity, GPU-direct security boundaries, and background jobs competing with interactive decode.
+The baseline ADR set defined fabric, storage, automation, and observability gates. The inference-optimized architecture adds additional failure modes: KV cache fragmentation, prefix-cache misses, cold model loads, vector-index tail latency, RAG recall regressions, DPU offload opacity, GPU-direct security boundaries, and background jobs competing with interactive decode.
 
 The RAG corpus reinforces that inference quality depends on end-to-end behavior: scheduling, batching, memory management, storage paths, network congestion, and retrieval all contribute to user-visible latency. The 2026 OCP additions make power/facility telemetry, time synchronization, OCP cluster lifecycle state, management-channel health, MRC/OCS canary behavior, and extraction coverage part of the rollout evidence set.
 

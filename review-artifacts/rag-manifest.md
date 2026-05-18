@@ -2,7 +2,7 @@
 
 Generated: 2026-05-13; supplemented: 2026-05-13 with Intel BMRA/QAT PDFs
 
-- RAG root: `/home/cdex-routeros/src/RAG-DATA`
+- RAG root: `RAG-DATA`
 - Total files: 252
 - PDF files: 219
 - Extracted PDFs: 218
@@ -33,7 +33,7 @@ Generated: 2026-05-13; supplemented: 2026-05-13 with Intel BMRA/QAT PDFs
 
 | ID | Source file | Extraction | ADR impact |
 | --- | --- | --- | --- |
-| R251 | `Intel-Network-Edge-Container-Metal-Reference-Systems-Architecture-User-Guide.1706608508.pdf` | Extracted to `/tmp/project-coherent-rag-text-extra` (163684 text bytes). | BMRA deployment automation, BIOS/kernel/IOMMU/SR-IOV/hugepages/device-plugin, telemetry, and post-deployment verification gates. |
-| R252 | `Intel-QAT-Latest-8960-C3000.pdf` | Extracted to `/tmp/project-coherent-rag-text-extra` (344623 text bytes). | QAT crypto/compression acceleration, supported 8960/C3000-era platforms, Xen/SR-IOV/VF/PF limits, trust assumptions, reset/driver hazards, and virtualization caveats. |
+| R251 | `Intel-Network-Edge-Container-Metal-Reference-Systems-Architecture-User-Guide.1706608508.pdf` | Extracted to `processing-cache/project-coherent-rag-text-extra` (163684 text bytes). | BMRA deployment automation, BIOS/kernel/IOMMU/SR-IOV/hugepages/device-plugin, telemetry, and post-deployment verification gates. |
+| R252 | `Intel-QAT-Latest-8960-C3000.pdf` | Extracted to `processing-cache/project-coherent-rag-text-extra` (344623 text bytes). | QAT crypto/compression acceleration, supported 8960/C3000-era platforms, Xen/SR-IOV/VF/PF limits, trust assumptions, reset/driver hazards, and virtualization caveats. |
 
 See `rag-manifest.json` for the complete file-level manifest.

@@ -1,0 +1,67 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #34495E
+skinparam activity {
+  BackgroundColor #FDFEFE
+  BorderColor #566573
+  DiamondBackgroundColor #FCF3CF
+  DiamondBorderColor #B7950B
+  StartColor #145A32
+  EndColor #922B21
+}
+skinparam note {
+  BackgroundColor #FEF9E7
+  BorderColor #B7950B
+}
+title ADR-006 - OpenZFS NVMe-oF and Media Layout
+
+legend right
+Design defaults for diagrams unless an ADR narrows them:
+- Actor/API: HTTPS 443 or 8443; OpenAI-compatible API plus Coherence-native API.
+- RoCEv2: UDP destination 4791; jumbo MTU 9000; PFC only on RDMA priorities.
+- NVMe-oF: discovery/controller service on TCP/RDMA port 4420; DPU-mediated targets.
+- Telemetry: OTLP gRPC 4317, OTLP HTTP 4318, Prometheus 9090/9100, gNMI 9339.
+- Timing: PTP event/general UDP 319/320 on an isolated timing/management class.
+- VLAN plan: site-specific IDs are allowed, but classes must stay isolated:
+  mgmt/OOB, frontend/API, RDMA rail-A, RDMA rail-B, storage/NVMe-oF, telemetry, timing.
+- Trunks: 802.1Q tagged uplinks; rail-A and rail-B must not share a failure domain.
+- Buffers: kv_hbm_active, kv_dram_warm, kv_cxl_warm, kv_rdma_staging,
+  zfs_slog, zfs_arc, zfs_l2arc, object_cache, vector_head_cache.
+endlegend
+
+start
+partition "Namespace and pool design" {
+  :Create mirrored NAND vdev sets\nacross independent storage nodes/rails;
+  :Expose zvol/object backing through DPU\nNVMe-oF port 4420 on storage VLAN;
+  if (mirror legs share rack, PSU, switch, or rail?) then (invalid)
+    :Reject layout; failure domains are not independent;
+    stop
+  endif
+}
+partition "Write path" {
+  :Coherence durable object -> DPU -> NVMe-oF -> OpenZFS;
+  if (sync/durable class?) then (sync)
+    :Commit via zfs_slog and checksum tree\nbefore durable ACK;
+  else (async/recomputable)
+    :Buffer under write-back policy\nwith flush deadline and loss budget;
+  endif
+}
+partition "Read path" {
+  if (hit in zfs_arc or zfs_l2arc?) then (cache hit)
+    :Serve to object_cache or kv_rdma_staging;
+  else (media)
+    :Read NAND mirror, verify checksum,\nrepair from good replica if needed;
+  endif
+}
+partition "Operations" {
+  if (resilver/scrub/degraded mirror active?) then (degraded)
+    :Lower admission, reserve rail bandwidth,\nblock hot inference placement if p99 rises;
+  else (normal)
+    :Permit scheduled scrubs and snapshot replication;
+  endif
+}
+stop
+@enduml

@@ -1,8 +1,8 @@
 # ADR-005: DPU and SmartNIC Offload Boundaries
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2  
-**Package:** v2 inference persistence and API ADR set, RAG refresh 2026-05-13  
+**Architecture cycle:** 2026-Q2  
+**Package:** Inference persistence and API ADR set, RAG refresh 2026-05-13  
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
@@ -12,7 +12,7 @@ Require DPU/SmartNIC hardware on storage-network paths for NVMe-oF hardware offl
 
 ## Context
 
-The v0 package treated DPU/SmartNIC offload as a storage acceleration and isolation capability. This refresh tightens the requirement: DPU/SmartNIC hardware is mandatory on the storage data plane because Project Coherent Storage depends on hardware offload for NVMe-oF and controlled handling of RDMA memory, queue pairs, and tenant capabilities across storage network paths. The RAG corpus still adds caution: DPUs are heterogeneous, memory-limited, vendor-specific, and often harder to program and observe than hosts. Research systems show strong value in offloading reads, data movement, encryption, and RDMA resource control to the DPU, but they also emphasize that writes, complex coordination, and large caches often remain better suited to the host. The newer OCP management references add a second constraint: DPU/SmartNIC offload must be visible through standard platform-management and low-latency management channels, not just vendor tools.
+The baseline package treated DPU/SmartNIC offload as a storage acceleration and isolation capability. This refresh tightens the requirement: DPU/SmartNIC hardware is mandatory on the storage data plane because Project Coherent Storage depends on hardware offload for NVMe-oF and controlled handling of RDMA memory, queue pairs, and tenant capabilities across storage network paths. The RAG corpus still adds caution: DPUs are heterogeneous, memory-limited, vendor-specific, and often harder to program and observe than hosts. Research systems show strong value in offloading reads, data movement, encryption, and RDMA resource control to the DPU, but they also emphasize that writes, complex coordination, and large caches often remain better suited to the host. The newer OCP management references add a second constraint: DPU/SmartNIC offload must be visible through standard platform-management and low-latency management channels, not just vendor tools.
 
 The post-refresh Intel BMRA and QAT sources add a host/platform accelerator distinction. Intel QAT can accelerate cryptographic and compression services on supported hosts through integrated, PCIe AIC, PF, or VF exposure, and BMRA-style automation shows how such accelerators are prepared through BIOS, kernel boot parameters, SR-IOV/IOMMU, device plugins, telemetry-aware scheduling, and Ansible. QAT is not a DPU/SmartNIC replacement: it does not provide NVMe-oF/RDMA storage-path mediation, rkey/capability governance, or fabric isolation. QAT must therefore be governed as a local trusted accelerator beneath Coherence-CE policy and above the hardware trust boundary, with stricter virtualization and trust gates than ordinary CPU fallback.
 
@@ -111,6 +111,6 @@ The post-refresh Intel BMRA and QAT sources add a host/platform accelerator dist
 | R252 | Intel QAT release notes for supported hardware, crypto/compression services, Xen/SR-IOV limits, trust assumptions, reset/driver hazards, and virtualization caveats. |
 | ADR-015 | CXL placement and role-governance rules that constrain DPU/GPU/NVMe slot decisions. |
 
-## v4 update: DPU/IPU placement in pod-scale storage fabrics
+## Pod-scale update: DPU/IPU placement in pod-scale storage fabrics
 
-v4 keeps DPU/SmartNIC hardware mandatory for storage-network paths and adds pod-local placement requirements. DPU/IPU devices must be inventoried with GPU/NIC/CXL/root-complex locality, storage/NVMe-oF queue ownership, RDMA memory registration behavior, isolation policy, telemetry endpoint, and failover class. Host fallback remains a degraded resilience path, not the normal production data path.
+The pod-scale update keeps DPU/SmartNIC hardware mandatory for storage-network paths and adds pod-local placement requirements. DPU/IPU devices must be inventoried with GPU/NIC/CXL/root-complex locality, storage/NVMe-oF queue ownership, RDMA memory registration behavior, isolation policy, telemetry endpoint, and failover class. Host fallback remains a degraded resilience path, not the normal production data path.

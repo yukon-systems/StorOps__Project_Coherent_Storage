@@ -1,8 +1,8 @@
 # ADR-001: Inference Storage Principles and SLOs
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2  
-**Package:** v2 inference persistence and API ADR set, RAG refresh 2026-05-13  
+**Architecture cycle:** 2026-Q2  
+**Package:** Inference persistence and API ADR set, RAG refresh 2026-05-13  
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
@@ -12,7 +12,7 @@ Optimize Project Coherent Storage for LLM inference by separating hot KV state, 
 
 ## Context
 
-The v0 architecture established the rack, fabric, OpenZFS/NVMe-oF, DPU, Xen, heterogeneous compute, and observability foundation. It treated LLM prompt/KV cache as an optional workload tier. The RAG research corpus shifts the priority: LLM inference is constrained by KV-cache capacity, model residency, small random reads, vector lookup latency, and fabric tail behavior as much as by raw storage throughput.
+The baseline architecture established the rack, fabric, OpenZFS/NVMe-oF, DPU, Xen, heterogeneous compute, and observability foundation. It treated LLM prompt/KV cache as an optional workload tier. The RAG research corpus shifts the priority: LLM inference is constrained by KV-cache capacity, model residency, small random reads, vector lookup latency, and fabric tail behavior as much as by raw storage throughput.
 
 The 2026 OCP additions broaden the SLO envelope beyond server-local storage. AI data-center power, rack-integrated energy storage, HVDC/LVDC shelves, timing validation, and OCP cluster reference architectures make facility readiness, clock quality, rack power headroom, and lifecycle observability part of the admission baseline rather than background assumptions.
 
@@ -32,7 +32,7 @@ The target workload has several distinct paths:
 - Make Coherence-CE Memory Mesh the sole KV/prefix-cache service boundary for inference actors such as vLLM.
 - Keep durable OpenZFS/NVMe-oF storage, DPU offload, and RoCEv2 details behind the Coherence-CE, model/object, and storage service layers rather than directly in every inference request.
 - Make TTFT, TPOT, cache-hit ratio, KV hydration latency, model load time, vector lookup p99, and fabric queue health first-class SLO signals.
-- Keep v0's dual RoCEv2 fabrics and edge-control governance, but add inference-specific admission gates before workloads are placed on GPU, NPU, FPGA, or CPU hosts.
+- Keep baseline dual RoCEv2 fabrics and edge-control governance, but add inference-specific admission gates before workloads are placed on GPU, NPU, FPGA, or CPU hosts.
 - Treat rack power envelope, PSU/power-shelf health, ESS/backup posture, power quality, and time-synchronization readiness as SLO-adjacent platform signals for inference placement and rollout.
 - Treat CXL/PMem as governed host-memory tiering inputs: CXL is a T1/T1.5 warm-memory expansion candidate only when role, persistence semantics, NUMA/root-complex placement, switch/bifurcation state, and telemetry are recorded.
 
@@ -57,11 +57,11 @@ The target workload has several distinct paths:
 | RAG corpus chunks | Immutable, chunked, deduplicated, re-indexable | T3 primary, T2 hot chunks |
 | Vector indexes | Versioned by embedding model and corpus snapshot | T1/T2 hot index, T3 durable build artifacts |
 | Checkpoints and batch outputs | Durable and resumable, not per-token critical | T3/T4 |
-| Control and audit state | Strongly consistent desired state and immutable audit | v0 control plane, outside inference data path |
+| Control and audit state | Strongly consistent desired state and immutable audit | baseline control plane, outside inference data path |
 
 ## SLO baseline
 
-| Objective | SLI | v2 lab target |
+| Objective | SLI | lab target |
 | --- | --- | --- |
 | Interactive first-token latency | `ttft_p95_ms`, `ttft_p99_ms` | Baseline per model, then enforce no regression above 10% during storage changes |
 | Decode latency | `tpot_p95_ms`, `tpot_p99_ms` | Baseline per model and batch profile |

@@ -1,0 +1,50 @@
+@startuml
+!theme plain
+title Project Coherent Storage - CXL Roadmap Decision Tree
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+
+start
+:Classify state;
+if (Active per-token decode?) then (yes)
+  :Use GPU HBM / local DRAM;
+  :Do not depend on CXL;
+  stop
+else (no)
+  if (Warm, reusable, metadata, or recomputable?) then (yes)
+    :Candidate CXL T1/T1.5;
+  else (no)
+    :Use OpenZFS/object/NVMe tier;
+    stop
+  endif
+endif
+if (Persistence required for correctness?) then (yes)
+  :Require OpenZFS-backed or persistent/block-qualified media;
+  :Volatile CXL cannot ack durability;
+else (no)
+  :Volatile CXL may support memory expansion;
+endif
+if (Root-complex/NUMA placement qualified?) then (yes)
+  :Continue;
+else (no)
+  :Reject latency-sensitive use;
+  stop
+endif
+if (Hidden switch/bifurcation?) then (yes)
+  :Reject production-like role;
+  stop
+else (no)
+  if (Explicit managed CXL fabric?) then (yes)
+    :Require fabric manager, pool ownership epoch,\nRAS, p99 latency, bandwidth, failover drills;
+  else (no)
+    :Direct-attached candidate;
+  endif
+endif
+if (Telemetry sufficient?) then (yes)
+  :Admit under Coherence-CE + scheduler policy;
+else (no)
+  :AMBER/RED/DRAIN until telemetry exists;
+endif
+stop
+@enduml

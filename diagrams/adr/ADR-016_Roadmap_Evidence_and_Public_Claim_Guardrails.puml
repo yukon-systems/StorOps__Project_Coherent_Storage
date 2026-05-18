@@ -1,0 +1,62 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #34495E
+skinparam activity {
+  BackgroundColor #FDFEFE
+  BorderColor #566573
+  DiamondBackgroundColor #FCF3CF
+  DiamondBorderColor #B7950B
+  StartColor #145A32
+  EndColor #922B21
+}
+skinparam note {
+  BackgroundColor #FEF9E7
+  BorderColor #B7950B
+}
+title ADR-016 - Roadmap Evidence and Public Claim Guardrails
+
+legend right
+Design defaults for diagrams unless an ADR narrows them:
+- Actor/API: HTTPS 443 or 8443; OpenAI-compatible API plus Coherence-native API.
+- RoCEv2: UDP destination 4791; jumbo MTU 9000; PFC only on RDMA priorities.
+- NVMe-oF: discovery/controller service on TCP/RDMA port 4420; DPU-mediated targets.
+- Telemetry: OTLP gRPC 4317, OTLP HTTP 4318, Prometheus 9090/9100, gNMI 9339.
+- Timing: PTP event/general UDP 319/320 on an isolated timing/management class.
+- VLAN plan: site-specific IDs are allowed, but classes must stay isolated:
+  mgmt/OOB, frontend/API, RDMA rail-A, RDMA rail-B, storage/NVMe-oF, telemetry, timing.
+- Trunks: 802.1Q tagged uplinks; rail-A and rail-B must not share a failure domain.
+- Buffers: kv_hbm_active, kv_dram_warm, kv_cxl_warm, kv_rdma_staging,
+  zfs_slog, zfs_arc, zfs_l2arc, object_cache, vector_head_cache.
+endlegend
+
+start
+partition "Source intake" {
+  :Ingest vendor brief, standard, Linux doc, paper,\nrepo snapshot, benchmark, or partner announcement;
+  if (source is primary and archived?) then (strong)
+    :Grade direct evidence with URL, checksum, date, scope;
+  else (weak)
+    :Grade as adjacent, inference, negative-control,\nor unverified; do not promote to claim;
+  endif
+}
+partition "Claim construction" {
+  if (claim names a vendor/product/partnership?) then (strict)
+    :Require direct source that states that exact relationship;
+  else (architecture inference)
+    :Label recommendation separately from fact;
+  endif
+}
+partition "Publication gate" {
+  if (evidence grade supports public statement?) then (publish)
+    :Include citation, date, and residual risk;
+  else (hold)
+    :Move to research backlog or appendix guardrail;
+  endif
+}
+partition "Audit" {
+  :Keep relative archive path and extraction status;\nno host-specific filesystem paths in public docs;
+}
+stop
+@enduml
