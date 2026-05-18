@@ -17,7 +17,7 @@
 - **Status:** Proposed / Review
 
 ## Visualized High-Level Architecture Scope
-![Top-down Project Coherent Storage stack](../diagrams/project-coherent-storage_engineering-deep-dive-stack.png)
+![Top-down Project Coherent Storage stack](./diagrams/project-coherent-storage_engineering-deep-dive-stack.png)
 
 ## Purpose
 
