@@ -1,7 +1,7 @@
 {
   "title": "CXL Technology, Optane PMem Comparison, Marvell 2026 Forecast, and Storage-Networking Impact",
   "generated_date": "2026-05-14",
-  "package": "Project Coherent Storage ADRs 2026-Q2 v2",
+  "package": "Project Coherent Storage ADRs 2026-Q2",
   "artifact_type": "archival_synthesis",
   "scope": "Local RAG/ADR-derived CXL analysis with date-sensitive public-source checks for 2026 vendor status.",
   "executive_summary": "CXL is the forward path for heterogeneous memory expansion, warm-tier pooling, and near-memory acceleration. Compared with Intel Optane PMem 200/300, CXL is less tied to one CPU vendor or board generation, supports broader packaging and fabric topologies, and is moving from direct-attached expansion into rack-level memory pooling. Project Coherent Storage should treat CXL as governed T1/T1.5 memory capacity, not local DRAM, not durable NAND, and not automatically suitable for hot GPU/DPU paths without topology and p99 latency proof.",

@@ -1,8 +1,8 @@
 # Intel BMRA and QAT Impact Note
 
 **Generated:** 2026-05-13  
-**Package:** Project Coherent Storage ADRs 2026-Q2 v2  
-**Supplemental source cache:** `/tmp/project-coherent-rag-text-extra`
+**Package:** Project Coherent Storage ADRs 2026-Q2  
+**Supplemental source cache:** `processing-cache/project-coherent-rag-text-extra`
 
 ## Reviewed sources
 

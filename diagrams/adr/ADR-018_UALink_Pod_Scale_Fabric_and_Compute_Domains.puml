@@ -1,23 +1,62 @@
 @startuml
 !theme plain
-title 18. UA-Link Pod Domain
 skinparam shadowing false
 skinparam roundcorner 12
 skinparam defaultFontName DejaVu Sans
-left to right direction
+skinparam ArrowColor #34495E
+skinparam activity {
+  BackgroundColor #FDFEFE
+  BorderColor #566573
+  DiamondBackgroundColor #FCF3CF
+  DiamondBorderColor #B7950B
+  StartColor #145A32
+  EndColor #922B21
+}
+skinparam note {
+  BackgroundColor #FEF9E7
+  BorderColor #B7950B
+}
+title ADR-018 - UA-Link Pod-Scale Fabric and Compute Domains
 
-rectangle "xPU/GPU endpoints" as N1 #D6EAF8
-rectangle "UA-Link switches" as N2 #D5F5E3
-rectangle "Pod scale-up domain" as N3 #FCF3CF
-rectangle "Scheduler locality" as N4 #E8DAEF
-rectangle "Coherence-CE" as N5 #FADBD8
+legend right
+Design defaults for diagrams unless an ADR narrows them:
+- Actor/API: HTTPS 443 or 8443; OpenAI-compatible API plus Coherence-native API.
+- RoCEv2: UDP destination 4791; jumbo MTU 9000; PFC only on RDMA priorities.
+- NVMe-oF: discovery/controller service on TCP/RDMA port 4420; DPU-mediated targets.
+- Telemetry: OTLP gRPC 4317, OTLP HTTP 4318, Prometheus 9090/9100, gNMI 9339.
+- Timing: PTP event/general UDP 319/320 on an isolated timing/management class.
+- VLAN plan: site-specific IDs are allowed, but classes must stay isolated:
+  mgmt/OOB, frontend/API, RDMA rail-A, RDMA rail-B, storage/NVMe-oF, telemetry, timing.
+- Trunks: 802.1Q tagged uplinks; rail-A and rail-B must not share a failure domain.
+- Buffers: kv_hbm_active, kv_dram_warm, kv_cxl_warm, kv_rdma_staging,
+  zfs_slog, zfs_arc, zfs_l2arc, object_cache, vector_head_cache.
+endlegend
 
-N1 --> N2 : load/store/atomics
-N2 --> N3 : switch fabric
-N3 --> N4 : pod membership
-N4 --> N5 : placement affinity
-
-note bottom
-Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
-end note
+start
+partition "Pod topology" {
+  :Inventory accelerator nodes, UA-Link switches,\nPCIe root complexes, GPU memory, NICs, DPUs;
+  if (compute domain has mixed unqualified accelerators?) then (unsafe)
+    :Separate into capability pools until collective profile passes;
+  else (qualified)
+    :Create pod-local scale-up domain;
+  endif
+}
+partition "Traffic separation" {
+  :UA-Link handles accelerator scale-up traffic\ninside pod boundary;
+  :RoCEv2/Ethernet handles scale-out, storage,\nmanagement, telemetry, and frontend traffic;
+  if (storage traffic attempts UA-Link path?) then (invalid)
+    :Reject design; storage remains DPU/RDMA/OpenZFS path;
+  endif
+}
+partition "Scheduler locality" {
+  if (KV/model/collective fits same pod?) then (local)
+    :Prefer same UA-Link island and same rail affinity;
+  else (remote)
+    :Account for RoCE hydration and cross-pod latency;
+  endif
+}
+partition "Admission gate" {
+  :Expose only pod locality, capability profile,\nand health state to Coherence/scheduler;
+}
+stop
 @enduml

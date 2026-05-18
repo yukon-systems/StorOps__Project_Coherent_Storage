@@ -1,8 +1,8 @@
 # ADR-007: Inference Scheduler Locality and Admission Control
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2  
-**Package:** v2 inference persistence and API ADR set, RAG refresh 2026-05-13  
+**Architecture cycle:** 2026-Q2  
+**Package:** Inference persistence and API ADR set, RAG refresh 2026-05-13  
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
@@ -12,7 +12,7 @@ Make the inference scheduler storage-aware through service-level signals. Admiss
 
 ## Context
 
-The v0 architecture used rack and fabric locality for heterogeneous compute placement. The RAG corpus shows that LLM inference is not just accelerator scheduling. TTFT and TPOT depend on model load state, KV-cache pressure, batching, preemption, memory fragmentation, data movement, and retrieval latency. A request placed on an idle accelerator can still miss its SLO if the model is cold, prefix blocks are remote, vector indexes are overloaded, or fabric congestion delays hydration.
+The baseline architecture used rack and fabric locality for heterogeneous compute placement. The RAG corpus shows that LLM inference is not just accelerator scheduling. TTFT and TPOT depend on model load state, KV-cache pressure, batching, preemption, memory fragmentation, data movement, and retrieval latency. A request placed on an idle accelerator can still miss its SLO if the model is cold, prefix blocks are remote, vector indexes are overloaded, or fabric congestion delays hydration.
 
 The scheduler therefore becomes the coordination point between inference runtime state and service-level storage state. For KV/prefix cache, the scheduler consumes Coherence-CE mesh locality, endpoint health, and SLO signals rather than direct OpenZFS, DPU, QAT, NVMe-oF, RoCEv2, or RDMA placement data from inference runtimes. The OCP inference/training fabric RAs and AI data-center whitepaper extend that coordination point to cluster profile, tenant gateway, fabric lifecycle, power headroom, and facility telemetry.
 
@@ -152,6 +152,6 @@ Disallowed degradation actions:
 | R251, R252 | BMRA telemetry-aware scheduling and QAT trust/VF/PF/endpoint/fallback state used as scheduler inputs. |
 | R29, O10, O11, ADR-015 | CXL memory expansion, form-factor/topology choices, and placement-governance requirements. |
 
-## v4 update: UA-Link, CXL pool, rail, and heterogeneous accelerator locality
+## Pod-scale update: UA-Link, CXL pool, rail, and heterogeneous accelerator locality
 
-v4 adds scheduler dimensions for UA-Link pod membership, CXL pool ownership/health, rail/NIC/GPU affinity, DPU locality, and heterogeneous accelerator profiles. Admission must prefer same-pod/same-rail placement for collective-heavy and KV-hydration-heavy scopes, demote stale fabric telemetry, and avoid mixed-vendor critical inference placements unless the collective/runtime profile is qualified.
+The pod-scale update adds scheduler dimensions for UA-Link pod membership, CXL pool ownership/health, rail/NIC/GPU affinity, DPU locality, and heterogeneous accelerator profiles. Admission must prefer same-pod/same-rail placement for collective-heavy and KV-hydration-heavy scopes, demote stale fabric telemetry, and avoid mixed-vendor critical inference placements unless the collective/runtime profile is qualified.

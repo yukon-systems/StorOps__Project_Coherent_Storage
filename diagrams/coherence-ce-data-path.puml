@@ -1,0 +1,32 @@
+@startuml
+!theme plain
+title Project Coherent Storage - Coherence-CE Data Path
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam defaultFontName DejaVu Sans
+skinparam componentStyle rectangle
+
+actor "vLLM / OpenAI-compatible\nInference Actor" as Actor
+component "Coherence-CE Adapter API\n(no OpenZFS/DPU/RDMA/CXL leakage)" as API #D6EAF8
+component "Coherence-CE Memory Mesh\nplacement + durability + metrics" as Mesh #D5F5E3
+component "GPU HBM / Local DRAM\nKV-D0/D1 active decode" as Hot #F9E79F
+component "Host DRAM + governed CXL T1/T1.5\nwarm KV/prefix, metadata, vector heads" as Warm #FCF3CF
+component "DPU / SmartNIC Offload\nNVMe-oF + RDMA mediation" as DPU #E8DAEF
+component "OpenZFS Mirrored NAND Block Tier\nqualified durability substrate" as ZFS #FADBD8
+component "Scheduler Admission\nGREEN / AMBER / RED / DRAIN" as Sched #D7DBDD
+
+Actor --> API : REST / OpenAI-compatible\nor Coherence-native calls
+API --> Mesh : actor-scoped operations
+Mesh --> Hot : hot KV placement
+Mesh --> Warm : warm/recomputable placement
+Mesh --> DPU : durable write/read path
+DPU --> ZFS : NVMe-oF / RoCEv2 / RDMA
+Mesh --> Sched : metrics rollup
+Sched --> API : admission / throttling / drain
+
+note bottom of API
+Actors know Coherence-CE semantics only.
+They do not know CXL devices, vdevs,
+RDMA QPs, DPUs, or NVMe namespaces.
+end note
+@enduml

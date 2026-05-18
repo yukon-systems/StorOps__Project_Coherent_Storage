@@ -1,23 +1,61 @@
 @startuml
 !theme plain
-title 09. Observability and Rollout Gates
 skinparam shadowing false
 skinparam roundcorner 12
 skinparam defaultFontName DejaVu Sans
-left to right direction
+skinparam ArrowColor #34495E
+skinparam activity {
+  BackgroundColor #FDFEFE
+  BorderColor #566573
+  DiamondBackgroundColor #FCF3CF
+  DiamondBorderColor #B7950B
+  StartColor #145A32
+  EndColor #922B21
+}
+skinparam note {
+  BackgroundColor #FEF9E7
+  BorderColor #B7950B
+}
+title ADR-009 - Observability, Benchmarking, and Rollout Gates
 
-rectangle "Benchmark harness" as N1 #D6EAF8
-rectangle "Metrics pipeline" as N2 #D5F5E3
-rectangle "Failure drills" as N3 #FCF3CF
-rectangle "Gate evaluator" as N4 #E8DAEF
-rectangle "Release decision" as N5 #FADBD8
+legend right
+Design defaults for diagrams unless an ADR narrows them:
+- Actor/API: HTTPS 443 or 8443; OpenAI-compatible API plus Coherence-native API.
+- RoCEv2: UDP destination 4791; jumbo MTU 9000; PFC only on RDMA priorities.
+- NVMe-oF: discovery/controller service on TCP/RDMA port 4420; DPU-mediated targets.
+- Telemetry: OTLP gRPC 4317, OTLP HTTP 4318, Prometheus 9090/9100, gNMI 9339.
+- Timing: PTP event/general UDP 319/320 on an isolated timing/management class.
+- VLAN plan: site-specific IDs are allowed, but classes must stay isolated:
+  mgmt/OOB, frontend/API, RDMA rail-A, RDMA rail-B, storage/NVMe-oF, telemetry, timing.
+- Trunks: 802.1Q tagged uplinks; rail-A and rail-B must not share a failure domain.
+- Buffers: kv_hbm_active, kv_dram_warm, kv_cxl_warm, kv_rdma_staging,
+  zfs_slog, zfs_arc, zfs_l2arc, object_cache, vector_head_cache.
+endlegend
 
-N1 --> N2 : TTFT/TPOT tests
-N2 --> N3 : telemetry
-N3 --> N4 : fault evidence
-N4 --> N5 : pass/fail
-
-note bottom
-Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
-end note
+start
+partition "Metric ingestion" {
+  :Collect Coherence, scheduler, GPU, DPU, CXL,\nRDMA switch, OpenZFS, and corpus metrics;
+  :Transport OTLP 4317/4318, Prometheus 9090/9100,\ngNMI 9339, PTP 319/320 timing evidence;
+}
+partition "Benchmark harness" {
+  :Run TTFT/TPOT, KV hit/miss, model cold load,\nRAG retrieval, RDMA incast, zpool degradation tests;
+  if (test isolates one failure domain?) then (valid)
+    :Record baseline, delta, and rollback threshold;
+  else (invalid)
+    :Reject noisy benchmark evidence;
+  endif
+}
+partition "Rollout gate" {
+  if (p95/p99, error budget, and failure drills pass?) then (pass)
+    :Advance canary scope: node -> rack -> pod -> fleet;
+  elseif (recoverable with AMBER controls?) then (hold)
+    :Cap admission and continue observation;
+  else (fail)
+    :Rollback, freeze promotion, require RCA;
+  endif
+}
+partition "Evidence retention" {
+  :Store relative artifact links, manifest checksums,\nconfiguration snapshots, and decision notes;
+}
+stop
 @enduml

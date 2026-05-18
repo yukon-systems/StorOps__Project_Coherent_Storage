@@ -1,7 +1,7 @@
 # ADR-020: CXL Memory Pools for UA-Link Pods
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2.v4  
+**Architecture cycle:** 2026-Q2  
 **Status:** Proposed  
 **Generated:** 2026-05-17
 
@@ -27,6 +27,6 @@ Use CXL memory pools as governed pod-local T1/T1.5 capacity behind Coherence-CE.
 
 ## Source documents
 
-- V4-S15/V4-S16/V4-S17: CXL-GPU and CXL/KV research.
-- V4-S18/V4-S19: CXL standards support.
-- v3 Marvell/XConn/CXL evidence retained in inherited ADR-015 and ADR-016.
+- S15/S16/S17: CXL-GPU and CXL/KV research.
+- S18/S19: CXL standards support.
+- Marvell/XConn/CXL evidence retained in inherited ADR-015 and ADR-016.

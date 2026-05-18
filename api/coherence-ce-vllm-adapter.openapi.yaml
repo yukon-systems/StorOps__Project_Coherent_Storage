@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Coherence-CE vLLM Adapter API
-  version: 2026-Q2.v2
+  version: "2026-Q2"
   summary: Coherence-CE Memory Mesh API contract for vLLM and peer inference adapters.
   description: >-
     This API is the only KV/prefix-cache contract exposed to inference adapters.

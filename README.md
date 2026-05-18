@@ -1,31 +1,31 @@
-# Project Coherent Storage ADR Package v4
+# Project Coherent Storage ADR Package
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2  
-**Package revision:** v4 UA-Link pod-scale, CXL memory pools, RDMA/RoCEv2 tuning, heterogeneous GP-GPU compute  
+**Architecture cycle:** 2026-Q2  
+**Architecture focus:** UA-Link pod-scale, CXL memory pools, RDMA/RoCEv2 tuning, heterogeneous GP-GPU compute  
 **Generated:** 2026-05-17  
 **Status:** Proposed
 
 ## Purpose
 
-This v4 package refreshes the v3 ADR set using the expanded 2026-05-17 RAG corpus and the updated `src/ADR-Storage-Reference-Arch/AGENTS.md` directives. It keeps the core v2/v3 invariant: inference actors connect to the Coherence-CE Memory Mesh and never bind directly to OpenZFS, DPU, RoCEv2, NVMe-oF, CXL, or UA-Link internals.
+This package refreshes the ADR set using the expanded 2026-05-17 RAG corpus and the project `AGENTS.md` directives. It keeps the core invariant: inference actors connect to the Coherence-CE Memory Mesh and never bind directly to OpenZFS, DPU, RoCEv2, NVMe-oF, CXL, or UA-Link internals.
 
-v4 adds a renewed architectural focus on:
+The architecture adds a renewed focus on:
 
 1. **UA-Link enabled pod-scale systems** as a scale-up accelerator domain inside pod/rack boundaries.
 2. **Network architecture across scale-up and scale-out planes**, separating UA-Link accelerator fabrics, Ethernet/RDMA scale-out, storage/NVMe-oF fabrics, management, and timing.
 3. **CXL memory pools** as governed T1/T1.5 memory capacity for warm KV/prefix state, metadata, vector heads, and future shared-memory research paths.
 4. **RDMA/RoCEv2 performance tuning** with explicit PFC/ECN/DCQCN, traffic-class, rail, telemetry, and failure semantics.
 5. **General-purpose GPU and heterogeneous accelerator scheduling**, covering NVIDIA/AMD/Intel GPU families, cross-vendor collectives, DPU/IPU offload, CXL-GPU research, and admission-control policy.
-6. **arXiv S3 bulk archive enablement**, implemented under `../RAG-Scripts/arxiv-s3/` as credential-safe requester-pays tooling.
+6. **arXiv S3 bulk archive enablement**, implemented under `RAG-Scripts/arxiv-s3/` as credential-safe requester-pays tooling.
 
-## v4 source basis
+## Source basis
 
-The v4 source pass extracted text from 363 PDFs in `/home/cdex-routeros/src/RAG-DATA` into `/tmp/project-coherent-rag-v4-text`.
+The source pass extracted text from 363 PDFs in the `RAG-DATA/` corpus into a local processing cache.
 
 - Text extraction OK: 360 PDFs
 - Text extraction failed: 3 PDFs
-- Source map: `review-artifacts/v4-rag-extraction-and-source-map.md`
+- Source map: `review-artifacts/rag-extraction-and-source-map.md`
 
 Important sources include the UA-Link white paper, UniFabriX UA-Link material, OCP Open Cluster inference/training fabric reference architectures, OCP MRC, Arista/Broadcom lossless Ethernet/RoCE material, AMD Pensando/Pollara cluster and product collateral, Intel Gaudi 3 cluster design, CXL/KV/GPU research, and prior Marvell/XConn/CXL/DPU materials.
 
@@ -33,13 +33,13 @@ Important sources include the UA-Link white paper, UniFabriX UA-Link material, O
 
 | Path | Purpose |
 | --- | --- |
-| `reports/ualink-pod-scale-cxl-rdma-gpgpu-v4.md` | Main v4 architecture report. |
+| `reports/ualink-pod-scale-cxl-rdma-gpgpu.md` | Main architecture report. |
 | `adr/ADR-018_UALink_Pod_Scale_Fabric_and_Compute_Domains.md` | New ADR for UA-Link pod-scale scale-up domains. |
 | `adr/ADR-019_Pod_Scale_Network_Architecture_and_RDMA_RoCEv2_Tuning.md` | New ADR for scale-out/storage networking and RoCEv2 tuning. |
 | `adr/ADR-020_CXL_Memory_Pools_for_UALink_Pods.md` | New ADR for CXL pool semantics in UA-Link pods. |
 | `adr/ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.md` | New ADR for heterogeneous GPU/accelerator scheduling. |
-| `diagrams/v4-*.puml`, `.png`, `.svg` | v4 PlantUML source and renders. |
-| `review-artifacts/v4-rag-extraction-and-source-map.*` | Extraction evidence and source map. |
+| `diagrams/*.puml`, `.png`, `.svg` | High-level PlantUML source and renders. |
+| `review-artifacts/rag-extraction-and-source-map.*` | Extraction evidence and source map. |
 
 ## ADR index
 
@@ -69,7 +69,7 @@ Important sources include the UA-Link white paper, UniFabriX UA-Link material, O
 
 ## Top-down architecture composition
 
-The v4 design composes the system from inference SLOs down through hot-state placement, data tiers, fabrics, offload, durable media, scheduler admission, failure semantics, CXL/UA-Link pod resources, heterogeneous accelerator governance, and research-publication workflow. Each ADR has a PlantUML source file plus PNG/SVG renders under `diagrams/adr/`.
+The design composes the system from inference SLOs down through hot-state placement, data tiers, fabrics, offload, durable media, scheduler admission, failure semantics, CXL/UA-Link pod resources, heterogeneous accelerator governance, and research-publication workflow. Each ADR has a PlantUML source file plus PNG/SVG renders under `diagrams/adr/`.
 
 | ADR | Architecture interaction diagram |
 | --- | --- |
@@ -186,13 +186,13 @@ The v4 design composes the system from inference SLOs down through hot-state pla
 
 Credential-safe requester-pays S3 tools were added at:
 
-`/home/cdex-routeros/src/RAG-Scripts/arxiv-s3/`
+`RAG-Scripts/arxiv-s3/`
 
 They support manifest fetch, manifest indexing, full/targeted/monthly download planning, raw tar retention, full explosion of PDF/source tar chunks, PDF text extraction, and validation reporting. Downloading waits on AWS requester-pays credentials and AWS CLI installation.
 
 ## Public claim guardrail
 
-UA-Link, CXL, RoCEv2, DPU, and heterogeneous GPU claims must use the v3/v4 evidence-grade rule:
+UA-Link, CXL, RoCEv2, DPU, and heterogeneous GPU claims must use the evidence-grade rule:
 
 - Direct: source explicitly states the relationship or capability.
 - Adjacent: relevant to architecture but not proof of a named integration.

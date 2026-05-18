@@ -1,7 +1,7 @@
 # ADR-018: UA-Link Pod-Scale Fabric and Compute Domains
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2.v4  
+**Architecture cycle:** 2026-Q2  
 **Status:** Proposed  
 **Generated:** 2026-05-17
 
@@ -31,7 +31,7 @@ The UA-Link white paper and UniFabriX material describe an open scale-up interco
 
 ## Source documents
 
-- V4-S01: UA-Link white paper.
-- V4-S02: UniFabriX UA-Link material.
-- V4-S03: Intra-node communication analysis.
-- V4-S04/V4-S05: OCP inference/training fabric scale models.
+- S01: UA-Link white paper.
+- S02: UniFabriX UA-Link material.
+- S03: Intra-node communication analysis.
+- S04/S05: OCP inference/training fabric scale models.

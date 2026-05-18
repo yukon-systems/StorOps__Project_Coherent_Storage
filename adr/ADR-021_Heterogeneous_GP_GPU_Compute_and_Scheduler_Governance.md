@@ -1,7 +1,7 @@
 # ADR-021: Heterogeneous GP-GPU Compute and Scheduler Governance
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2.v4  
+**Architecture cycle:** 2026-Q2  
 **Status:** Proposed  
 **Generated:** 2026-05-17
 
@@ -26,7 +26,7 @@ Admit heterogeneous general-purpose GPU and accelerator resources through capabi
 
 ## Source documents
 
-- V4-S13: Intel Gaudi 3 cluster reference design.
-- V4-S14: HetCCL heterogeneous GPU collectives research.
-- V4-S10/V4-S11/V4-S12: AMD Instinct/Pensando/Pollara evidence.
-- V4-S03: intra-node communication bottleneck analysis.
+- S13: Intel Gaudi 3 cluster reference design.
+- S14: HetCCL heterogeneous GPU collectives research.
+- S10/S11/S12: AMD Instinct/Pensando/Pollara evidence.
+- S03: intra-node communication bottleneck analysis.

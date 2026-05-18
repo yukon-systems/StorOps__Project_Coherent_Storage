@@ -1,7 +1,7 @@
 # CXL Technology, Optane PMem Comparison, Marvell 2026 Forecast, and Storage-Networking Impact
 
 **Generated:** 2026-05-14  
-**Package:** Project Coherent Storage ADRs 2026-Q2 v2  
+**Package:** Project Coherent Storage ADRs 2026-Q2  
 **Artifact type:** Archival synthesis  
 **Scope:** Local RAG/ADR-derived CXL analysis with date-sensitive public-source checks for 2026 vendor status.
 

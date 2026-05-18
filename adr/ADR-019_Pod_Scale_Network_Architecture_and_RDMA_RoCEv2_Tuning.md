@@ -1,7 +1,7 @@
 # ADR-019: Pod-Scale Network Architecture and RDMA/RoCEv2 Tuning
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2.v4  
+**Architecture cycle:** 2026-Q2  
 **Status:** Proposed  
 **Generated:** 2026-05-17
 
@@ -39,7 +39,7 @@ Define pod networking as multiple governed planes: UA-Link scale-up, RoCEv2/RDMA
 
 ## Source documents
 
-- V4-S04/V4-S05: OCP inference/training fabric RAs.
-- V4-S06: OCP MRC.
-- V4-S07/V4-S08/V4-S09: lossless Ethernet, Arista/Broadcom RoCE deployment guidance.
-- V4-S10/V4-S11/V4-S12: AMD Pensando/Pollara cluster and product collateral.
+- S04/S05: OCP inference/training fabric RAs.
+- S06: OCP MRC.
+- S07/S08/S09: lossless Ethernet, Arista/Broadcom RoCE deployment guidance.
+- S10/S11/S12: AMD Pensando/Pollara cluster and product collateral.

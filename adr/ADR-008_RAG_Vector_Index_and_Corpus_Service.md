@@ -1,8 +1,8 @@
 # ADR-008: RAG Vector Index and Corpus Service
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2  
-**Package:** v2 inference persistence and API ADR set, RAG refresh 2026-05-13  
+**Architecture cycle:** 2026-Q2  
+**Package:** Inference persistence and API ADR set, RAG refresh 2026-05-13  
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
@@ -12,7 +12,7 @@ Make RAG corpus, embedding, vector-index, retrieval-result, and chunk-hydration 
 
 ## Context
 
-The v0 architecture centered on coherent flash and general AI/HPC storage. The inference workload adds a retrieval path that can dominate TTFT when queries require embedding, vector search, reranking, and chunk hydration before decode. The RAG corpus is therefore not a side dataset. It is part of the online inference path and must be versioned, cached, measured, and scheduled like model data.
+The baseline architecture centered on coherent flash and general AI/HPC storage. The inference workload adds a retrieval path that can dominate TTFT when queries require embedding, vector search, reranking, and chunk hydration before decode. The RAG corpus is therefore not a side dataset. It is part of the online inference path and must be versioned, cached, measured, and scheduled like model data.
 
 The RAG corpus also has a different correctness model than KV cache. KV cache is recomputable and tied to a runtime sequence. Corpus chunks, embeddings, and vector indexes are durable derived artifacts that must remain reproducible and version-compatible. The 2026 refresh also treats the local RAG source set itself as a managed corpus: extraction status, failed documents, source IDs, and impact classification are part of reproducibility evidence.
 

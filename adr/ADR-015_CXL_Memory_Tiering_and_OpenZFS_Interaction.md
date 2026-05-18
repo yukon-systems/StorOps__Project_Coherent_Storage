@@ -1,7 +1,7 @@
 # ADR-015: CXL Memory Tiering and OpenZFS Interaction
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2.v3  
+**Architecture cycle:** 2026-Q2  
 **Status:** Proposed  
 **Generated:** 2026-05-15
 
@@ -9,7 +9,7 @@
 
 CXL is a governed T1/T1.5 memory tier and roadmap-managed hardware option for Project Coherent Storage. It may support Coherence-CE metadata, warm KV/prefix staging, vector-index heads, write buffers, ARC-like memory pressure relief, and future CXL-PNM/CXL-SSD experiments. It is not a replacement for GPU HBM, local DDR DRAM, OpenZFS durable NAND, DPU-mediated NVMe-oF/RDMA storage paths, or Coherence-CE actor isolation.
 
-## v3 decision
+## Decision
 
 - Keep vLLM and peer inference actors isolated from CXL, OpenZFS, DPU, RoCEv2, and NVMe-oF details.
 - Treat Marvell Structera, Marvell/XConn acquisition, XConn Apollo/Apollo 2, XConn/ScaleFlux, XConn/MemVerge, and CXL 3.1/4.0 materials as direct roadmap evidence for CXL memory expansion, switching, pooling, and interoperability direction.
@@ -63,6 +63,6 @@ CXL remains preferred for heterogeneous future deployments because it is not tie
 - Linux CXL driver, `ndctl`/`libcxl`, cxl-reskit, and SMDK sources.
 - CXL KV-cache, CXL shared-memory KV, CXL SSD, CXL-NDP, ByteFS, and CXL database research papers in the RAG corpus.
 
-## v4 update: CXL memory pools inside UA-Link pods
+## Pod-scale update: CXL memory pools inside UA-Link pods
 
-v4 binds CXL memory-pool admission to pod topology. CXL pools may be colocated with UA-Link accelerator domains, but UA-Link does not provide CXL ownership, persistence, or durability semantics. CXL pool managers must expose ownership epochs, link state, memory poison/error state, thermal state, p99 latency, bandwidth, and rollback/fencing behavior to Coherence-CE and scheduler admission.
+The pod-scale update binds CXL memory-pool admission to pod topology. CXL pools may be colocated with UA-Link accelerator domains, but UA-Link does not provide CXL ownership, persistence, or durability semantics. CXL pool managers must expose ownership epochs, link state, memory poison/error state, thermal state, p99 latency, bandwidth, and rollback/fencing behavior to Coherence-CE and scheduler admission.

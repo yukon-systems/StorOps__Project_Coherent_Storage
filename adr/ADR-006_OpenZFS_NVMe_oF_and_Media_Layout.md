@@ -1,8 +1,8 @@
 # ADR-006: OpenZFS, NVMe-oF, and Media Layout
 
 **Project:** Project Coherent Storage  
-**Version:** 2026-Q2  
-**Package:** v2 inference persistence and API ADR set, RAG refresh 2026-05-13  
+**Architecture cycle:** 2026-Q2  
+**Package:** Inference persistence and API ADR set, RAG refresh 2026-05-13  
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
@@ -12,7 +12,7 @@ Use OpenZFS and NVMe-oF cross-node mirrored NAND as the core durable block-stora
 
 ## Context
 
-OpenZFS provides checksums, snapshots, compression, scrubs, and operationally useful data integrity. The v0 architecture selected OpenZFS-backed storage nodes exporting zvols over NVMe-oF/RDMA and retained DPU/SPDK offload where supported. The earlier v0/v1 text treated cross-node mirrored ZFS vdevs as experimental Mode X; this refresh corrects that disposition to match the coherent-storage requirement: cross-node mirrored ZFS/NVMe-oF is the core NAND block-storage substrate, subject to explicit failure and latency gates. The RAG corpus supports the value of ZFS integrity, but also shows that ML and LLM workloads create many small random reads, cache/prefetch needs, bursty writes, and high sensitivity to storage configuration.
+OpenZFS provides checksums, snapshots, compression, scrubs, and operationally useful data integrity. The baseline architecture selected OpenZFS-backed storage nodes exporting zvols over NVMe-oF/RDMA and retained DPU/SPDK offload where supported. Earlier architecture text treated cross-node mirrored ZFS vdevs as experimental Mode X; this refresh corrects that disposition to match the coherent-storage requirement: cross-node mirrored ZFS/NVMe-oF is the core NAND block-storage substrate, subject to explicit failure and latency gates. The RAG corpus supports the value of ZFS integrity, but also shows that ML and LLM workloads create many small random reads, cache/prefetch needs, bursty writes, and high sensitivity to storage configuration.
 
 The inference-optimized architecture therefore keeps OpenZFS for durable T2/T3 services while making the hot KV service and RAG/vector indexes explicit consumers above it. The OCP power and AI data-center references add another layout constraint: media density, cache rebuild behavior, and storage-node admission must fit rack power, pulse-load, protection, thermal, power-quality, and backup-energy envelopes.
 
