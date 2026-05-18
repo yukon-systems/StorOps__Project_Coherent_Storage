@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 16. Roadmap Evidence Guardrails
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "Source evidence" as N1 #D6EAF8
+rectangle "Evidence classifier" as N2 #D5F5E3
+rectangle "Claim matrix" as N3 #FCF3CF
+rectangle "Report text" as N4 #E8DAEF
+rectangle "Review gate" as N5 #FADBD8
+
+N1 --> N2 : vendor/source data
+N2 --> N3 : direct/adjacent/negative
+N3 --> N4 : allowed wording
+N4 --> N5 : publication claim
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml

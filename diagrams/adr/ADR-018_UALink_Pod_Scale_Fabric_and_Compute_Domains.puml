@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 18. UA-Link Pod Domain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "xPU/GPU endpoints" as N1 #D6EAF8
+rectangle "UA-Link switches" as N2 #D5F5E3
+rectangle "Pod scale-up domain" as N3 #FCF3CF
+rectangle "Scheduler locality" as N4 #E8DAEF
+rectangle "Coherence-CE" as N5 #FADBD8
+
+N1 --> N2 : load/store/atomics
+N2 --> N3 : switch fabric
+N3 --> N4 : pod membership
+N4 --> N5 : placement affinity
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml

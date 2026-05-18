@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 07. Scheduler Locality and Admission
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "Workload request" as N1 #D6EAF8
+rectangle "Coherence metrics" as N2 #D5F5E3
+rectangle "Fabric/CXL/DPU telemetry" as N3 #FCF3CF
+rectangle "Scheduler" as N4 #E8DAEF
+rectangle "Placement decision" as N5 #FADBD8
+
+N1 --> N2 : model/KV needs
+N2 --> N3 : rollups
+N3 --> N4 : health state
+N4 --> N5 : GREEN/AMBER/RED
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml

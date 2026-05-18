@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 19. Pod Network and RoCEv2 Tuning
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "Traffic classes" as N1 #D6EAF8
+rectangle "RoCEv2 fabric" as N2 #D5F5E3
+rectangle "PFC/ECN/DCQCN" as N3 #FCF3CF
+rectangle "Rail/DPU mapping" as N4 #E8DAEF
+rectangle "Admission telemetry" as N5 #FADBD8
+
+N1 --> N2 : DSCP/PCP
+N2 --> N3 : RDMA packets
+N3 --> N4 : congestion control
+N4 --> N5 : affinity
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml

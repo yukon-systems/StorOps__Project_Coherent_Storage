@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 21. Heterogeneous GP-GPU Governance
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "Workload request" as N1 #D6EAF8
+rectangle "Capability profiles" as N2 #D5F5E3
+rectangle "NVIDIA/AMD/Intel pools" as N3 #FCF3CF
+rectangle "Collectives/RDMA" as N4 #E8DAEF
+rectangle "Scheduler placement" as N5 #FADBD8
+
+N1 --> N2 : SLO + model
+N2 --> N3 : vendor/runtime traits
+N3 --> N4 : eligible devices
+N4 --> N5 : communication path
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml

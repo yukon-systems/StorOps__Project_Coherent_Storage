@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 15. CXL Memory Tiering
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "CXL device/pool" as N1 #D6EAF8
+rectangle "Fabric manager" as N2 #D5F5E3
+rectangle "Coherence warm tier" as N3 #FCF3CF
+rectangle "OpenZFS-adjacent roles" as N4 #E8DAEF
+rectangle "Scheduler telemetry" as N5 #FADBD8
+
+N1 --> N2 : capacity/latency
+N2 --> N3 : ownership epoch
+N3 --> N4 : warm placement
+N4 --> N5 : qualified media only
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml

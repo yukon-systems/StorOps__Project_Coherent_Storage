@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 20. CXL Pools for UA-Link Pods
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "UA-Link pod" as N1 #D6EAF8
+rectangle "CXL pool manager" as N2 #D5F5E3
+rectangle "CXL memory devices" as N3 #FCF3CF
+rectangle "Coherence warm KV" as N4 #E8DAEF
+rectangle "Scheduler gates" as N5 #FADBD8
+
+N1 --> N2 : pod locality
+N2 --> N3 : ownership epoch
+N3 --> N4 : memory capacity
+N4 --> N5 : warm state
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml

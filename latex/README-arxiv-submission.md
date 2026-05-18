@@ -1,10 +1,10 @@
-# arXiv submission notes for Project Coherent Storage v4
+# arXiv submission notes for Project Coherent Storage v3
 
 This directory contains an arXiv-oriented source draft, not a completed submission.
 
 ## Files
 
-- `project-coherent-storage-v4.tex` - LaTeX manuscript source.
+- `project-coherent-storage-v3.tex` / `project-coherent-storage-v4.tex` - LaTeX manuscript source.
 - `references.bib` - BibTeX reference file.
 - `figures/*.png` - rendered PlantUML diagrams referenced by the manuscript.
 
@@ -22,8 +22,10 @@ This host currently has `bibtex` and `plantuml`, but no `pdflatex`, `latexmk`, o
 Before submission, run on a TeX-capable host:
 
 ```sh
-pdflatex project-coherent-storage-v4.tex
-bibtex references.bib
+pdflatex project-coherent-storage-v3.tex` / `project-coherent-storage-v4.tex
+bibtex project-coherent-storage-v3
+pdflatex project-coherent-storage-v3.tex` / `project-coherent-storage-v4.tex
+pdflatex project-coherent-storage-v3.tex` / `project-coherent-storage-v4.tex
 ```
 
 Then inspect the produced PDF, bibliography, figure placement, and overfull/underfull warnings.

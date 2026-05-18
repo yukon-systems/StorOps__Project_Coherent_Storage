@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 09. Observability and Rollout Gates
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "Benchmark harness" as N1 #D6EAF8
+rectangle "Metrics pipeline" as N2 #D5F5E3
+rectangle "Failure drills" as N3 #FCF3CF
+rectangle "Gate evaluator" as N4 #E8DAEF
+rectangle "Release decision" as N5 #FADBD8
+
+N1 --> N2 : TTFT/TPOT tests
+N2 --> N3 : telemetry
+N3 --> N4 : fault evidence
+N4 --> N5 : pass/fail
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml

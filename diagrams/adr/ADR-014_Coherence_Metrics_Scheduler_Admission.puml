@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 14. Metrics to Scheduler Admission
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "Coherence metrics" as N1 #D6EAF8
+rectangle "Aggregation window" as N2 #D5F5E3
+rectangle "Policy thresholds" as N3 #FCF3CF
+rectangle "Scheduler state" as N4 #E8DAEF
+rectangle "Admission response" as N5 #FADBD8
+
+N1 --> N2 : raw metrics
+N2 --> N3 : rollup
+N3 --> N4 : GREEN/AMBER/RED/DRAIN
+N4 --> N5 : placement status
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml

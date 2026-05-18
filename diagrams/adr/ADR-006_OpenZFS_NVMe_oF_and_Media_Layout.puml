@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 06. OpenZFS Media Layout
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "Coherence write policy" as N1 #D6EAF8
+rectangle "DPU NVMe-oF" as N2 #D5F5E3
+rectangle "OpenZFS zpool" as N3 #FCF3CF
+rectangle "Mirrored NAND vdevs" as N4 #E8DAEF
+rectangle "Scrub/resilver" as N5 #FADBD8
+
+N1 --> N2 : durable writes
+N2 --> N3 : namespace I/O
+N3 --> N4 : checksummed blocks
+N4 --> N5 : mirror replication
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml

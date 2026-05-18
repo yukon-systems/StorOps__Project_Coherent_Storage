@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 11. KV Durability Classes
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "KV object" as N1 #D6EAF8
+rectangle "KV-D0..KV-D5 policy" as N2 #D5F5E3
+rectangle "Coherence placement" as N3 #FCF3CF
+rectangle "OpenZFS persistence" as N4 #E8DAEF
+rectangle "Recovery semantics" as N5 #FADBD8
+
+N1 --> N2 : classify
+N2 --> N3 : retention goal
+N3 --> N4 : memory/storage target
+N4 --> N5 : durability evidence
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml

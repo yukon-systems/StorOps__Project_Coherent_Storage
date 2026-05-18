@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 12. vLLM Adapter API Contract
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "vLLM adapter" as N1 #D6EAF8
+rectangle "OpenAI-compatible API" as N2 #D5F5E3
+rectangle "Coherence-native API" as N3 #FCF3CF
+rectangle "Coherence-CE" as N4 #E8DAEF
+rectangle "Lower layers hidden" as N5 #FADBD8
+
+N1 --> N2 : request/stream
+N2 --> N3 : metadata
+N3 --> N4 : native ops
+N4 --> N5 : placement/policy
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 04. RDMA and GPU-Direct Paths
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "Coherence-CE" as N1 #D6EAF8
+rectangle "RoCEv2 fabric" as N2 #D5F5E3
+rectangle "GPU direct path" as N3 #FCF3CF
+rectangle "DPU/NIC" as N4 #E8DAEF
+rectangle "Remote storage/object" as N5 #FADBD8
+
+N1 --> N2 : hydration
+N2 --> N3 : RDMA read/write
+N3 --> N4 : direct DMA
+N4 --> N5 : offload
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 17. Research Metadata Workflow
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "arXiv API/S3/bulk data" as N1 #D6EAF8
+rectangle "Local RAG archive" as N2 #D5F5E3
+rectangle "Metadata index" as N3 #FCF3CF
+rectangle "Markdown/LaTeX/BibTeX" as N4 #E8DAEF
+rectangle "Publication package" as N5 #FADBD8
+
+N1 --> N2 : metadata
+N2 --> N3 : PDF/source tar
+N3 --> N4 : SQLite/JSONL
+N4 --> N5 : citations
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml

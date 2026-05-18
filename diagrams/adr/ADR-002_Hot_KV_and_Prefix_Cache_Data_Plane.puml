@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+title 02. Hot KV Data Plane
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+left to right direction
+
+rectangle "vLLM/OpenAI actor" as N1 #D6EAF8
+rectangle "Coherence-CE mesh" as N2 #D5F5E3
+rectangle "GPU HBM/local DRAM" as N3 #FCF3CF
+rectangle "CXL warm tier" as N4 #E8DAEF
+rectangle "OpenZFS durable tier" as N5 #FADBD8
+
+N1 --> N2 : KV request
+N2 --> N3 : placement
+N3 --> N4 : hot decode
+N4 --> N5 : warm staging
+
+note bottom
+Actor-facing contract: lower-layer resource identifiers remain hidden unless the ADR explicitly defines them as operator-only evidence.
+end note
+@enduml
