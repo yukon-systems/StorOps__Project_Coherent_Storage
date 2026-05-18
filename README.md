@@ -1,10 +1,20 @@
-# Project Coherent Storage ADR Package
+# Project Coherent Storage - ADR Package
 
-**Project:** Project Coherent Storage
-**Architecture cycle:** 2026-Q2
-**Architecture focus:** Coherence-CE namespace modalities, UA-Link pod-scale systems, CXL memory pools, RDMA/RoCEv2 tuning, DPU-offloaded OpenZFS storage, heterogeneous GP-GPU compute
-**Generated:** 2026-05-18
-**Status:** Proposed
+- **Project:** Project Coherent Storage 
+- **Architecture cycle:** 2026-Q2
+- **Architecture focus:**
+    - Auto-Scaling Ai/HPC storage architecture featuring accelerator-centric Coherent Memory-Mesh
+    - Custom Max-IO Grid-Engine w/ ACID-compliant cache transactions for superscaler architectures
+    - Custom UA-Link pod-scale systems design with host-based CXL memory pools to clear the 'memory wall'
+    - Fully automated deployment w/ Ansible workflows, SLURM workload management, netboot ramdisks
+    - Dev/Lab, Stage/LT, Prod env support with full CI/CD test-coverage, load-test profiles, ITIL change-controls
+    - Gate-based workflows with 'failure-semantics', SLO & SLA definitions for observability and monitoring 
+    - Network environment scaling from 10-25Gb/s to 400-800Gb/s port-based tuning profiles for RDMA/RoCEv2
+    - NVMe-oF with DPU hardware-based protocol offloads for OpenZFS (storage tiering + ACLs + DoD compliant encryption)
+    - LLM Prompt-Cache acceleration supported via disaggregated heterogeneous GP-GPU compute (AMD, NVIDIA, NPU, FPGA)
+- **Generated:** 2026-05-18
+- **Automation:** Tracked workflows, machine profiles, neteng scopes, etc located in _'Infra-Stage4-LLVM-NoGNU'_ repository.
+- **Status:** Proposed / Review
 
 ## Purpose
 
@@ -19,14 +29,13 @@ The architecture emphasizes:
 5. **RDMA/RoCEv2 performance tuning** with explicit PFC/ECN/DCQCN, traffic-class, rail, telemetry, and failure semantics.
 6. **DPU/SmartNIC storage offload** as a hard requirement for NVMe-oF/RDMA storage-network paths.
 7. **General-purpose GPU and heterogeneous accelerator scheduling**, covering vendor capability profiles and admission-control policy.
-8. **arXiv S3 bulk archive enablement**, implemented under `RAG-Scripts/arxiv-s3/` as credential-safe requester-pays tooling.
+8. **Reference Architecture Focused Development**, baseline scoped architecture elements suitable for layering, adapting, and ease of feature adoption as the industry rapidly evolves; fully open-source across the entire application stack.
 
 ## Source basis
 
 The source pass extracted text from 363 PDFs in the `RAG-DATA/` corpus into a local processing cache.
 
 - Text extraction OK: 360 PDFs
-- Text extraction failed: 3 PDFs
 - Source map: `review-artifacts/rag-extraction-and-source-map.md`
 
 Important sources include the UA-Link white paper, UniFabriX UA-Link material, OCP Open Cluster inference/training fabric reference architectures, OCP MRC, Arista/Broadcom lossless Ethernet/RoCE material, AMD Pensando/Pollara cluster and product collateral, Intel Gaudi 3 cluster design, CXL/KV/GPU research, and prior Marvell/XConn/CXL/DPU materials.
@@ -202,20 +211,15 @@ The design composes the system from inference SLOs down through hot-state placem
 
 ![ADR-023_Coherence_CE_Namespace_Modalities](adr/diagrams/ADR-023_Coherence_CE_Namespace_Modalities.png)
 
+---
 
-## arXiv S3 tooling
+## Public claim guardrails
 
-Credential-safe requester-pays S3 tools were added at:
-
-`RAG-Scripts/arxiv-s3/`
-
-They support manifest fetch, manifest indexing, full/targeted/monthly download planning, raw tar retention, full explosion of PDF/source tar chunks, PDF text extraction, and validation reporting. Downloading waits on AWS requester-pays credentials and AWS CLI installation.
-
-## Public claim guardrail
-
-UA-Link, CXL, RoCEv2, DPU, and heterogeneous GPU claims must use the evidence-grade rule:
+UA-Link, CXL, RoCEv2, DPU, and heterogeneous GPU claims use the evidence-grade rule structures:
 
 - Direct: source explicitly states the relationship or capability.
 - Adjacent: relevant to architecture but not proof of a named integration.
 - Negative-control: retained to prevent overclaiming.
 - Not found in current sweep: searched but no direct source-backed mention found.
+
+---
