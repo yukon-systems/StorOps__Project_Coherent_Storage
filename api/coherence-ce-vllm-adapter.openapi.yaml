@@ -16,6 +16,8 @@ security:
 tags:
   - name: kv
     description: KV and prefix-cache operations.
+  - name: namespace
+    description: Namespace modality and locality-index descriptors.
   - name: health
     description: Coherence-CE health and readiness.
   - name: admission
@@ -252,6 +254,64 @@ components:
     AdmissionAction:
       type: string
       enum: [admit, prefer_local, queue, throttle, recompute, drain, reject]
+    NamespaceMode:
+      type: string
+      enum: [unified, dimensional_indexed]
+      description: >-
+        Unified Namespace hides locality behind one logical namespace. Dimensional
+        Indexed Namespace scopes operations by an explicit index_id and declared
+        dimensions for locality-aware routing.
+    NamespaceDimensions:
+      type: object
+      additionalProperties: false
+      properties:
+        tenant_id:
+          type: string
+        region:
+          type: string
+        datacenter:
+          type: string
+        mesh_pool:
+          type: string
+        pod:
+          type: string
+        rack:
+          type: string
+        model_id:
+          type: string
+        tokenizer_id:
+          type: string
+        adapter_id:
+          type: string
+        runtime_profile_hash:
+          type: string
+        durability_class:
+          $ref: '#/components/schemas/DurabilityClass'
+        locality_epoch:
+          type: string
+        data_class:
+          type: string
+          enum: [kv, prefix, object, vector, metadata, checkpoint]
+    NamespaceDescriptor:
+      type: object
+      additionalProperties: false
+      required: [mode, namespace]
+      properties:
+        mode:
+          $ref: '#/components/schemas/NamespaceMode'
+        namespace:
+          type: string
+          description: Logical Coherence-CE namespace; never a physical path.
+        index_id:
+          type: string
+          description: >-
+            Stable URL-safe dimensional index token. Required when mode is
+            dimensional_indexed. It is not a zpool, DPU, RDMA, VLAN, or CXL ID.
+        dimensions:
+          $ref: '#/components/schemas/NamespaceDimensions'
+        route_hint:
+          type: string
+          description: Advisory Coherence-CE locality hint; policy may ignore it.
     LookupStatus:
       type: string
       enum: [hit, miss, stale, incompatible_profile, recompute_required, degraded]
@@ -304,6 +364,8 @@ components:
           minimum: 0
         layout_hash:
           type: string
+        namespace_descriptor:
+          $ref: '#/components/schemas/NamespaceDescriptor'
     BlockRange:
       type: object
       additionalProperties: false
@@ -330,6 +392,8 @@ components:
           enum: [interactive, batch, background, system, maintenance]
         session_id:
           type: string
+        namespace_descriptor:
+          $ref: '#/components/schemas/NamespaceDescriptor'
     PayloadRef:
       type: object
       additionalProperties: false
@@ -603,6 +667,10 @@ components:
         durability_class:
           $ref: '#/components/schemas/DurabilityClass'
         prefix_shard:
+          type: string
+        namespace_mode:
+          $ref: '#/components/schemas/NamespaceMode'
+        index_id:
           type: string
         scope:
           type: string

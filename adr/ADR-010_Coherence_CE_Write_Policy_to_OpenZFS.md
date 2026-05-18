@@ -6,6 +6,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
+## Architecture diagram
+
+![ADR-010_Coherence_CE_Write_Policy_to_OpenZFS](diagrams/ADR-010_Coherence_CE_Write_Policy_to_OpenZFS.png)
+
 ## Decision summary
 
 Use a class-based Coherence-CE write policy to OpenZFS. Coherence-CE owns all KV/prefix-cache writes, acknowledgements, replay, and promotion. OpenZFS/NVMe-oF provides the durable NAND block substrate below Coherence-CE; vLLM and peer inference actors never choose or observe OpenZFS datasets, zvols, pools, DPU paths, NVMe-oF namespaces, RoCEv2 classes, or RDMA memory details.

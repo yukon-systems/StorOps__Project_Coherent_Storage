@@ -5,6 +5,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-15
 
+## Architecture diagram
+
+![ADR-016_Roadmap_Evidence_and_Public_Claim_Guardrails](diagrams/ADR-016_Roadmap_Evidence_and_Public_Claim_Guardrails.png)
+
 ## Decision summary
 
 Architecture reports, training decks, and arXiv-oriented papers must classify vendor, product-roadmap, partnership, and integration evidence before using it as a claim. The allowed grades are **direct**, **adjacent**, **negative-control**, and **not-found-in-current-sweep**.

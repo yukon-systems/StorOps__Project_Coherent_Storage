@@ -10,7 +10,7 @@ from __future__ import annotations
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "diagrams" / "adr"
+OUT = ROOT / "adr" / "diagrams"
 
 COMMON_HEADER = """@startuml
 !theme plain
@@ -711,6 +711,81 @@ partition "Governance" {
 }
 stop
 '''),
+"ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator": diagram("ADR-022 - S3/Object REST Translator and Prefix-Cache Routes", r'''
+start
+partition "Ingress protocols" {
+  :S3 client calls s3_net_service\nHTTP 8080 S3 object protocol;
+  :REST client calls rest_net_service\nHTTP 8000 JSON/binary REST;
+}
+partition "Translation layer" {
+  if (S3 request?) then (yes)
+    :meta_translate_service normalizes\nmethod, bucket, key, query, headers;
+    if (bucket maps to prefix-cache?) then (prefix)
+      :Resolve namespace_mode, namespace,\noptional index_id, and prefix_id by policy;
+    else (object)
+      :Map to /objects/{bucket}/{key};
+    endif
+  else (REST native)
+    :Validate route against OpenAPI contract;
+  endif
+}
+partition "Prefix-cache contract" {
+  if (exact put/get/delete?) then (exact)
+    if (prefix_id present?) then (valid)
+      :Route to /prefix-cache/{mode}/.../prefixes/{prefix_id};
+    else (invalid)
+      :Reject keyless exact operation\n400 invalid_identity;
+      stop
+    endif
+  else (collection)
+    :Search or invalidate requires explicit body\nand bounded predicate/escalation policy;
+  endif
+}
+partition "Backend adapters" {
+  :Use replaceable object, KV, vector,\nprefix-cache, and metadata adapters;
+  :Emit metrics by operation, namespace_mode,\nindex_id, cache hit/miss, latency, error;
+}
+stop
+'''),
+"ADR-023_Coherence_CE_Namespace_Modalities": diagram("ADR-023 - Unified and Dimensional Indexed Namespaces", r'''
+start
+partition "Namespace selection" {
+  :Receive Coherence-CE or translator request\nwith tenant, model, runtime, durability, trace;
+  if (client simplicity or global logical identity dominates?) then (Unified)
+    :Use Unified Namespace\nnamespace + prefix_id;
+  else (locality-sensitive)
+    :Use Dimensional Indexed Namespace\nnamespace + index_id + dimensions;
+  endif
+}
+partition "Unified Namespace workflow" {
+  if (Unified selected?) then (yes)
+    :Exact path /prefix-cache/unified/{namespace}/prefixes/{prefix_id};
+    :Search/invalidate at namespace collection route;
+    :Coherence-CE hides region/datacenter/mesh routing;
+  endif
+}
+partition "Dimensional index workflow" {
+  if (Dimensional selected?) then (yes)
+    :Validate index_id against tenant, region, datacenter,\nmesh_pool, pod/rack, model/runtime, class, epoch;
+    :Exact path /prefix-cache/dimensional/{namespace}/indexes/{index_id}/prefixes/{prefix_id};
+    if (miss and escalation authorized?) then (escalate)
+      :Escalate to parent/region/global policy scope;
+    else (bounded)
+      :Stay index-local to bound latency and blast radius;
+    endif
+  endif
+}
+partition "Admission rollup" {
+  :Roll metrics by namespace_mode, namespace, index_id,\nlocality_epoch, cache_kind, durability_class;
+  if (telemetry stale or cross-DC p99 too high?) then (degrade)
+    :Mark affected index or namespace AMBER/RED/DRAIN;
+  else (healthy)
+    :Admit local operations and preserve actor abstraction;
+  endif
+}
+stop
+'''),
+
 }
 
 

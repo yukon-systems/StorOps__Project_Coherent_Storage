@@ -6,6 +6,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
+## Architecture diagram
+
+![ADR-005_DPU_and_SmartNIC_Offload_Boundaries](diagrams/ADR-005_DPU_and_SmartNIC_Offload_Boundaries.png)
+
 ## Decision summary
 
 Require DPU/SmartNIC hardware on storage-network paths for NVMe-oF hardware offload, RDMA memory/resource mediation, tenant isolation, encryption, and telemetry, while preserving host fallback as a degraded/resilience path and keeping durable authority outside the DPU.

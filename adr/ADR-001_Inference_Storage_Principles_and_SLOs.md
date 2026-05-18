@@ -6,6 +6,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
+## Architecture diagram
+
+![ADR-001_Inference_Storage_Principles_and_SLOs](diagrams/ADR-001_Inference_Storage_Principles_and_SLOs.png)
+
 ## Decision summary
 
 Optimize Project Coherent Storage for LLM inference by separating hot KV state, model/object data, RAG/vector data, checkpoint/artifact data, and control state into latency-scoped storage tiers with LLM-visible service-level objectives.

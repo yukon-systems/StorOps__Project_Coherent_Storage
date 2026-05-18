@@ -6,6 +6,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
+## Architecture diagram
+
+![ADR-011_KV_Durability_Classes](diagrams/ADR-011_KV_Durability_Classes.png)
+
 ## Decision summary
 
 Define six KV durability classes, KV-D0 through KV-D5, that tell Coherence-CE how to acknowledge, replicate, persist, recover, evict, and admit KV/prefix-cache state. Durability class is the only vLLM-visible durability knob; lower storage, DPU, RDMA, and fabric mechanics remain hidden behind Coherence-CE.

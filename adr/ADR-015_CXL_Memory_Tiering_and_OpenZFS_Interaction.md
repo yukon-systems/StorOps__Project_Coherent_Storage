@@ -5,6 +5,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-15
 
+## Architecture diagram
+
+![ADR-015_CXL_Memory_Tiering_and_OpenZFS_Interaction](diagrams/ADR-015_CXL_Memory_Tiering_and_OpenZFS_Interaction.png)
+
 ## Decision summary
 
 CXL is a governed T1/T1.5 memory tier and roadmap-managed hardware option for Project Coherent Storage. It may support Coherence-CE metadata, warm KV/prefix staging, vector-index heads, write buffers, ARC-like memory pressure relief, and future CXL-PNM/CXL-SSD experiments. It is not a replacement for GPU HBM, local DDR DRAM, OpenZFS durable NAND, DPU-mediated NVMe-oF/RDMA storage paths, or Coherence-CE actor isolation.

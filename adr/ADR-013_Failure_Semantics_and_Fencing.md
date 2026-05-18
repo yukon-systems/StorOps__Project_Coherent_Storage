@@ -6,6 +6,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
+## Architecture diagram
+
+![ADR-013_Failure_Semantics_and_Fencing](diagrams/ADR-013_Failure_Semantics_and_Fencing.png)
+
 ## Decision summary
 
 Define failure semantics for the full Project Coherent Storage stack: inference runtimes, Coherence-CE, OpenZFS/NVMe-oF storage nodes, DPU/SmartNIC offload, RoCEv2 fabrics, rack/facility systems, timing, telemetry, and scheduler admission. The core invariant is that the system may miss, recompute, queue, drain, or fail closed, but it must never serve wrong KV or acknowledge durability it cannot prove.

@@ -5,6 +5,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-15
 
+## Architecture diagram
+
+![ADR-017_Research_Metadata_and_Arxiv_Publication_Workflow](diagrams/ADR-017_Research_Metadata_and_Arxiv_Publication_Workflow.png)
+
 ## Decision summary
 
 Maintain the research package as Markdown plus arXiv-oriented LaTeX and BibTeX. Research refreshes should use arXiv metadata APIs and arXiv bulk-data options when available, but must record rate limits, query failures, and manual fallback steps as part of the evidence trail.

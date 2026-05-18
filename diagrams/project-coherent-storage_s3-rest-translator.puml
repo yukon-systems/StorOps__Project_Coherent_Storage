@@ -1,0 +1,42 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+title Project Coherent Storage - S3/Object REST Translator
+left to right direction
+actor "S3 client\nawscli/SDK/rclone" as S3C
+actor "REST client\nSDK/SwaggerUI" as RESTC
+rectangle "Translator services" {
+  component "s3_net_service\nHTTP 8080" as S3NET
+  component "meta_translate_service\nHTTP 9000" as META
+  component "rest_net_service\nHTTP 8000" as RESTNET
+  component "metrics_exporter\nPrometheus 9100" as METRICS
+}
+rectangle "Backend adapters" {
+  database "Object adapter" as OBJ
+  database "KV adapter" as KV
+  database "Vector/ANN adapter" as VEC
+  database "Prefix-cache adapter\nUnified + dimensional indexed" as PFX
+  database "Metadata DB\nredacted audit modes" as MDB
+}
+S3C --> S3NET : S3 HTTP\nPUT/GET/HEAD/LIST/MULTIPART
+RESTC --> RESTNET : REST HTTP\nobject/KV/vector/prefix-cache
+S3NET --> META : normalized S3 envelope
+META --> RESTNET : mapped REST command
+RESTNET --> META : REST response
+META --> S3NET : S3-shaped status/XML/headers
+RESTNET --> OBJ : /objects/{bucket}/{key}
+RESTNET --> KV : /kv/{namespace}/{key}
+RESTNET --> VEC : /vectors/{namespace} + /search
+RESTNET --> PFX : /prefix-cache/{mode}/.../prefixes/{prefix_id}
+META --> MDB : mapping metadata by mode
+S3NET ..> METRICS
+META ..> METRICS
+RESTNET ..> METRICS
+note bottom of PFX
+Exact put/get/delete require prefix_id.
+Search/invalidate are collection actions.
+No OpenZFS, DPU, RDMA, CXL, or VLAN identifiers leak to clients.
+end note
+@enduml

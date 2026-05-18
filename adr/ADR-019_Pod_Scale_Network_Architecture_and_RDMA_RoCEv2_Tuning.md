@@ -5,6 +5,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-17
 
+## Architecture diagram
+
+![ADR-019_Pod_Scale_Network_Architecture_and_RDMA_RoCEv2_Tuning](diagrams/ADR-019_Pod_Scale_Network_Architecture_and_RDMA_RoCEv2_Tuning.png)
+
 ## Decision summary
 
 Define pod networking as multiple governed planes: UA-Link scale-up, RoCEv2/RDMA scale-out, DPU-mediated storage/NVMe-oF, frontend/API, management, and timing. RoCEv2 performance tuning is mandatory architecture work, not a post-deployment switch knob.

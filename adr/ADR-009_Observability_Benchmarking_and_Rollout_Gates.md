@@ -6,6 +6,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-13
 
+## Architecture diagram
+
+![ADR-009_Observability_Benchmarking_and_Rollout_Gates](diagrams/ADR-009_Observability_Benchmarking_and_Rollout_Gates.png)
+
 ## Decision summary
 
 Gate Project Coherent Storage 2026-Q2 rollout on LLM-visible performance, storage/fabric telemetry, failure drills, reproducibility, and rollback evidence. Link speed, raw IOPS, and one-off benchmark throughput are not sufficient for production-like promotion.

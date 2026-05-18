@@ -1,0 +1,734 @@
+openapi: 3.1.0
+info:
+  title: Project Coherent Storage S3/Object REST Translator API
+  version: "2026-Q2"
+  summary: REST contract for S3/Object translation, KV, vector, and prefix-cache operations.
+  description: >-
+    This contract is the preferred client-generation surface for the translator.
+    Prefix-cache routes are explicit about namespace modality. Exact put/get/delete
+    operations require a prefix_id. Keyless collection routes are reserved for
+    search and predicate invalidation.
+servers:
+  - url: https://translator.example.internal
+    description: Example internal translator endpoint
+tags:
+  - name: object
+    description: Bucket and object operations.
+  - name: kv
+    description: Key/value operations.
+  - name: vector
+    description: Vector upsert and search operations.
+  - name: prefix-cache
+    description: Prefix-cache operations with explicit namespace modalities.
+  - name: translation
+    description: S3-to-REST and REST-to-S3 inspection operations.
+  - name: health
+    description: Health and metrics endpoints.
+paths:
+  /buckets:
+    get:
+      tags: [object]
+      operationId: listBuckets
+      summary: List buckets.
+      responses:
+        '200':
+          description: Buckets returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BucketList'
+    post:
+      tags: [object]
+      operationId: createBucket
+      summary: Create a bucket.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBucketRequest'
+      responses:
+        '201':
+          description: Bucket created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bucket'
+  /buckets/{bucket}:
+    parameters:
+      - $ref: '#/components/parameters/Bucket'
+    get:
+      tags: [object]
+      operationId: listObjects
+      summary: List objects in a bucket.
+      responses:
+        '200':
+          description: Objects returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectList'
+    delete:
+      tags: [object]
+      operationId: deleteBucket
+      summary: Delete an empty bucket.
+      responses:
+        '204':
+          description: Bucket deleted.
+  /objects/{bucket}/{key}:
+    parameters:
+      - $ref: '#/components/parameters/Bucket'
+      - $ref: '#/components/parameters/Key'
+    put:
+      tags: [object]
+      operationId: putObject
+      summary: Upload an object.
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              contentEncoding: binary
+      responses:
+        '200':
+          description: Object stored.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectMetadata'
+    get:
+      tags: [object]
+      operationId: getObject
+      summary: Download an object.
+      responses:
+        '200':
+          description: Object body returned.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                contentEncoding: binary
+    delete:
+      tags: [object]
+      operationId: deleteObject
+      summary: Delete an object.
+      responses:
+        '204':
+          description: Object deleted.
+  /kv/{namespace}/{key}:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/KeyName'
+    put:
+      tags: [kv]
+      operationId: putKv
+      summary: Store a key/value artifact.
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              contentEncoding: binary
+      responses:
+        '200':
+          description: Value stored.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreResponse'
+    get:
+      tags: [kv]
+      operationId: getKv
+      summary: Retrieve a key/value artifact.
+      responses:
+        '200':
+          description: Value returned.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                contentEncoding: binary
+    delete:
+      tags: [kv]
+      operationId: deleteKv
+      summary: Delete a key/value artifact.
+      responses:
+        '204':
+          description: Value deleted.
+  /vectors/{namespace}:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+    post:
+      tags: [vector]
+      operationId: upsertVector
+      summary: Upsert a vector record.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VectorUpsertRequest'
+      responses:
+        '200':
+          description: Vector stored.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreResponse'
+  /vectors/{namespace}/search:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+    post:
+      tags: [vector]
+      operationId: searchVectors
+      summary: Search a vector namespace.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VectorSearchRequest'
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+  /prefix-cache/unified/{namespace}/prefixes/{prefix_id}:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/PrefixId'
+    put:
+      tags: [prefix-cache]
+      operationId: putUnifiedPrefixCache
+      summary: Store a prefix-cache artifact in Unified Namespace mode.
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              contentEncoding: binary
+      responses:
+        '200':
+          description: Prefix artifact stored.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrefixCacheResponse'
+    get:
+      tags: [prefix-cache]
+      operationId: getUnifiedPrefixCache
+      summary: Exact prefix-cache lookup in Unified Namespace mode.
+      responses:
+        '200':
+          description: Prefix artifact returned.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                contentEncoding: binary
+        '404':
+          $ref: '#/components/responses/MissResponse'
+    delete:
+      tags: [prefix-cache]
+      operationId: deleteUnifiedPrefixCache
+      summary: Delete one prefix-cache artifact in Unified Namespace mode.
+      responses:
+        '204':
+          description: Prefix artifact deleted.
+  /prefix-cache/unified/{namespace}/search:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+    post:
+      tags: [prefix-cache]
+      operationId: searchUnifiedPrefixCache
+      summary: Search a Unified Namespace prefix-cache collection.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrefixSearchRequest'
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+  /prefix-cache/unified/{namespace}/invalidate:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+    post:
+      tags: [prefix-cache]
+      operationId: invalidateUnifiedPrefixCache
+      summary: Predicate invalidation for a Unified Namespace prefix-cache collection.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvalidateRequest'
+      responses:
+        '202':
+          description: Invalidation accepted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidateResponse'
+  /prefix-cache/dimensional/{namespace}/indexes/{index_id}/prefixes/{prefix_id}:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/IndexId'
+      - $ref: '#/components/parameters/PrefixId'
+    put:
+      tags: [prefix-cache]
+      operationId: putDimensionalPrefixCache
+      summary: Store a prefix-cache artifact in a dimensional index.
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              contentEncoding: binary
+      responses:
+        '200':
+          description: Prefix artifact stored.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrefixCacheResponse'
+    get:
+      tags: [prefix-cache]
+      operationId: getDimensionalPrefixCache
+      summary: Exact prefix-cache lookup in a dimensional index.
+      responses:
+        '200':
+          description: Prefix artifact returned.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                contentEncoding: binary
+        '404':
+          $ref: '#/components/responses/MissResponse'
+    delete:
+      tags: [prefix-cache]
+      operationId: deleteDimensionalPrefixCache
+      summary: Delete one prefix-cache artifact in a dimensional index.
+      responses:
+        '204':
+          description: Prefix artifact deleted.
+  /prefix-cache/dimensional/{namespace}/indexes/{index_id}/search:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/IndexId'
+    post:
+      tags: [prefix-cache]
+      operationId: searchDimensionalPrefixCache
+      summary: Search a Dimensional Indexed Namespace prefix-cache collection.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrefixSearchRequest'
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+  /prefix-cache/dimensional/{namespace}/indexes/{index_id}/invalidate:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/IndexId'
+    post:
+      tags: [prefix-cache]
+      operationId: invalidateDimensionalPrefixCache
+      summary: Predicate invalidation for a dimensional prefix-cache index.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvalidateRequest'
+      responses:
+        '202':
+          description: Invalidation accepted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidateResponse'
+  /translate/s3-to-rest:
+    post:
+      tags: [translation]
+      operationId: inspectS3ToRest
+      summary: Inspect an S3-to-REST mapping without executing it.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TranslationRequest'
+      responses:
+        '200':
+          description: Mapping returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranslationResponse'
+  /translate/rest-to-s3:
+    post:
+      tags: [translation]
+      operationId: inspectRestToS3
+      summary: Inspect a REST-to-S3 response mapping without executing it.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TranslationRequest'
+      responses:
+        '200':
+          description: Mapping returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranslationResponse'
+  /healthz:
+    get:
+      tags: [health]
+      operationId: getHealth
+      summary: Return service health.
+      responses:
+        '200':
+          description: Health returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+  /metrics:
+    get:
+      tags: [health]
+      operationId: getMetrics
+      summary: Return Prometheus metrics.
+      responses:
+        '200':
+          description: Metrics text.
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  parameters:
+    Bucket:
+      name: bucket
+      in: path
+      required: true
+      schema:
+        type: string
+    Key:
+      name: key
+      in: path
+      required: true
+      schema:
+        type: string
+      style: simple
+      explode: false
+    KeyName:
+      name: key
+      in: path
+      required: true
+      schema:
+        type: string
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      schema:
+        type: string
+    PrefixId:
+      name: prefix_id
+      in: path
+      required: true
+      schema:
+        type: string
+    IndexId:
+      name: index_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    MissResponse:
+      description: Compatible prefix artifact was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+  schemas:
+    NamespaceMode:
+      type: string
+      enum: [unified, dimensional_indexed]
+    NamespaceDimensions:
+      type: object
+      additionalProperties: false
+      properties:
+        tenant_id:
+          type: string
+        region:
+          type: string
+        datacenter:
+          type: string
+        mesh_pool:
+          type: string
+        pod:
+          type: string
+        rack:
+          type: string
+        model_id:
+          type: string
+        tokenizer_id:
+          type: string
+        adapter_id:
+          type: string
+        runtime_profile_hash:
+          type: string
+        durability_class:
+          type: string
+          enum: [KV-D0, KV-D1, KV-D2, KV-D3, KV-D4, KV-D5]
+        locality_epoch:
+          type: string
+        data_class:
+          type: string
+          enum: [kv, prefix, object, vector, metadata, checkpoint]
+    NamespaceDescriptor:
+      type: object
+      additionalProperties: false
+      required: [mode, namespace]
+      properties:
+        mode:
+          $ref: '#/components/schemas/NamespaceMode'
+        namespace:
+          type: string
+        index_id:
+          type: string
+        dimensions:
+          $ref: '#/components/schemas/NamespaceDimensions'
+        escalation_policy:
+          type: string
+          enum: [none, local_then_parent, local_then_region, local_then_global]
+          default: none
+    Bucket:
+      type: object
+      additionalProperties: false
+      required: [name]
+      properties:
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    BucketList:
+      type: object
+      additionalProperties: false
+      required: [buckets]
+      properties:
+        buckets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Bucket'
+    CreateBucketRequest:
+      type: object
+      additionalProperties: false
+      required: [name]
+      properties:
+        name:
+          type: string
+    ObjectMetadata:
+      type: object
+      additionalProperties: true
+      required: [bucket, key, etag, bytes]
+      properties:
+        bucket:
+          type: string
+        key:
+          type: string
+        etag:
+          type: string
+        bytes:
+          type: integer
+          minimum: 0
+        sha256:
+          type: string
+    ObjectList:
+      type: object
+      additionalProperties: false
+      required: [objects]
+      properties:
+        objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectMetadata'
+    StoreResponse:
+      type: object
+      additionalProperties: false
+      required: [stored]
+      properties:
+        stored:
+          type: boolean
+        id:
+          type: string
+    VectorUpsertRequest:
+      type: object
+      additionalProperties: false
+      required: [vector_id, vector]
+      properties:
+        vector_id:
+          type: string
+        vector:
+          type: array
+          items:
+            type: number
+        metadata:
+          type: object
+          additionalProperties: true
+    VectorSearchRequest:
+      type: object
+      additionalProperties: false
+      required: [vector, top_k]
+      properties:
+        vector:
+          type: array
+          items:
+            type: number
+        top_k:
+          type: integer
+          minimum: 1
+          maximum: 1000
+    PrefixSearchRequest:
+      type: object
+      additionalProperties: false
+      required: [identity, top_k]
+      properties:
+        namespace_descriptor:
+          $ref: '#/components/schemas/NamespaceDescriptor'
+        identity:
+          type: object
+          additionalProperties: true
+          description: Model/tokenizer/adapter/runtime/prefix compatibility identity.
+        vector:
+          type: array
+          items:
+            type: number
+        top_k:
+          type: integer
+          minimum: 1
+          maximum: 1000
+        require_exact_profile:
+          type: boolean
+          default: true
+    PrefixCacheResponse:
+      type: object
+      additionalProperties: false
+      required: [namespace_descriptor, prefix_id, status]
+      properties:
+        namespace_descriptor:
+          $ref: '#/components/schemas/NamespaceDescriptor'
+        prefix_id:
+          type: string
+        status:
+          type: string
+          enum: [stored, hit, miss, invalidated, stale, incompatible_profile]
+        durability_state:
+          type: string
+          enum: [volatile, mesh_committed, writeback_pending, durable, degraded, rejected]
+    InvalidateRequest:
+      type: object
+      additionalProperties: false
+      required: [predicate]
+      properties:
+        namespace_descriptor:
+          $ref: '#/components/schemas/NamespaceDescriptor'
+        predicate:
+          type: object
+          additionalProperties: true
+          description: Bounded invalidation predicate; must be tenant-policy approved.
+        dry_run:
+          type: boolean
+          default: false
+    InvalidateResponse:
+      type: object
+      additionalProperties: false
+      required: [accepted]
+      properties:
+        accepted:
+          type: boolean
+        affected_estimate:
+          type: integer
+          minimum: 0
+    SearchResponse:
+      type: object
+      additionalProperties: false
+      required: [results]
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    TranslationRequest:
+      type: object
+      additionalProperties: true
+      required: [method, path]
+      properties:
+        method:
+          type: string
+        path:
+          type: string
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        body_digest:
+          type: string
+    TranslationResponse:
+      type: object
+      additionalProperties: false
+      required: [method, path, operation]
+      properties:
+        method:
+          type: string
+        path:
+          type: string
+        operation:
+          type: string
+        namespace_descriptor:
+          $ref: '#/components/schemas/NamespaceDescriptor'
+    HealthResponse:
+      type: object
+      additionalProperties: false
+      required: [state]
+      properties:
+        state:
+          type: string
+          enum: [GREEN, AMBER, RED, DRAIN]
+        generated_at:
+          type: string
+          format: date-time
+    ErrorEnvelope:
+      type: object
+      additionalProperties: false
+      required: [error]
+      properties:
+        error:
+          type: string
+        detail:
+          type: string

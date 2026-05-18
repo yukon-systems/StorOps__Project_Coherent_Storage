@@ -1,0 +1,49 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+title Project Coherent Storage - Top-Down Engineering Deep Dive Stack
+skinparam rectangle {
+  BackgroundColor #FDFEFE
+  BorderColor #566573
+}
+skinparam ArrowColor #34495E
+rectangle "OpenAI / User Layer\nHTTPS 443\n/v1/chat/completions, /v1/responses" as USER
+rectangle "Global Load-Balancer Mesh Pools\nGSLB/Anycast/DNS + tenant policy\nTLS, auth, rate limits" as GLB
+rectangle "Regional Load-Balancer Mesh Pools\nregion-local ingress + data-residency gates" as RLB
+rectangle "Datacenter Load-Balancer Mesh Pools\nL4/L7 VIPs, service discovery, rack/pod drain" as DLB
+rectangle "Coherence-CE Mesh Overlay\nHTTPS 8443 native API\nUnified Namespace or Dimensional Indexed Namespace" as CE
+rectangle "Scheduler Admission\nGREEN/AMBER/RED/DRAIN\nmodel, KV, fabric, CXL, DPU, storage telemetry" as SCHED
+rectangle "Inference Runtime Layer\nvLLM adapters, model workers\nopaque payload refs only" as RUNTIME
+rectangle "Accelerator Memory Layer\nkv_hbm_active, model HBM, local DRAM" as HBM
+rectangle "Warm Memory Layer\nkv_dram_warm, kv_cxl_warm, vector_head_cache" as WARM
+rectangle "Scale-Up Fabric\nUA-Link / vendor-local accelerator fabric\npod-local only" as SCALEUP
+rectangle "Scale-Out / RDMA Fabric\nRoCEv2 UDP 4791\nrail-A/rail-B, PFC scoped, ECN/DCQCN" as RDMA
+rectangle "DPU / SmartNIC Storage Boundary\nNVMe-oF port 4420, RDMA MR/QP mediation\ntenant isolation + telemetry" as DPU
+rectangle "OpenZFS Durable NAND Substrate\nmirrored vdevs, checksums, zfs_slog, ARC/L2ARC\nscrub/resilver gates" as ZFS
+rectangle "Observability and Timing\nOTLP 4317/4318, Prometheus 9090/9100, gNMI 9339, PTP 319/320" as OBS
+USER --> GLB : public/client request
+GLB --> RLB : selected region
+RLB --> DLB : selected datacenter
+DLB --> CE : tenant/model routed request
+CE --> SCHED : admission and locality query
+SCHED --> CE : lease, action, deadline budget
+CE --> RUNTIME : lookup/publish/reserve/flush handles
+RUNTIME --> HBM : active decode KV
+CE --> WARM : warm KV/prefix/metadata placement
+RUNTIME <--> SCALEUP : pod-local accelerator collectives
+CE <--> RDMA : remote hydration / mesh replication
+RDMA <--> DPU : storage and RDMA offload path
+DPU <--> ZFS : durable writes/reads via NVMe-oF
+CE ..> OBS
+SCHED ..> OBS
+RUNTIME ..> OBS
+RDMA ..> OBS
+DPU ..> OBS
+ZFS ..> OBS
+note right of CE
+Coherence-CE exposes logical API semantics only.
+No OpenZFS, DPU, RDMA, CXL, UA-Link, VLAN, or port internals leak to vLLM or OpenAI clients.
+end note
+@enduml

@@ -5,6 +5,10 @@
 **Status:** Proposed  
 **Generated:** 2026-05-17
 
+## Architecture diagram
+
+![ADR-020_CXL_Memory_Pools_for_UALink_Pods](diagrams/ADR-020_CXL_Memory_Pools_for_UALink_Pods.png)
+
 ## Decision summary
 
 Use CXL memory pools as governed pod-local T1/T1.5 capacity behind Coherence-CE. CXL pools may relieve warm KV, prefix, metadata, vector-index, and model/object pressure, but do not change actor-visible APIs and do not create durability unless device semantics prove persistence and recovery.
