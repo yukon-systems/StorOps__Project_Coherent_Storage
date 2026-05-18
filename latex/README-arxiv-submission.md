@@ -6,6 +6,7 @@ This directory contains an arXiv-oriented source draft, not a completed submissi
 
 - `project-coherent-storage.tex` - LaTeX manuscript source.
 - `references.bib` - BibTeX reference file.
+- `project-coherent-storage.bbl` - generated bibliography file from the latest successful local build.
 - `figures/*.png` - rendered PlantUML diagrams referenced by the manuscript.
 
 ## arXiv guidance consulted
@@ -17,9 +18,9 @@ This directory contains an arXiv-oriented source draft, not a completed submissi
 
 ## Local validation boundary
 
-This host currently has `bibtex` and `plantuml`, but no `pdflatex`, `latexmk`, or `tectonic`. Therefore the manuscript source was syntax/structure checked locally, but not compiled into a PDF on this host.
+This host has `pdflatex`, `latexmk`, `bibtex`, and `plantuml`; `tectonic` was not present during the latest validation pass. The manuscript source was compiled locally with `latexmk -pdf -interaction=nonstopmode -halt-on-error project-coherent-storage.tex`. The build produced a PDF and completed with non-fatal float-placement warnings only.
 
-Before submission, run on a TeX-capable host:
+Before submission, rerun on the release host:
 
 ```sh
 pdflatex project-coherent-storage.tex
@@ -32,7 +33,7 @@ Then inspect the produced PDF, bibliography, figure placement, and overfull/unde
 
 ## Source-package checklist
 
-- Keep `.tex`, `.bib`, and referenced figures in the uploaded source bundle.
+- Keep `.tex`, `.bib`, `.bbl`, and referenced figures in the uploaded source bundle.
 - Do not include local absolute paths.
 - Confirm every `\cite{...}` key exists in `references.bib`.
 - Confirm all figures referenced by `\includegraphics` exist.
