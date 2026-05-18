@@ -17,7 +17,12 @@
 - **Status:** Proposed / Review
 
 ## Visualized High-Level Architecture Scope
+
+### Operational View: API Front-End to Block Storage Layer
 ![Top-down Project Coherent Storage stack](./diagrams/project-coherent-storage_engineering-deep-dive-stack.png)
+
+### Operational View: Coherent-Mesh Traversal, S3-Object to REST-API
+![S3/Object REST translator architecture](./diagrams/project-coherent-storage_s3-rest-translator.png)
 
 ## Purpose
 
