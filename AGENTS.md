@@ -129,6 +129,14 @@ Output:
 - Do not fabricate timings. If timing was not captured, state that it was not captured instead of estimating.
 - Prefer machine-readable appendices for future analytics when adding new timing capture tools.
 
+### 4.8 Git LFS Repository Validation
+- For repositories that use Git LFS, treat LFS policy as a pre-push quality gate.
+- Before pushing to `origin`, ensure `git-lfs` is installed, Git LFS filters are enabled, and local `lfs.<origin-lfs-url>.locksverify` is `true`.
+- If `scripts/bootstrap_git_lfs_policy.sh` exists, run it once per clone before the first push.
+- If `scripts/validate_git_lfs_policy.py` exists, run `python3 scripts/validate_git_lfs_policy.py --remote-name origin` before claiming push readiness.
+- If `policy/git-lfs/gitattributes.master` exists, keep the repository root `.gitattributes` byte-for-byte identical to that master file.
+- Do not rewrite shared history with `git lfs migrate import`; first run `git lfs migrate info --everything --fixup`, document the migration window, validate with `git lfs fsck`, and use coordinated force-push only when explicitly approved.
+
 ## 5. SHOULD Rules
 
 ### 5.1 Formatting

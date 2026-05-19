@@ -63,6 +63,7 @@ Important sources include the UA-Link white paper, UniFabriX UA-Link material, O
 | `adr/diagrams/*.puml`, `*.png`, `*.svg` | Per-ADR PlantUML source and rendered PNG/SVG assets. |
 | `diagrams/*.puml`, `*.png`, `*.svg` | Report-level PlantUML source and rendered PNG/SVG assets. |
 | [`review-artifacts/rag-extraction-and-source-map.md`](review-artifacts/rag-extraction-and-source-map.md) and JSON peer | Extraction evidence and source map. |
+| [`docs/git-lfs-policy.md`](docs/git-lfs-policy.md) | Repository Git LFS lock-verification, normalized `.gitattributes`, pre-push hook, test-server, and migration policy. |
 
 
 ## ADR index
