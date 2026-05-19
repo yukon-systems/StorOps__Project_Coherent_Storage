@@ -93,11 +93,13 @@ Important sources include the UA-Link white paper, UniFabriX UA-Link material, O
 | [`ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.md`](adr/ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.md) | Defines heterogeneous GP-GPU and accelerator capability profiles for scheduler governance across vendors and fabrics. |
 | [`ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator.md`](adr/ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator.md) | Defines the S3/Object-to-REST translator and its object, KV, vector, and prefix-cache REST contract. |
 | [`ADR-023_Coherence_CE_Namespace_Modalities.md`](adr/ADR-023_Coherence_CE_Namespace_Modalities.md) | Defines Unified Namespace and Dimensional Indexed Namespace workflows, API route semantics, and locality-governance rules. |
+| [`ADR-024_System_Level_Benchmarking_Suite_Definitions.md`](adr/ADR-024_System_Level_Benchmarking_Suite_Definitions.md) | Defines system-level benchmark suite taxonomy across component, service, test-intent, SLURM execution, cross-platform tooling, and evidence gates. |
+| [`ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.md`](adr/ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.md) | Defines broad-systems E2E testing workflows, scheduler-adapter execution, failure-mode tests, evidence bundles, and CI/CD gates. |
 
 
 ## Top-down architecture composition
 
-The design composes the system from inference SLOs down through hot-state placement, namespace modality, data tiers, fabrics, offload, durable media, scheduler admission, failure semantics, CXL/UA-Link pod resources, heterogeneous accelerator governance, S3/Object REST translation, and research-publication workflow. Each ADR embeds its PNG diagram and has a PlantUML source file plus PNG/SVG renders under `adr/diagrams/`.
+The design composes the system from inference SLOs down through hot-state placement, namespace modality, data tiers, fabrics, offload, durable media, scheduler admission, failure semantics, CXL/UA-Link pod resources, heterogeneous accelerator governance, S3/Object REST translation, benchmark evidence, broad-systems E2ET, and research-publication workflow. Each ADR embeds its PNG diagram and has a PlantUML source file plus PNG/SVG renders under `adr/diagrams/`.
 
 | ADR | Architecture interaction diagram |
 | --- | --- |
@@ -124,6 +126,8 @@ The design composes the system from inference SLOs down through hot-state placem
 | [`ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.md`](adr/ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.md) | [PNG](adr/diagrams/ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.png) / [SVG](adr/diagrams/ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.svg) / [PUML](adr/diagrams/ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.puml) |
 | [`ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator.md`](adr/ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator.md) | [PNG](adr/diagrams/ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator.png) / [SVG](adr/diagrams/ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator.svg) / [PUML](adr/diagrams/ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator.puml) |
 | [`ADR-023_Coherence_CE_Namespace_Modalities.md`](adr/ADR-023_Coherence_CE_Namespace_Modalities.md) | [PNG](adr/diagrams/ADR-023_Coherence_CE_Namespace_Modalities.png) / [SVG](adr/diagrams/ADR-023_Coherence_CE_Namespace_Modalities.svg) / [PUML](adr/diagrams/ADR-023_Coherence_CE_Namespace_Modalities.puml) |
+| [`ADR-024_System_Level_Benchmarking_Suite_Definitions.md`](adr/ADR-024_System_Level_Benchmarking_Suite_Definitions.md) | [PNG](adr/diagrams/ADR-024_System_Level_Benchmarking_Suite_Definitions.png) / [SVG](adr/diagrams/ADR-024_System_Level_Benchmarking_Suite_Definitions.svg) / [PUML](adr/diagrams/ADR-024_System_Level_Benchmarking_Suite_Definitions.puml) |
+| [`ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.md`](adr/ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.md) | [PNG](adr/diagrams/ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.png) / [SVG](adr/diagrams/ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.svg) / [PUML](adr/diagrams/ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.puml) |
 
 
 ## ADR diagram gallery
@@ -219,6 +223,14 @@ The design composes the system from inference SLOs down through hot-state placem
 ### [ADR-023_Coherence_CE_Namespace_Modalities.md](adr/ADR-023_Coherence_CE_Namespace_Modalities.md)
 
 ![ADR-023_Coherence_CE_Namespace_Modalities](adr/diagrams/ADR-023_Coherence_CE_Namespace_Modalities.png)
+
+### [ADR-024_System_Level_Benchmarking_Suite_Definitions.md](adr/ADR-024_System_Level_Benchmarking_Suite_Definitions.md)
+
+![ADR-024_System_Level_Benchmarking_Suite_Definitions](adr/diagrams/ADR-024_System_Level_Benchmarking_Suite_Definitions.png)
+
+### [ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.md](adr/ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.md)
+
+![ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling](adr/diagrams/ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.png)
 
 ---
 

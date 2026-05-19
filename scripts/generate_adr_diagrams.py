@@ -52,6 +52,11 @@ endlegend
 def diagram(title: str, body: str) -> str:
     return f"{COMMON_HEADER}title {title}\n{COMMON_LEGEND}\n{body.strip()}\n@enduml\n"
 
+
+def compact_diagram(title: str, body: str) -> str:
+    """Generate print-section diagrams without the full legend block."""
+    return f"{COMMON_HEADER}title {title}\n{body.strip()}\n@enduml\n"
+
 DIAGRAMS: dict[str, str] = {
 "ADR-001_Inference_Storage_Principles_and_SLOs": diagram("ADR-001 - Inference SLO Contract and Storage Admission", r'''
 start
@@ -785,6 +790,297 @@ partition "Admission rollup" {
 }
 stop
 '''),
+"ADR-024_System_Level_Benchmarking_Suite_Definitions": diagram("ADR-024 - System-Level Benchmarking Suite Definitions", r'''
+start
+partition "Suite manifest" {
+  :Declare suite_id, component_type,
+  service_type, test_intent, topology,
+  platform matrix, toolchain, telemetry,
+  and gate thresholds;
+  if (compiled benchmark?) then (yes)
+    :Use LLVM/Clang by default;
+    if (upstream requires GCC?) then (exception)
+      :Record GCC exception, reason,
+      version, and portability impact;
+    endif
+  endif
+}
+partition "Scope classification" {
+  if (component benchmark?) then (component)
+    :Run CPU, memory, disk, network,
+    accelerator, CXL, DPU/QAT, ZFS,
+    or filesystem micro/macro profile;
+  else (service)
+    :Run NFS, OLTP, HTTP/REST,
+    load balancer, firewall, model server,
+    LLM cache, proxy/cache, vector,
+    scheduler, or observability profile;
+  endif
+}
+partition "Scheduler execution" {
+  if (SLURM available?) then (primary)
+    :Submit sbatch/srun profile;
+    :Use job arrays for sweeps and
+    heterogeneous jobs for multi-role tests;
+  else (adapter)
+    :Map manifest to local, Flux,
+    OpenPBS, Nomad, Kubernetes,
+    or site scheduler semantics;
+  endif
+}
+partition "Platform call-outs" {
+  if (feature depends on CUDA/ROCm/vendor backend?) then (backend-specific)
+    :Qualify backend on supported OS;
+    :Use ONNX Runtime, SYCL/oneAPI,
+    HetCCL, or service-level HTTP contract
+    for portable feature validation;
+  else (portable)
+    :Run Linux, FreeBSD, Solaris,
+    and illumos-capable profile;
+  endif
+}
+partition "Evidence gate" {
+  :Collect raw tool output, normalized JSON,
+  scheduler metadata, platform inventory,
+  compiler flags, telemetry snapshots;
+  if (gate passes?) then (PASS)
+    :Publish benchmark evidence bundle;
+  else (WARN/FAIL/INCONCLUSIVE)
+    :Attach blocker, platform reason,
+    rollback or retest recommendation;
+  endif
+}
+stop
+'''),
+"ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling": diagram("ADR-025 - Broad-Systems E2E Testing Workflows and Tooling", r'''
+start
+partition "Plan and allocate" {
+  :Select E2ET profile and manifest;
+  :Allocate roles: loadgen, global/regional/DC LB,
+  Coherence-CE mesh, model server,
+  cache, RDMA/DPU/OpenZFS storage,
+  telemetry and fault injection;
+  if (decision-grade performance?) then (exclusive)
+    :Require exclusive SLURM allocation
+    and noisy-neighbor proof;
+  endif
+}
+partition "Fast correctness gates" {
+  :Run static manifest checks;
+  :Run unit tests for harness libraries,
+  parsers, scheduler adapters;
+  :Run smoke tests for service health
+  and one minimal end-to-end request;
+  if (unit/smoke fail?) then (stop early)
+    :Abort long allocation and preserve logs;
+    stop
+  endif
+}
+partition "Architecture E2ET" {
+  :Warm model, KV/prefix, ARC/L2ARC,
+  CXL placement, pools, and connections;
+  :Drive OpenAI-compatible and
+  Coherence-native traffic through LB mesh;
+  :Exercise cache hit/miss/invalidate,
+  RAG/vector, object fetch, DPU/NVMe-oF,
+  OpenZFS, and scheduler admission;
+}
+partition "Load and failure phases" {
+  if (test intent == sustained or peak?) then (load)
+    :Run k6/Locust/wrk, fio/IOR/MDTest,
+    pgbench, iperf3, MLPerf, Triton,
+    vLLM, SGLang sweeps;
+  endif
+  if (test intent == failure-mode?) then (failure)
+    :Inject controlled rail, DPU, node,
+    cache epoch, zpool, LB, firewall,
+    or telemetry failure with rollback plan;
+  endif
+}
+partition "Cross-platform result semantics" {
+  if (backend unavailable on OS?) then (not feature failure)
+    :Record SKIPPED_PLATFORM or INCONCLUSIVE;
+    :Validate portable service contract
+    through abstraction where possible;
+  else (qualified)
+    :Record backend-specific qualification
+    and portable feature result separately;
+  endif
+}
+partition "Collect and gate" {
+  :Collect raw logs, normalized JSON,
+  Prometheus/OTLP snapshots,
+  SLURM metadata, configs, versions;
+  if (SLO, correctness, recovery,
+  telemetry freshness all pass?) then (PASS)
+    :Promote evidence bundle;
+  else (WARN/FAIL)
+    :Assign owning subsystem and
+    rollback/remediation recommendation;
+  endif
+}
+stop
+'''),
+
+"ADR-024_System_Level_Benchmarking_Suite_Definitions_print-section-01_manifest-scope-scheduler": compact_diagram("ADR-024 Print Section 01 - Manifest, Scope, Scheduler", r'''
+start
+partition "Suite manifest" {
+  :Declare suite_id, component_type,
+  service_type, test_intent, topology,
+  platform matrix, toolchain, telemetry,
+  and gate thresholds;
+  if (compiled benchmark?) then (yes)
+    :Use LLVM/Clang by default;
+  else (no)
+    :Record interpreter/runtime versions;
+  endif
+}
+partition "Scope classification" {
+  if (component benchmark?) then (component)
+    :CPU, memory, disk, network,
+    accelerator, CXL, DPU/QAT,
+    ZFS, filesystem profile;
+  else (service)
+    :NFS, OLTP, HTTP/REST, LB,
+    firewall, LLM model/cache,
+    proxy/cache, vector, scheduler,
+    observability profile;
+  endif
+}
+partition "Scheduler execution" {
+  if (SLURM available?) then (primary)
+    :sbatch/srun;
+    :job arrays for sweeps;
+    :heterogeneous jobs for multi-role profiles;
+  else (adapter)
+    :local, Flux, OpenPBS, Nomad,
+    Kubernetes, or site scheduler;
+  endif
+}
+stop
+'''),
+"ADR-024_System_Level_Benchmarking_Suite_Definitions_print-section-02_platform-evidence-gates": compact_diagram("ADR-024 Print Section 02 - Platform Call-outs and Evidence Gates", r'''
+start
+partition "Cross-platform call-outs" {
+  if (CUDA/ROCm/vendor backend?) then (backend-specific)
+    :Qualify backend on supported OS;
+    :Use SKIPPED_PLATFORM or INCONCLUSIVE
+    where backend is unavailable;
+  else (portable)
+    :Run Linux, FreeBSD,
+    Solaris, and illumos-capable profile;
+  endif
+}
+partition "Abstraction validation" {
+  :Prefer service-level OpenAI-compatible APIs,
+  ONNX Runtime execution providers,
+  SYCL/oneAPI where available,
+  HetCCL-style collective probes,
+  and Coherence-CE cache probes;
+}
+partition "Evidence gate" {
+  :Collect raw output, normalized JSON,
+  scheduler metadata, inventory,
+  compiler flags, telemetry snapshots;
+  if (gate passes?) then (PASS)
+    :Publish benchmark evidence bundle;
+  else (WARN/FAIL/INCONCLUSIVE)
+    :Attach blocker, platform reason,
+    retest or rollback recommendation;
+  endif
+}
+stop
+'''),
+"ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling_print-section-01_plan-fast-gates": compact_diagram("ADR-025 Print Section 01 - Plan, Allocate, Fast Gates", r'''
+start
+partition "Plan and allocate" {
+  :Select E2ET profile and manifest;
+  :Allocate loadgen, LB mesh,
+  Coherence-CE, model/cache,
+  RDMA/DPU/OpenZFS storage,
+  telemetry and fault roles;
+  if (decision-grade performance?) then (exclusive)
+    :Require exclusive allocation
+    and noisy-neighbor proof;
+  endif
+}
+partition "Fast correctness gates" {
+  :Static manifest checks;
+  :Unit tests for harness libraries,
+  parsers, scheduler adapters;
+  :Smoke tests for service health
+  and one minimal end-to-end request;
+  if (unit/smoke fail?) then (stop early)
+    :Abort long allocation;
+    :Preserve logs and scheduler metadata;
+    stop
+  endif
+}
+stop
+'''),
+"ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling_print-section-02_architecture-load-failure": compact_diagram("ADR-025 Print Section 02 - Architecture, Load, Failure", r'''
+start
+partition "Architecture E2ET" {
+  :Warm model, KV/prefix,
+  ARC/L2ARC, CXL placement,
+  pools and connections;
+  :Drive OpenAI-compatible and
+  Coherence-native traffic through LB mesh;
+  :Exercise cache hit/miss/invalidate,
+  RAG/vector, object fetch, DPU/NVMe-oF,
+  OpenZFS, scheduler admission;
+}
+partition "Load phases" {
+  if (sustained or peak?) then (load)
+    :k6/Locust/wrk;
+    :fio/IOR/MDTest;
+    :pgbench, iperf3;
+    :MLPerf, Triton, vLLM, SGLang sweeps;
+  endif
+}
+partition "Failure phases" {
+  if (failure-mode?) then (failure)
+    :Inject controlled rail, DPU, node,
+    cache epoch, zpool, LB, firewall,
+    or telemetry failure;
+    :Verify drain, fencing, reroute,
+    recovery deadline, telemetry freshness;
+  endif
+}
+stop
+'''),
+"ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling_print-section-03_platform-collect-gate": compact_diagram("ADR-025 Print Section 03 - Platform Semantics, Collect, Gate", r'''
+start
+partition "Cross-platform result semantics" {
+  if (backend unavailable on OS?) then (not feature failure)
+    :Record SKIPPED_PLATFORM
+    or INCONCLUSIVE_BACKEND;
+    :Validate portable service contract
+    through abstraction where possible;
+  else (qualified)
+    :Record backend-specific qualification
+    separately from portable feature result;
+  endif
+}
+partition "Collect artifacts" {
+  :Raw logs;
+  :Normalized JSON;
+  :Prometheus/OTLP snapshots;
+  :SLURM or adapter metadata;
+  :Configs, versions, inventory;
+}
+partition "Gate" {
+  if (SLO, correctness, recovery,
+  telemetry freshness all pass?) then (PASS)
+    :Promote evidence bundle;
+  else (WARN/FAIL)
+    :Assign owning subsystem;
+    :Publish rollback/remediation recommendation;
+  endif
+}
+stop
+'''),
+
 
 }
 

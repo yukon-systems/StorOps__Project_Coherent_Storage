@@ -14,6 +14,8 @@
 
 Gate Project Coherent Storage 2026-Q2 rollout on LLM-visible performance, storage/fabric telemetry, failure drills, reproducibility, and rollback evidence. Link speed, raw IOPS, and one-off benchmark throughput are not sufficient for production-like promotion.
 
+ADR-024 defines the system-level benchmark suite taxonomy used to produce component and service evidence. ADR-025 defines the broad-systems E2ET workflow that composes those benchmarks into full architecture validation, failure drills, and rollout gates.
+
 ## Context
 
 The baseline ADR set defined fabric, storage, automation, and observability gates. The inference-optimized architecture adds additional failure modes: KV cache fragmentation, prefix-cache misses, cold model loads, vector-index tail latency, RAG recall regressions, DPU offload opacity, GPU-direct security boundaries, and background jobs competing with interactive decode.

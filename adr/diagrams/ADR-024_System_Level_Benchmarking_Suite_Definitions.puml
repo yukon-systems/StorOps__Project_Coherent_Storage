@@ -1,0 +1,95 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #34495E
+skinparam activity {
+  BackgroundColor #FDFEFE
+  BorderColor #566573
+  DiamondBackgroundColor #FCF3CF
+  DiamondBorderColor #B7950B
+  StartColor #145A32
+  EndColor #922B21
+}
+skinparam note {
+  BackgroundColor #FEF9E7
+  BorderColor #B7950B
+}
+title ADR-024 - System-Level Benchmarking Suite Definitions
+
+legend right
+Design defaults for diagrams unless an ADR narrows them:
+- Actor/API: HTTPS 443 or 8443; OpenAI-compatible API plus Coherence-native API.
+- RoCEv2: UDP destination 4791; jumbo MTU 9000; PFC only on RDMA priorities.
+- NVMe-oF: discovery/controller service on TCP/RDMA port 4420; DPU-mediated targets.
+- Telemetry: OTLP gRPC 4317, OTLP HTTP 4318, Prometheus 9090/9100, gNMI 9339.
+- Timing: PTP event/general UDP 319/320 on an isolated timing/management class.
+- VLAN plan: site-specific IDs are allowed, but classes must stay isolated:
+  mgmt/OOB, frontend/API, RDMA rail-A, RDMA rail-B, storage/NVMe-oF, telemetry, timing.
+- Trunks: 802.1Q tagged uplinks; rail-A and rail-B must not share a failure domain.
+- Buffers: kv_hbm_active, kv_dram_warm, kv_cxl_warm, kv_rdma_staging,
+  zfs_slog, zfs_arc, zfs_l2arc, object_cache, vector_head_cache.
+endlegend
+
+start
+partition "Suite manifest" {
+  :Declare suite_id, component_type,
+  service_type, test_intent, topology,
+  platform matrix, toolchain, telemetry,
+  and gate thresholds;
+  if (compiled benchmark?) then (yes)
+    :Use LLVM/Clang by default;
+    if (upstream requires GCC?) then (exception)
+      :Record GCC exception, reason,
+      version, and portability impact;
+    endif
+  endif
+}
+partition "Scope classification" {
+  if (component benchmark?) then (component)
+    :Run CPU, memory, disk, network,
+    accelerator, CXL, DPU/QAT, ZFS,
+    or filesystem micro/macro profile;
+  else (service)
+    :Run NFS, OLTP, HTTP/REST,
+    load balancer, firewall, model server,
+    LLM cache, proxy/cache, vector,
+    scheduler, or observability profile;
+  endif
+}
+partition "Scheduler execution" {
+  if (SLURM available?) then (primary)
+    :Submit sbatch/srun profile;
+    :Use job arrays for sweeps and
+    heterogeneous jobs for multi-role tests;
+  else (adapter)
+    :Map manifest to local, Flux,
+    OpenPBS, Nomad, Kubernetes,
+    or site scheduler semantics;
+  endif
+}
+partition "Platform call-outs" {
+  if (feature depends on CUDA/ROCm/vendor backend?) then (backend-specific)
+    :Qualify backend on supported OS;
+    :Use ONNX Runtime, SYCL/oneAPI,
+    HetCCL, or service-level HTTP contract
+    for portable feature validation;
+  else (portable)
+    :Run Linux, FreeBSD, Solaris,
+    and illumos-capable profile;
+  endif
+}
+partition "Evidence gate" {
+  :Collect raw tool output, normalized JSON,
+  scheduler metadata, platform inventory,
+  compiler flags, telemetry snapshots;
+  if (gate passes?) then (PASS)
+    :Publish benchmark evidence bundle;
+  else (WARN/FAIL/INCONCLUSIVE)
+    :Attach blocker, platform reason,
+    rollback or retest recommendation;
+  endif
+}
+stop
+@enduml
