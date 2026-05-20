@@ -1,0 +1,49 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #34495E
+skinparam activity {
+  BackgroundColor #FDFEFE
+  BorderColor #566573
+  DiamondBackgroundColor #FCF3CF
+  DiamondBorderColor #B7950B
+  StartColor #145A32
+  EndColor #922B21
+}
+skinparam note {
+  BackgroundColor #FEF9E7
+  BorderColor #B7950B
+}
+title ADR-025 Print Section 02 - Architecture, Load, Failure
+start
+partition "Architecture E2ET" {
+  :Warm model, KV/prefix,
+  ARC/L2ARC, CXL placement,
+  pools and connections;
+  :Drive OpenAI-compatible and
+  Coherence-native traffic through LB mesh;
+  :Exercise cache hit/miss/invalidate,
+  RAG/vector, object fetch, DPU/NVMe-oF,
+  OpenZFS, scheduler admission;
+}
+partition "Load phases" {
+  if (sustained or peak?) then (load)
+    :k6/Locust/wrk;
+    :fio/IOR/MDTest;
+    :pgbench, iperf3;
+    :MLPerf, Triton, vLLM, SGLang sweeps;
+  endif
+}
+partition "Failure phases" {
+  if (failure-mode?) then (failure)
+    :Inject controlled rail, DPU, node,
+    cache epoch, zpool, LB, firewall,
+    or telemetry failure;
+    :Verify drain, fencing, reroute,
+    recovery deadline, telemetry freshness;
+  endif
+}
+stop
+@enduml

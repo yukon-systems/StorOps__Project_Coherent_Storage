@@ -1,0 +1,16 @@
+#!/bin/sh
+set -eu
+
+remote_name="${1:-}"
+remote_url="${2:-}"
+repo_root="$(git rev-parse --show-toplevel)"
+
+if [ "${remote_name}" = "origin" ]; then
+    python3 "${repo_root}/scripts/validate_git_lfs_policy.py" --remote-name "${remote_name}" --remote-url "${remote_url}"
+fi
+
+command -v git-lfs >/dev/null 2>&1 || {
+    printf >&2 '\n%s\n\n' "This repository is configured for Git LFS but 'git-lfs' was not found on PATH."
+    exit 2
+}
+exec git lfs pre-push "$@"

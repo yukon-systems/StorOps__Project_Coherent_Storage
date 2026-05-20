@@ -1,0 +1,50 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #34495E
+skinparam activity {
+  BackgroundColor #FDFEFE
+  BorderColor #566573
+  DiamondBackgroundColor #FCF3CF
+  DiamondBorderColor #B7950B
+  StartColor #145A32
+  EndColor #922B21
+}
+skinparam note {
+  BackgroundColor #FEF9E7
+  BorderColor #B7950B
+}
+title ADR-024 Print Section 02 - Platform Call-outs and Evidence Gates
+start
+partition "Cross-platform call-outs" {
+  if (CUDA/ROCm/vendor backend?) then (backend-specific)
+    :Qualify backend on supported OS;
+    :Use SKIPPED_PLATFORM or INCONCLUSIVE
+    where backend is unavailable;
+  else (portable)
+    :Run Linux, FreeBSD,
+    Solaris, and illumos-capable profile;
+  endif
+}
+partition "Abstraction validation" {
+  :Prefer service-level OpenAI-compatible APIs,
+  ONNX Runtime execution providers,
+  SYCL/oneAPI where available,
+  HetCCL-style collective probes,
+  and Coherence-CE cache probes;
+}
+partition "Evidence gate" {
+  :Collect raw output, normalized JSON,
+  scheduler metadata, inventory,
+  compiler flags, telemetry snapshots;
+  if (gate passes?) then (PASS)
+    :Publish benchmark evidence bundle;
+  else (WARN/FAIL/INCONCLUSIVE)
+    :Attach blocker, platform reason,
+    retest or rollback recommendation;
+  endif
+}
+stop
+@enduml

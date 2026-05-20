@@ -1,0 +1,642 @@
+openapi: 3.1.0
+info:
+  title: Coherence-CE Object Chunking and Git LFS Gateway API
+  version: "2026-Q2"
+  summary: Coherence-native object chunking API plus Git LFS facade routes.
+  description: >-
+    This contract defines the internal Coherence-CE object chunking and manifest
+    API and the public Git LFS facade routes needed to preserve Git LFS client
+    compatibility while storing objects in the Coherence-CE mesh.
+servers:
+  - url: https://coherence-lfs.example.internal
+    description: Example internal Git LFS facade and Coherence object gateway.
+tags:
+  - name: coherence-object
+    description: Coherence-native upload session, chunk, manifest, verify, and read operations.
+  - name: git-lfs
+    description: Git LFS API facade endpoints.
+  - name: git-lfs-locks
+    description: Git LFS file locking facade endpoints.
+  - name: health
+    description: Health and readiness endpoints.
+paths:
+  /coherence/objects/{namespace}/sessions:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+    post:
+      tags: [coherence-object]
+      operationId: createObjectUploadSession
+      summary: Create a Coherence-CE object upload session.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUploadSessionRequest'
+      responses:
+        '201':
+          description: Upload session created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadSession'
+  /coherence/objects/{namespace}/sessions/{session_id}/chunks/{chunk_number}:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/SessionId'
+      - $ref: '#/components/parameters/ChunkNumber'
+    put:
+      tags: [coherence-object]
+      operationId: putObjectChunk
+      summary: Upload or replace an idempotent chunk in an upload session.
+      parameters:
+        - name: X-Chunk-SHA256
+          in: header
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-f0-9]{64}$'
+        - name: X-Chunk-Size
+          in: header
+          required: true
+          schema:
+            type: integer
+            minimum: 0
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              contentEncoding: binary
+      responses:
+        '200':
+          description: Chunk accepted or idempotently confirmed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChunkStatus'
+        '422':
+          description: Chunk hash or size mismatch.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /coherence/objects/{namespace}/sessions/{session_id}/commit:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/SessionId'
+    post:
+      tags: [coherence-object]
+      operationId: commitObjectManifest
+      summary: Atomically verify chunks and commit an object manifest.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitManifestRequest'
+      responses:
+        '201':
+          description: Manifest committed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectManifest'
+        '409':
+          description: Manifest incomplete or commit epoch conflict.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Object hash, chunk hash, or size validation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /coherence/objects/{namespace}/manifests/{object_id}:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/ObjectId'
+    get:
+      tags: [coherence-object]
+      operationId: getObjectManifest
+      summary: Return the committed manifest for an object.
+      responses:
+        '200':
+          description: Manifest returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectManifest'
+        '404':
+          description: Object not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /coherence/objects/{namespace}/manifests/{object_id}/verify:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/ObjectId'
+    post:
+      tags: [coherence-object]
+      operationId: verifyObjectManifest
+      summary: Verify manifest chunk references, object hash, and durability state.
+      responses:
+        '200':
+          description: Verification result returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyResult'
+  /coherence/objects/{namespace}/manifests/{object_id}/content:
+    parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/ObjectId'
+    get:
+      tags: [coherence-object]
+      operationId: getObjectContent
+      summary: Stream reconstructed object content from a committed manifest.
+      responses:
+        '200':
+          description: Object content returned.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                contentEncoding: binary
+  /{owner}/{repo}.git/info/lfs/objects/batch:
+    parameters:
+      - $ref: '#/components/parameters/Owner'
+      - $ref: '#/components/parameters/Repo'
+    post:
+      tags: [git-lfs]
+      operationId: gitLfsBatch
+      summary: Git LFS Batch API facade.
+      requestBody:
+        required: true
+        content:
+          application/vnd.git-lfs+json:
+            schema:
+              $ref: '#/components/schemas/LfsBatchRequest'
+      responses:
+        '200':
+          description: Transfer actions returned.
+          content:
+            application/vnd.git-lfs+json:
+              schema:
+                $ref: '#/components/schemas/LfsBatchResponse'
+  /{owner}/{repo}.git/info/lfs/objects/{oid}:
+    parameters:
+      - $ref: '#/components/parameters/Owner'
+      - $ref: '#/components/parameters/Repo'
+      - $ref: '#/components/parameters/Oid'
+    put:
+      tags: [git-lfs]
+      operationId: gitLfsBasicUpload
+      summary: Basic Git LFS upload action target.
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              contentEncoding: binary
+      responses:
+        '200':
+          description: Object uploaded and committed.
+        '202':
+          description: Object accepted and awaiting durability mirror.
+    get:
+      tags: [git-lfs]
+      operationId: gitLfsBasicDownload
+      summary: Basic Git LFS download action target.
+      responses:
+        '200':
+          description: Object bytes returned.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                contentEncoding: binary
+  /{owner}/{repo}.git/info/lfs/locks:
+    parameters:
+      - $ref: '#/components/parameters/Owner'
+      - $ref: '#/components/parameters/Repo'
+    get:
+      tags: [git-lfs-locks]
+      operationId: listLfsLocks
+      summary: List Git LFS locks for a repository.
+      responses:
+        '200':
+          description: Locks returned.
+          content:
+            application/vnd.git-lfs+json:
+              schema:
+                $ref: '#/components/schemas/LfsLocksResponse'
+    post:
+      tags: [git-lfs-locks]
+      operationId: createLfsLock
+      summary: Create a Git LFS lock.
+      requestBody:
+        required: true
+        content:
+          application/vnd.git-lfs+json:
+            schema:
+              $ref: '#/components/schemas/LfsCreateLockRequest'
+      responses:
+        '201':
+          description: Lock created.
+          content:
+            application/vnd.git-lfs+json:
+              schema:
+                $ref: '#/components/schemas/LfsLockResponse'
+  /{owner}/{repo}.git/info/lfs/locks/verify:
+    parameters:
+      - $ref: '#/components/parameters/Owner'
+      - $ref: '#/components/parameters/Repo'
+    post:
+      tags: [git-lfs-locks]
+      operationId: verifyLfsLocks
+      summary: Verify locks before a Git push.
+      requestBody:
+        required: false
+        content:
+          application/vnd.git-lfs+json:
+            schema:
+              $ref: '#/components/schemas/LfsVerifyLocksRequest'
+      responses:
+        '200':
+          description: Lock verification result returned.
+          content:
+            application/vnd.git-lfs+json:
+              schema:
+                $ref: '#/components/schemas/LfsVerifyLocksResponse'
+  /healthz:
+    get:
+      tags: [health]
+      operationId: healthz
+      summary: Liveness probe.
+      responses:
+        '200':
+          description: Service is alive.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+components:
+  parameters:
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^[a-zA-Z0-9._/-]+$'
+    SessionId:
+      name: session_id
+      in: path
+      required: true
+      schema:
+        type: string
+    ChunkNumber:
+      name: chunk_number
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 0
+    ObjectId:
+      name: object_id
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^sha256:[a-f0-9]{64}$'
+    Owner:
+      name: owner
+      in: path
+      required: true
+      schema:
+        type: string
+    Repo:
+      name: repo
+      in: path
+      required: true
+      schema:
+        type: string
+    Oid:
+      name: oid
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^[a-f0-9]{64}$'
+  schemas:
+    CreateUploadSessionRequest:
+      type: object
+      required: [object_id, expected_size, chunk_size, external_protocol, durability_class]
+      properties:
+        object_id:
+          type: string
+          pattern: '^sha256:[a-f0-9]{64}$'
+        expected_size:
+          type: integer
+          minimum: 0
+        chunk_size:
+          type: integer
+          minimum: 1
+        external_protocol:
+          type: string
+          enum: [s3, git-lfs, coherence-rest, rag-corpus, benchmark-artifact, model-artifact]
+        durability_class:
+          type: string
+          enum: [OBJ-D0, OBJ-D1, OBJ-D2, OBJ-D3, OBJ-D4]
+        placement_policy:
+          type: string
+          default: zfs-mirrored-rdma
+    UploadSession:
+      type: object
+      required: [session_id, object_id, namespace, state, expires_at]
+      properties:
+        session_id:
+          type: string
+        object_id:
+          type: string
+        namespace:
+          type: string
+        state:
+          type: string
+          enum: [allocated, uploading, verifying, committed, expired, failed]
+        expires_at:
+          type: string
+          format: date-time
+    ChunkStatus:
+      type: object
+      required: [chunk_number, size, sha256, state]
+      properties:
+        chunk_number:
+          type: integer
+          minimum: 0
+        size:
+          type: integer
+          minimum: 0
+        sha256:
+          type: string
+          pattern: '^[a-f0-9]{64}$'
+        state:
+          type: string
+          enum: [accepted, duplicate_confirmed]
+    CommitManifestRequest:
+      type: object
+      required: [object_sha256, total_size, chunk_count, end_chunk_number, session_epoch]
+      properties:
+        object_sha256:
+          type: string
+          pattern: '^[a-f0-9]{64}$'
+        total_size:
+          type: integer
+          minimum: 0
+        chunk_count:
+          type: integer
+          minimum: 1
+        end_chunk_number:
+          type: integer
+          minimum: 0
+        session_epoch:
+          type: integer
+          minimum: 0
+    ObjectManifest:
+      type: object
+      required: [manifest_id, object_id, namespace, chunk_size, chunk_count, end_chunk_number, total_size, content_sha256, durability_class, commit_state, chunks]
+      properties:
+        manifest_id:
+          type: string
+        object_id:
+          type: string
+        namespace:
+          type: string
+        chunk_size:
+          type: integer
+        chunk_count:
+          type: integer
+        end_chunk_number:
+          type: integer
+        total_size:
+          type: integer
+        content_sha256:
+          type: string
+        durability_class:
+          type: string
+        placement_policy:
+          type: string
+        commit_state:
+          type: string
+          enum: [committed_local, committed_mirrored, mirror_safe, tombstoned]
+        chunks:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManifestChunk'
+    ManifestChunk:
+      type: object
+      required: [chunk_number, size, sha256, storage_ref]
+      properties:
+        chunk_number:
+          type: integer
+        size:
+          type: integer
+        sha256:
+          type: string
+        storage_ref:
+          type: string
+        replication_state:
+          type: string
+    VerifyResult:
+      type: object
+      required: [result, checked_at]
+      properties:
+        result:
+          type: string
+          enum: [PASS, WARN, FAIL, INCONCLUSIVE]
+        checked_at:
+          type: string
+          format: date-time
+        findings:
+          type: array
+          items:
+            type: string
+    LfsBatchRequest:
+      type: object
+      required: [operation, objects]
+      properties:
+        operation:
+          type: string
+          enum: [upload, download]
+        transfers:
+          type: array
+          items:
+            type: string
+        ref:
+          type: object
+          properties:
+            name:
+              type: string
+        objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/LfsObjectRequest'
+    LfsObjectRequest:
+      type: object
+      required: [oid, size]
+      properties:
+        oid:
+          type: string
+          pattern: '^[a-f0-9]{64}$'
+        size:
+          type: integer
+          minimum: 0
+    LfsBatchResponse:
+      type: object
+      required: [transfer, objects]
+      properties:
+        transfer:
+          type: string
+          default: basic
+        objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/LfsObjectResponse'
+    LfsObjectResponse:
+      type: object
+      required: [oid, size]
+      properties:
+        oid:
+          type: string
+        size:
+          type: integer
+        authenticated:
+          type: boolean
+        actions:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/LfsAction'
+        error:
+          $ref: '#/components/schemas/LfsObjectError'
+    LfsAction:
+      type: object
+      required: [href]
+      properties:
+        href:
+          type: string
+          format: uri
+        header:
+          type: object
+          additionalProperties:
+            type: string
+        expires_at:
+          type: string
+          format: date-time
+    LfsObjectError:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+    LfsCreateLockRequest:
+      type: object
+      required: [path]
+      properties:
+        path:
+          type: string
+        ref:
+          type: object
+          properties:
+            name:
+              type: string
+    LfsLockResponse:
+      type: object
+      required: [lock]
+      properties:
+        lock:
+          $ref: '#/components/schemas/LfsLock'
+    LfsLocksResponse:
+      type: object
+      required: [locks]
+      properties:
+        locks:
+          type: array
+          items:
+            $ref: '#/components/schemas/LfsLock'
+        next_cursor:
+          type: string
+    LfsVerifyLocksRequest:
+      type: object
+      properties:
+        cursor:
+          type: string
+        limit:
+          type: integer
+        ref:
+          type: object
+          properties:
+            name:
+              type: string
+    LfsVerifyLocksResponse:
+      type: object
+      required: [ours, theirs]
+      properties:
+        ours:
+          type: array
+          items:
+            $ref: '#/components/schemas/LfsLock'
+        theirs:
+          type: array
+          items:
+            $ref: '#/components/schemas/LfsLock'
+        next_cursor:
+          type: string
+    LfsLock:
+      type: object
+      required: [id, path, locked_at, owner]
+      properties:
+        id:
+          type: string
+        path:
+          type: string
+        locked_at:
+          type: string
+          format: date-time
+        owner:
+          type: object
+          required: [name]
+          properties:
+            name:
+              type: string
+    HealthResponse:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+          enum: [ok, degraded]
+        gitolite_policy:
+          type: string
+          enum: [reachable, degraded, unavailable]
+        coherence_mesh:
+          type: string
+          enum: [ready, degraded, unavailable]
+    ErrorResponse:
+      type: object
+      required: [error, message]
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        retryable:
+          type: boolean
+          default: false

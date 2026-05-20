@@ -58,11 +58,15 @@ Important sources include the UA-Link white paper, UniFabriX UA-Link material, O
 | [`reports/project-coherent-storage_overview__director-overview.md`](reports/project-coherent-storage_overview__director-overview.md) | Director overview for procurement, lifecycle, deployment risk, and operational readiness. |
 | [`reports/project-coherent-storage_overview__engineering-overview.md`](reports/project-coherent-storage_overview__engineering-overview.md) | Engineering/ARB overview for data paths, CXL roles, namespace rules, and validation checklist. |
 | [`reports/project-coherent-storage_s3-object-rest-api-translator-design.md`](reports/project-coherent-storage_s3-object-rest-api-translator-design.md) | Translator design report for S3/Object REST access and explicit prefix-cache namespace modalities. |
+| [`reports/project-coherent-storage_coherence-ce-object-chunking-and-lfs-gateway-design.md`](reports/project-coherent-storage_coherence-ce-object-chunking-and-lfs-gateway-design.md) | Design report for Coherence-CE object chunking, manifest semantics, and Git LFS gateway migration. |
 | [`api/coherence-ce-vllm-adapter.openapi.yaml`](api/coherence-ce-vllm-adapter.openapi.yaml) | OpenAPI contract for Coherence-CE vLLM adapter operations. |
 | [`api/s3-object-rest-translator.openapi.yaml`](api/s3-object-rest-translator.openapi.yaml) | OpenAPI contract for S3/Object REST translator routes, including Unified and Dimensional Indexed Namespace routes. |
+| [`api/coherence-ce-object-chunking-lfs-gateway.openapi.yaml`](api/coherence-ce-object-chunking-lfs-gateway.openapi.yaml) | OpenAPI contract for Coherence-native object chunking and Git LFS gateway facade routes. |
 | `adr/diagrams/*.puml`, `*.png`, `*.svg` | Per-ADR PlantUML source and rendered PNG/SVG assets. |
 | `diagrams/*.puml`, `*.png`, `*.svg` | Report-level PlantUML source and rendered PNG/SVG assets. |
 | [`review-artifacts/rag-extraction-and-source-map.md`](review-artifacts/rag-extraction-and-source-map.md) and JSON peer | Extraction evidence and source map. |
+| [`review-artifacts/ietf-icnrg-chunking-source-map.md`](review-artifacts/ietf-icnrg-chunking-source-map.md) and JSON peer | Source map for CCNx chunking, FLIC, RFC 8569/8609, and Git LFS API references. |
+| [`docs/git-lfs-policy.md`](docs/git-lfs-policy.md) | Repository Git LFS lock-verification, normalized `.gitattributes`, pre-push hook, test-server, and migration policy. |
 
 
 ## ADR index
@@ -92,11 +96,14 @@ Important sources include the UA-Link white paper, UniFabriX UA-Link material, O
 | [`ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.md`](adr/ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.md) | Defines heterogeneous GP-GPU and accelerator capability profiles for scheduler governance across vendors and fabrics. |
 | [`ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator.md`](adr/ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator.md) | Defines the S3/Object-to-REST translator and its object, KV, vector, and prefix-cache REST contract. |
 | [`ADR-023_Coherence_CE_Namespace_Modalities.md`](adr/ADR-023_Coherence_CE_Namespace_Modalities.md) | Defines Unified Namespace and Dimensional Indexed Namespace workflows, API route semantics, and locality-governance rules. |
+| [`ADR-024_System_Level_Benchmarking_Suite_Definitions.md`](adr/ADR-024_System_Level_Benchmarking_Suite_Definitions.md) | Defines system-level benchmark suite taxonomy across component, service, test-intent, SLURM execution, cross-platform tooling, and evidence gates. |
+| [`ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.md`](adr/ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.md) | Defines broad-systems E2E testing workflows, scheduler-adapter execution, failure-mode tests, evidence bundles, and CI/CD gates. |
+| [`ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics.md`](adr/ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics.md) | Defines Coherence-CE internal object chunking, manifest commit semantics, S3 multipart mapping, Git LFS facade behavior, and RAG byte-object boundaries. |
 
 
 ## Top-down architecture composition
 
-The design composes the system from inference SLOs down through hot-state placement, namespace modality, data tiers, fabrics, offload, durable media, scheduler admission, failure semantics, CXL/UA-Link pod resources, heterogeneous accelerator governance, S3/Object REST translation, and research-publication workflow. Each ADR embeds its PNG diagram and has a PlantUML source file plus PNG/SVG renders under `adr/diagrams/`.
+The design composes the system from inference SLOs down through hot-state placement, namespace modality, data tiers, fabrics, offload, durable media, scheduler admission, failure semantics, CXL/UA-Link pod resources, heterogeneous accelerator governance, S3/Object REST translation, object chunking and manifest semantics, Git LFS gateway behavior, benchmark evidence, broad-systems E2ET, and research-publication workflow. Each ADR embeds its PNG diagram and has a PlantUML source file plus PNG/SVG renders under `adr/diagrams/`.
 
 | ADR | Architecture interaction diagram |
 | --- | --- |
@@ -123,6 +130,9 @@ The design composes the system from inference SLOs down through hot-state placem
 | [`ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.md`](adr/ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.md) | [PNG](adr/diagrams/ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.png) / [SVG](adr/diagrams/ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.svg) / [PUML](adr/diagrams/ADR-021_Heterogeneous_GP_GPU_Compute_and_Scheduler_Governance.puml) |
 | [`ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator.md`](adr/ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator.md) | [PNG](adr/diagrams/ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator.png) / [SVG](adr/diagrams/ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator.svg) / [PUML](adr/diagrams/ADR-022_S3_Object_to_REST_API_Protocol_Mapping_Translator.puml) |
 | [`ADR-023_Coherence_CE_Namespace_Modalities.md`](adr/ADR-023_Coherence_CE_Namespace_Modalities.md) | [PNG](adr/diagrams/ADR-023_Coherence_CE_Namespace_Modalities.png) / [SVG](adr/diagrams/ADR-023_Coherence_CE_Namespace_Modalities.svg) / [PUML](adr/diagrams/ADR-023_Coherence_CE_Namespace_Modalities.puml) |
+| [`ADR-024_System_Level_Benchmarking_Suite_Definitions.md`](adr/ADR-024_System_Level_Benchmarking_Suite_Definitions.md) | [PNG](adr/diagrams/ADR-024_System_Level_Benchmarking_Suite_Definitions.png) / [SVG](adr/diagrams/ADR-024_System_Level_Benchmarking_Suite_Definitions.svg) / [PUML](adr/diagrams/ADR-024_System_Level_Benchmarking_Suite_Definitions.puml) |
+| [`ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.md`](adr/ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.md) | [PNG](adr/diagrams/ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.png) / [SVG](adr/diagrams/ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.svg) / [PUML](adr/diagrams/ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.puml) |
+| [`ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics.md`](adr/ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics.md) | [PNG](adr/diagrams/ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics.png) / [SVG](adr/diagrams/ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics.svg) / [PUML](adr/diagrams/ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics.puml) |
 
 
 ## ADR diagram gallery
@@ -218,6 +228,18 @@ The design composes the system from inference SLOs down through hot-state placem
 ### [ADR-023_Coherence_CE_Namespace_Modalities.md](adr/ADR-023_Coherence_CE_Namespace_Modalities.md)
 
 ![ADR-023_Coherence_CE_Namespace_Modalities](adr/diagrams/ADR-023_Coherence_CE_Namespace_Modalities.png)
+
+### [ADR-024_System_Level_Benchmarking_Suite_Definitions.md](adr/ADR-024_System_Level_Benchmarking_Suite_Definitions.md)
+
+![ADR-024_System_Level_Benchmarking_Suite_Definitions](adr/diagrams/ADR-024_System_Level_Benchmarking_Suite_Definitions.png)
+
+### [ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.md](adr/ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.md)
+
+![ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling](adr/diagrams/ADR-025_Broad_Systems_E2E_Testing_Workflows_and_Tooling.png)
+
+### [ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics.md](adr/ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics.md)
+
+![ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics](adr/diagrams/ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics.png)
 
 ---
 

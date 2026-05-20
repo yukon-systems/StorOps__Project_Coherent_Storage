@@ -1,0 +1,49 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #34495E
+skinparam activity {
+  BackgroundColor #FDFEFE
+  BorderColor #566573
+  DiamondBackgroundColor #FCF3CF
+  DiamondBorderColor #B7950B
+  StartColor #145A32
+  EndColor #922B21
+}
+skinparam note {
+  BackgroundColor #FEF9E7
+  BorderColor #B7950B
+}
+title ADR-025 Print Section 03 - Platform Semantics, Collect, Gate
+start
+partition "Cross-platform result semantics" {
+  if (backend unavailable on OS?) then (not feature failure)
+    :Record SKIPPED_PLATFORM
+    or INCONCLUSIVE_BACKEND;
+    :Validate portable service contract
+    through abstraction where possible;
+  else (qualified)
+    :Record backend-specific qualification
+    separately from portable feature result;
+  endif
+}
+partition "Collect artifacts" {
+  :Raw logs;
+  :Normalized JSON;
+  :Prometheus/OTLP snapshots;
+  :SLURM or adapter metadata;
+  :Configs, versions, inventory;
+}
+partition "Gate" {
+  if (SLO, correctness, recovery,
+  telemetry freshness all pass?) then (PASS)
+    :Promote evidence bundle;
+  else (WARN/FAIL)
+    :Assign owning subsystem;
+    :Publish rollback/remediation recommendation;
+  endif
+}
+stop
+@enduml

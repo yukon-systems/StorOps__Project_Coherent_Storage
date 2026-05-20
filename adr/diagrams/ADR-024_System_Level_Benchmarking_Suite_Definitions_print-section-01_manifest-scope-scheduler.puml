@@ -1,0 +1,55 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #34495E
+skinparam activity {
+  BackgroundColor #FDFEFE
+  BorderColor #566573
+  DiamondBackgroundColor #FCF3CF
+  DiamondBorderColor #B7950B
+  StartColor #145A32
+  EndColor #922B21
+}
+skinparam note {
+  BackgroundColor #FEF9E7
+  BorderColor #B7950B
+}
+title ADR-024 Print Section 01 - Manifest, Scope, Scheduler
+start
+partition "Suite manifest" {
+  :Declare suite_id, component_type,
+  service_type, test_intent, topology,
+  platform matrix, toolchain, telemetry,
+  and gate thresholds;
+  if (compiled benchmark?) then (yes)
+    :Use LLVM/Clang by default;
+  else (no)
+    :Record interpreter/runtime versions;
+  endif
+}
+partition "Scope classification" {
+  if (component benchmark?) then (component)
+    :CPU, memory, disk, network,
+    accelerator, CXL, DPU/QAT,
+    ZFS, filesystem profile;
+  else (service)
+    :NFS, OLTP, HTTP/REST, LB,
+    firewall, LLM model/cache,
+    proxy/cache, vector, scheduler,
+    observability profile;
+  endif
+}
+partition "Scheduler execution" {
+  if (SLURM available?) then (primary)
+    :sbatch/srun;
+    :job arrays for sweeps;
+    :heterogeneous jobs for multi-role profiles;
+  else (adapter)
+    :local, Flux, OpenPBS, Nomad,
+    Kubernetes, or site scheduler;
+  endif
+}
+stop
+@enduml
