@@ -1,0 +1,74 @@
+{
+  "generated": "2026-05-20",
+  "sources": [
+    {
+      "id": "draft-irtf-icnrg-ccnxchunking-04",
+      "title": "CCNx Content Object Chunking",
+      "status": "Internet-Draft; intended Experimental; work in progress",
+      "published": "2026-02-07",
+      "expires": "2026-08-11",
+      "urls": {
+        "datatracker": "https://datatracker.ietf.org/doc/draft-irtf-icnrg-ccnxchunking/",
+        "text": "https://www.ietf.org/archive/id/draft-irtf-icnrg-ccnxchunking-04.txt"
+      },
+      "architecture_use": [
+        "ordered chunk numbering",
+        "end chunk metadata",
+        "chunk size disclosure",
+        "chunked payload naming reference"
+      ]
+    },
+    {
+      "id": "draft-irtf-icnrg-flic-07",
+      "title": "File-Like ICN Collections (FLIC)",
+      "status": "Internet-Draft; intended Experimental; expired as of 2026-05-20",
+      "published": "2025-03-03",
+      "expires": "2025-09-04",
+      "urls": {
+        "datatracker": "https://datatracker.ietf.org/doc/draft-irtf-icnrg-flic/",
+        "text": "https://www.ietf.org/archive/id/draft-irtf-icnrg-flic-07.txt"
+      },
+      "architecture_use": [
+        "manifest graph reference",
+        "content hash pointers",
+        "collection metadata",
+        "hierarchical manifest traversal"
+      ]
+    },
+    {
+      "id": "rfc8569",
+      "title": "Content-Centric Networking (CCNx) Semantics",
+      "status": "IRTF Experimental RFC",
+      "url": "https://www.rfc-editor.org/rfc/rfc8569"
+    },
+    {
+      "id": "rfc8609",
+      "title": "Content-Centric Networking (CCNx) Messages in TLV Format",
+      "status": "IRTF Experimental RFC",
+      "url": "https://www.rfc-editor.org/rfc/rfc8609"
+    },
+    {
+      "id": "git-lfs-api",
+      "title": "Git LFS API",
+      "status": "upstream Git LFS documentation",
+      "url": "https://github.com/git-lfs/git-lfs/blob/main/docs/api/README.md"
+    },
+    {
+      "id": "git-lfs-batch-api",
+      "title": "Git LFS Batch API",
+      "status": "upstream Git LFS documentation",
+      "url": "https://github.com/git-lfs/git-lfs/blob/main/docs/api/batch.md"
+    },
+    {
+      "id": "git-lfs-locking-api",
+      "title": "Git LFS File Locking API",
+      "status": "upstream Git LFS documentation",
+      "url": "https://github.com/git-lfs/git-lfs/blob/main/docs/api/locking.md"
+    }
+  ],
+  "project_interpretation": {
+    "external_protocols": ["S3", "Git LFS", "REST", "Coherence-native API"],
+    "internal_model": ["immutable chunks", "ordered chunk numbers", "atomic manifest commit", "content hash verification", "durability class", "placement policy"],
+    "non_goals": ["expose CCNx chunking as public wire protocol", "merge byte-storage chunks with semantic RAG chunks"]
+  }
+}

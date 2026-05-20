@@ -69,6 +69,23 @@ Primary Git LFS interfaces that matter for repo quality assurance:
   action. Test-server workflows should cover this path when validating custom
   LFS endpoints or proxy behavior.
 
+## Coherence-CE LFS Backend Target
+
+ADR-026 defines the long-term Coherence-CE object chunking and manifest model
+for a future Git LFS backend. Until that gateway passes compatibility and
+failure-mode gates, Git LFS clients must continue to use a conventional Git LFS
+API endpoint. Coherence-CE may shadow-copy LFS objects for validation, but it
+must not replace the client-facing LFS API with raw S3 or Coherence-native REST.
+
+Promotion to a Coherence-backed LFS endpoint requires:
+
+- successful Git LFS Batch API upload/download tests;
+- lock create/list/delete/verify tests;
+- SHA256 OID and size validation;
+- `git lfs fsck` against promoted repositories;
+- safe garbage collection of abandoned partial uploads;
+- documented fallback or mirror behavior during Coherence-CE maintenance.
+
 
 
 ## Lockable Attribute Posture
