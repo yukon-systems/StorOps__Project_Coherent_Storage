@@ -1081,6 +1081,160 @@ partition "Gate" {
 stop
 '''),
 
+"ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics": diagram("ADR-026 - Coherence-CE Object Chunking and Manifest Semantics", r'''
+start
+partition "External protocol contracts" {
+  :S3 client uses S3 CRUD or multipart;
+  :Git LFS client uses Batch API,
+  basic transfer, and locks;
+  :RAG pipeline stores source bytes
+  and semantic extraction separately;
+  :Coherence REST client may call
+  manifest/chunk APIs directly;
+}
+partition "Protocol facade" {
+  if (Git LFS request?) then (LFS)
+    :Validate repo/ref authorization
+    through Gitolite or control plane;
+    :Map OID + size to object_id
+    sha256:{oid};
+  elseif (S3 multipart?) then (S3)
+    :Map upload_id + partNumber
+    to upload session + chunk_number;
+  else (native/RAG)
+    :Use namespace + object_id
+    and durability class;
+  endif
+}
+partition "Chunk and manifest workflow" {
+  :Allocate upload_session with
+  expected size, chunk_size,
+  external_protocol, durability;
+  :Write immutable chunks by
+  chunk_number, size, sha256;
+  if (all chunks contiguous and hashes valid?) then (valid)
+    :Compute full-object SHA256;
+    :Commit manifest atomically with
+    end_chunk_number and epoch;
+  else (invalid)
+    :Reject commit; keep partial state
+    session-scoped for retry or GC;
+    stop
+  endif
+}
+partition "Coherence-CE placement" {
+  if (durability class >= OBJ-D3?) then (durable)
+    :Place through DPU/OpenZFS,
+    mirrored RDMA fabric, snapshots;
+  else (cache/scratch)
+    :Use local cache, DRAM/CXL warm tier,
+    or recomputable object policy;
+  endif
+  :Expose only committed object identity
+  and protocol-native responses;
+}
+partition "Verification and GC" {
+  :Verify manifest, chunk references,
+  mirror state, and lock policy;
+  if (unreferenced partial chunks expired?) then (collect)
+    :Garbage-collect after grace period
+    and mirror-safety checks;
+  endif
+}
+stop
+'''),
+"ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics_print-section-01_protocol-mapping": compact_diagram("ADR-026 Print Section 01 - Protocol Mapping", r'''
+start
+partition "Ingress" {
+  :S3 CRUD/multipart;
+  :Git LFS Batch, transfer, locks;
+  :Coherence-native REST;
+  :RAG corpus byte storage;
+}
+partition "Facade rules" {
+  if (Git LFS?) then (yes)
+    :Preserve Git LFS API;
+    :object_id = sha256:{oid};
+  elseif (S3 multipart?) then (yes)
+    :Preserve S3 part semantics;
+    :partNumber maps to chunk_number
+    only after validation;
+  else (native)
+    :Use namespace + object_id
+    direct manifest API;
+  endif
+}
+partition "Internal object model" {
+  :Immutable chunks;
+  :Ordered chunk_number from 0;
+  :end_chunk_number;
+  :chunk_size;
+  :per-chunk SHA256;
+  :full-object SHA256;
+}
+stop
+'''),
+"ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics_print-section-02_manifest-commit": compact_diagram("ADR-026 Print Section 02 - Manifest Commit", r'''
+start
+partition "Upload session" {
+  :Declare expected size,
+  object hash, chunk size,
+  protocol, namespace,
+  durability class;
+  :Upload chunks idempotently
+  by number and hash;
+}
+partition "Commit gate" {
+  if (chunks contiguous?) then (yes)
+    if (chunk sizes and hashes valid?) then (yes)
+      :Compute full-object hash;
+    else (mismatch)
+      :Reject 422 mismatch;
+      stop
+    endif
+  else (missing)
+    :Reject 409 incomplete_manifest;
+    stop
+  endif
+}
+partition "Atomic publish" {
+  :Commit manifest with epoch;
+  :Readers see only committed manifests;
+  :Partial uploads remain invisible;
+}
+stop
+'''),
+"ADR-026_Coherence_CE_Object_Chunking_and_Manifest_Semantics_print-section-03_validation-failure": compact_diagram("ADR-026 Print Section 03 - Validation and Failure Semantics", r'''
+start
+partition "Validation" {
+  :Run manifest verify;
+  :Check object hash;
+  :Check chunk references;
+  :Check durability and mirror state;
+  :Check Git LFS locks if applicable;
+}
+partition "Failure handling" {
+  if (reader during upload?) then (partial hidden)
+    :Serve prior committed version
+    or not found;
+  endif
+  if (DPU/OpenZFS degraded?) then (policy gate)
+    :Fail fast unless namespace
+    permits lower durability;
+  endif
+  if (mirror lag?) then (warn)
+    :Mark committed_local,
+    not mirror_safe;
+  endif
+}
+partition "Garbage collection" {
+  :Tombstone deletes at manifest level;
+  :Collect expired partial chunks
+  only after grace and reference checks;
+}
+stop
+'''),
+
 
 }
 

@@ -1,0 +1,48 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #34495E
+skinparam activity {
+  BackgroundColor #FDFEFE
+  BorderColor #566573
+  DiamondBackgroundColor #FCF3CF
+  DiamondBorderColor #B7950B
+  StartColor #145A32
+  EndColor #922B21
+}
+skinparam note {
+  BackgroundColor #FEF9E7
+  BorderColor #B7950B
+}
+title ADR-026 Print Section 03 - Validation and Failure Semantics
+start
+partition "Validation" {
+  :Run manifest verify;
+  :Check object hash;
+  :Check chunk references;
+  :Check durability and mirror state;
+  :Check Git LFS locks if applicable;
+}
+partition "Failure handling" {
+  if (reader during upload?) then (partial hidden)
+    :Serve prior committed version
+    or not found;
+  endif
+  if (DPU/OpenZFS degraded?) then (policy gate)
+    :Fail fast unless namespace
+    permits lower durability;
+  endif
+  if (mirror lag?) then (warn)
+    :Mark committed_local,
+    not mirror_safe;
+  endif
+}
+partition "Garbage collection" {
+  :Tombstone deletes at manifest level;
+  :Collect expired partial chunks
+  only after grace and reference checks;
+}
+stop
+@enduml

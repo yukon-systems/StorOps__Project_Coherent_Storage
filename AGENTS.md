@@ -316,4 +316,4 @@ Optional:
 
 ## 11. Workflows, Skills Context Budget, Auto-Pilot Mode
 - If a request involves a workflow of actions but does not explicitly state which workflow to use, choose the lightest suitable workflow and proceed. Present options only when workflow choice materially changes risk, cost, or output.
-- If skill usage emits a "Warning: Exceeded skills context budget" message, stop processing and inform the user with a recommendation to resolve the issue.
+- If skill usage emits a "Warning: Exceeded skills context budget" message, do not stop solely because of the warning. Continue with the requested task using the loaded skill metadata; if a needed skill body is missing or ambiguous, open the specific `SKILL.md` file directly before relying on it.
